@@ -1,0 +1,5739 @@
+{
+  "users": [
+    {
+      "id": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "createdAt": "2026-07-19T06:59:23.148Z",
+      "username": "Kesavan K",
+      "passwordHash": "$2a$10$UGX1AIfQ36G7noioXwLpH.9BnR7bHIw9ePPY0hJpuqFIYr8ynRgYO",
+      "role": "admin",
+      "department": "CSE",
+      "email": "admin@college.edu",
+      "isActive": true,
+      "currentSessionToken": "5813982ed92ab7986f1bb09980d5c0e57fc1e5e4c12493f51890477b8e381372",
+      "fullName": "Kesavan K"
+    },
+    {
+      "id": "75e601d2-001e-49bb-b6a7-6650a9af48cf",
+      "createdAt": "2026-07-21T14:04:57.471Z",
+      "isApproved": true,
+      "isLocked": false,
+      "loginEnabled": true,
+      "qualificationStatus": "qualified",
+      "timerExtensionSeconds": 0,
+      "roundPermissions": {
+        "1": "completed",
+        "2": "completed",
+        "3": "locked"
+      },
+      "scoreOverrides": {},
+      "username": "CC001",
+      "passwordHash": "$2a$10$VR5rID5SRzKUJxZY0UYq.OuAMHKwx3nVQX0Of8o4qWMoe/PHivS0W",
+      "role": "participant",
+      "fullName": "Participant 001",
+      "email": "",
+      "department": "CSBS",
+      "college": "Engineering",
+      "isActive": true,
+      "currentSessionToken": null,
+      "displayPassword": "70nxljmb"
+    },
+    {
+      "id": "6ec3ef7d-9e65-4313-8d49-c0c041a13c4c",
+      "createdAt": "2026-07-21T14:04:57.570Z",
+      "isApproved": true,
+      "isLocked": false,
+      "loginEnabled": true,
+      "qualificationStatus": "qualified",
+      "timerExtensionSeconds": 0,
+      "roundPermissions": {
+        "1": "locked",
+        "2": "locked",
+        "3": "locked"
+      },
+      "scoreOverrides": {
+        "1": 7
+      },
+      "username": "CC002",
+      "passwordHash": "$2a$10$mAQCNd8mWaHnVBQUWq9zweke7QYStVCqzCJ.p.VX2nAHQ.r.VbF/O",
+      "role": "participant",
+      "fullName": "Participant 002",
+      "email": "",
+      "department": "CSBS",
+      "college": "Engineering",
+      "isActive": true,
+      "currentSessionToken": null,
+      "displayPassword": "q35kvgdq"
+    },
+    {
+      "id": "787d1e17-d4b9-4c52-9c98-c5990f8d4e4c",
+      "createdAt": "2026-07-24T10:42:35.478Z",
+      "isApproved": false,
+      "isLocked": false,
+      "loginEnabled": true,
+      "qualificationStatus": "waiting",
+      "timerExtensionSeconds": 0,
+      "roundPermissions": {
+        "1": "locked",
+        "2": "locked",
+        "3": "locked"
+      },
+      "scoreOverrides": {},
+      "username": "CC003",
+      "passwordHash": "$2a$10$JzzBHonPm.tTRG/rwOknP.HGrrJE0Br4qjg5BHFUkrUTT2mKtB4uG",
+      "role": "participant",
+      "fullName": "Participant 003",
+      "email": "",
+      "department": "CSBS",
+      "college": "Engineering",
+      "isActive": true,
+      "currentSessionToken": null,
+      "displayPassword": "7zsvfap6"
+    },
+    {
+      "id": "004a18ec-84da-4ebb-a727-a2a29be9860c",
+      "createdAt": "2026-07-24T10:42:35.690Z",
+      "isApproved": false,
+      "isLocked": false,
+      "loginEnabled": true,
+      "qualificationStatus": "waiting",
+      "timerExtensionSeconds": 0,
+      "roundPermissions": {
+        "1": "locked",
+        "2": "locked",
+        "3": "locked"
+      },
+      "scoreOverrides": {},
+      "username": "CC004",
+      "passwordHash": "$2a$10$YVX0YOHzde9aEWyE6rrLwe0xeiO9WTOXLHaC3r0q/9bhXBJPsgJOe",
+      "role": "participant",
+      "fullName": "Participant 004",
+      "email": "",
+      "department": "CSBS",
+      "college": "Engineering",
+      "isActive": true,
+      "currentSessionToken": null,
+      "displayPassword": "vtllpcga"
+    },
+    {
+      "id": "4545b8c9-ef18-4ca6-93c7-478d98809450",
+      "createdAt": "2026-07-24T10:42:35.886Z",
+      "isApproved": false,
+      "isLocked": false,
+      "loginEnabled": true,
+      "qualificationStatus": "waiting",
+      "timerExtensionSeconds": 0,
+      "roundPermissions": {
+        "1": "locked",
+        "2": "locked",
+        "3": "locked"
+      },
+      "scoreOverrides": {},
+      "username": "CC005",
+      "passwordHash": "$2a$10$c6.WZPX./5ojKF8Rmw01EeNCoKsXjojMF61TsDOIdAmIwqv6eP9s2",
+      "role": "participant",
+      "fullName": "Participant 005",
+      "email": "",
+      "department": "CSBS",
+      "college": "Engineering",
+      "isActive": true,
+      "currentSessionToken": null,
+      "displayPassword": "entt5d7i"
+    },
+    {
+      "id": "bac5d5c8-34f7-4abe-b3b8-ea68c5ec5085",
+      "createdAt": "2026-07-24T10:42:36.101Z",
+      "isApproved": false,
+      "isLocked": false,
+      "loginEnabled": true,
+      "qualificationStatus": "waiting",
+      "timerExtensionSeconds": 0,
+      "roundPermissions": {
+        "1": "locked",
+        "2": "locked",
+        "3": "locked"
+      },
+      "scoreOverrides": {},
+      "username": "CC006",
+      "passwordHash": "$2a$10$WXVFQt5RKDCpD7BkTX9RjOKcloVzribIhr3CvNMAAxio0N/Ov7D9a",
+      "role": "participant",
+      "fullName": "Participant 006",
+      "email": "",
+      "department": "CSBS",
+      "college": "Engineering",
+      "isActive": true,
+      "currentSessionToken": null,
+      "displayPassword": "nqh688ep"
+    },
+    {
+      "id": "27bcb789-969e-4921-b016-40e9ccae0c99",
+      "createdAt": "2026-07-24T10:42:36.301Z",
+      "isApproved": false,
+      "isLocked": false,
+      "loginEnabled": true,
+      "qualificationStatus": "waiting",
+      "timerExtensionSeconds": 0,
+      "roundPermissions": {
+        "1": "locked",
+        "2": "locked",
+        "3": "locked"
+      },
+      "scoreOverrides": {},
+      "username": "CC007",
+      "passwordHash": "$2a$10$KkuQuAUTAA.lkU7CIFBmpuq5Taa9hN.8w8U8zFzg/Oe7NuAv/CWxq",
+      "role": "participant",
+      "fullName": "Participant 007",
+      "email": "",
+      "department": "CSBS",
+      "college": "Engineering",
+      "isActive": true,
+      "currentSessionToken": null,
+      "displayPassword": "2ktirdvl"
+    },
+    {
+      "id": "d2bc5617-d344-4025-8cdd-818f569b5454",
+      "createdAt": "2026-07-24T10:42:36.503Z",
+      "isApproved": false,
+      "isLocked": false,
+      "loginEnabled": true,
+      "qualificationStatus": "waiting",
+      "timerExtensionSeconds": 0,
+      "roundPermissions": {
+        "1": "locked",
+        "2": "locked",
+        "3": "locked"
+      },
+      "scoreOverrides": {},
+      "username": "CC008",
+      "passwordHash": "$2a$10$S4PvcA3gmodkKlBL7WzYi.uoponL4QdxE5acQxADllDuetqfraHwa",
+      "role": "participant",
+      "fullName": "Participant 008",
+      "email": "",
+      "department": "CSBS",
+      "college": "Engineering",
+      "isActive": true,
+      "currentSessionToken": null,
+      "displayPassword": "vtzxlz79"
+    },
+    {
+      "id": "56be1a4b-765f-4c66-8b9e-69865f9bec52",
+      "createdAt": "2026-07-24T10:42:36.665Z",
+      "isApproved": false,
+      "isLocked": false,
+      "loginEnabled": true,
+      "qualificationStatus": "waiting",
+      "timerExtensionSeconds": 0,
+      "roundPermissions": {
+        "1": "locked",
+        "2": "locked",
+        "3": "locked"
+      },
+      "scoreOverrides": {},
+      "username": "CC009",
+      "passwordHash": "$2a$10$zVZfYBiOXBYJH.R7jnhAzONseyishui6wRcS.k0QulBEFwwX4RXUq",
+      "role": "participant",
+      "fullName": "Participant 009",
+      "email": "",
+      "department": "CSBS",
+      "college": "Engineering",
+      "isActive": true,
+      "currentSessionToken": null,
+      "displayPassword": "bnphd05o"
+    },
+    {
+      "id": "6c5b95f7-fdc0-43d1-86b9-79f9108e7be9",
+      "createdAt": "2026-07-24T10:42:36.876Z",
+      "isApproved": false,
+      "isLocked": false,
+      "loginEnabled": true,
+      "qualificationStatus": "waiting",
+      "timerExtensionSeconds": 0,
+      "roundPermissions": {
+        "1": "locked",
+        "2": "locked",
+        "3": "locked"
+      },
+      "scoreOverrides": {},
+      "username": "CC010",
+      "passwordHash": "$2a$10$qSAJlbiUBxNTAiB4Djt0jOer/S1dh4zVPAxUDcHX7piO3bFXRX5yi",
+      "role": "participant",
+      "fullName": "Participant 010",
+      "email": "",
+      "department": "CSBS",
+      "college": "Engineering",
+      "isActive": true,
+      "currentSessionToken": null,
+      "displayPassword": "4ckat7dp"
+    },
+    {
+      "id": "c76d4ca8-ae9c-4642-98cb-18060571ba6f",
+      "createdAt": "2026-07-24T10:42:37.161Z",
+      "isApproved": false,
+      "isLocked": false,
+      "loginEnabled": true,
+      "qualificationStatus": "waiting",
+      "timerExtensionSeconds": 0,
+      "roundPermissions": {
+        "1": "locked",
+        "2": "locked",
+        "3": "locked"
+      },
+      "scoreOverrides": {},
+      "username": "CC011",
+      "passwordHash": "$2a$10$3NxBRdR.lD5S10jtcDKrN.b0XgxQudVYouI70YHo/TRhou2Dp0DK.",
+      "role": "participant",
+      "fullName": "Participant 011",
+      "email": "",
+      "department": "CSBS",
+      "college": "Engineering",
+      "isActive": true,
+      "currentSessionToken": null,
+      "displayPassword": "s07avwp8"
+    },
+    {
+      "id": "824924c0-5123-4fa6-b32c-39496dc8f8d1",
+      "createdAt": "2026-07-24T10:42:37.367Z",
+      "isApproved": false,
+      "isLocked": false,
+      "loginEnabled": true,
+      "qualificationStatus": "waiting",
+      "timerExtensionSeconds": 0,
+      "roundPermissions": {
+        "1": "locked",
+        "2": "locked",
+        "3": "locked"
+      },
+      "scoreOverrides": {},
+      "username": "CC012",
+      "passwordHash": "$2a$10$knhJrUSTsHpEkJ/dtJa5Ku8iqHchlQRE.MoZ8Cv29K3adI0nfDsCG",
+      "role": "participant",
+      "fullName": "Participant 012",
+      "email": "",
+      "department": "CSBS",
+      "college": "Engineering",
+      "isActive": true,
+      "currentSessionToken": null,
+      "displayPassword": "99ofboyn"
+    },
+    {
+      "id": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "createdAt": "2026-07-25T02:18:13.092Z",
+      "isApproved": true,
+      "isLocked": false,
+      "loginEnabled": true,
+      "qualificationStatus": "qualified",
+      "timerExtensionSeconds": 900,
+      "roundPermissions": {
+        "1": "open",
+        "2": "completed",
+        "3": "open"
+      },
+      "scoreOverrides": {},
+      "username": "CC013",
+      "passwordHash": "$2a$10$JWw4ONnBj0xgyhpCF2HNdu7K4fAnZ2f9T0MeAFB0LgvL.L1lNublO",
+      "role": "participant",
+      "fullName": "Naveenkumar K",
+      "email": "",
+      "department": "CSBS",
+      "college": "Engineering",
+      "isActive": true,
+      "currentSessionToken": null,
+      "displayPassword": "xwe8tjuo",
+      "firstLoginCompleted": true
+    }
+  ],
+  "competition": {
+    "currentRound": 0,
+    "roundStatus": "locked",
+    "competitionState": "idle",
+    "startedAt": null,
+    "endsAt": null,
+    "fullscreenModeEnabled": true,
+    "rightClickBlocked": true,
+    "copyPasteRestricted": true,
+    "keyboardShortcutsBlocked": true,
+    "devToolsDetectionEnabled": true,
+    "tabSwitchDetectionEnabled": true,
+    "autoSubmitOnTabSwitch": true,
+    "autoSubmitOnFullscreenExit": true,
+    "singleDeviceLoginEnabled": true,
+    "announcement": null,
+    "timerMode": "individual",
+    "autoSaveIntervalSeconds": 10,
+    "roundDurations": {
+      "1": 31,
+      "2": 45,
+      "3": 20
+    }
+  },
+  "activityLog": [
+    {
+      "id": "ea52a7f4-d17b-479c-a69a-e3df74c7e963",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T06:59:33.532Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8764"
+      }
+    },
+    {
+      "id": "1b8f910a-6d84-431c-bdf3-3775abb1cfa2",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T06:59:43.270Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8764"
+      }
+    },
+    {
+      "id": "b870d497-a57d-4a33-b9d0-36a28ed32868",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T06:59:54.289Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8764"
+      }
+    },
+    {
+      "id": "e475fb3f-73ec-492c-baf7-63bb47bef0c1",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T06:59:54.641Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8764"
+      }
+    },
+    {
+      "id": "736c04df-d11d-4d72-8396-c5bc93e1f9b2",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T07:00:35.348Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "223ddfb5-50ed-405f-953f-7a3e2e2e3799",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T07:01:04.361Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "9a33f067-8953-4efd-89f9-8da604fb3251",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T07:01:44.826Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "64de3da8-47f9-4917-9d8b-b8447b18628a",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T07:10:40.517Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "f97cf362-ac17-4a8f-b650-ea82b81d5f78",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T07:17:17.683Z",
+      "metadata": {}
+    },
+    {
+      "id": "bd59e69d-4ed5-4991-9b85-865ee906bff8",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T07:17:32.630Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "d6231bc3-0bcb-4523-b16e-f576095b33cd",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T07:19:12.690Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "075dfc48-5db8-457e-b611-87a594dd6a8e",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T07:20:28.906Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "e304d269-85e8-49c3-a9ef-d7ae2e4f1a4c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T07:21:18.187Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "4874e49e-90fd-4942-a2f3-14253d2da5f1",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_START",
+      "timestamp": "2026-07-19T07:21:30.177Z",
+      "metadata": {
+        "durationMinutes": 150
+      }
+    },
+    {
+      "id": "23484411-9d4a-455a-9534-755765d77281",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_PAUSE",
+      "timestamp": "2026-07-19T07:21:57.288Z",
+      "metadata": {}
+    },
+    {
+      "id": "f9fece21-cfca-4c9c-8bd5-d5261913ac28",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-19T07:23:07.102Z",
+      "metadata": {
+        "round": 2,
+        "durationMinutes": 45
+      }
+    },
+    {
+      "id": "578aa391-4620-4d4f-ba7f-f1ac4e55ae3a",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_CLOSE",
+      "timestamp": "2026-07-19T07:23:13.184Z",
+      "metadata": {}
+    },
+    {
+      "id": "c2de2e67-9519-408c-a761-eff8295ef12c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_STOP",
+      "timestamp": "2026-07-19T07:23:15.694Z",
+      "metadata": {}
+    },
+    {
+      "id": "cc971962-f718-4304-8036-18c581b85477",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-19T07:23:17.267Z",
+      "metadata": {}
+    },
+    {
+      "id": "df3b7d39-1945-4714-85be-5848c539880e",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T07:24:13.304Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "288d6167-72ef-4b70-bd1b-951641bf1abd",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-19T07:28:28.390Z",
+      "metadata": {
+        "round": 1,
+        "durationMinutes": 30
+      }
+    },
+    {
+      "id": "be3f06d9-d306-414a-975c-26acf0fb8a81",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T07:28:32.477Z",
+      "metadata": {}
+    },
+    {
+      "id": "08ebf724-861e-4c15-876e-941ef21f262e",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T07:28:43.730Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "b4123a94-5861-46ba-ac15-b4aa5cf8023f",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "action": "TAB_SWITCH",
+      "timestamp": "2026-07-19T07:29:42.700Z",
+      "metadata": {
+        "round": 1,
+        "totalSwitches": 1
+      }
+    },
+    {
+      "id": "b537e9b1-f224-4a31-b1ae-c21d327e0713",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-19T07:30:17.680Z",
+      "metadata": {
+        "tabSwitches": 1
+      }
+    },
+    {
+      "id": "fde3220e-8e12-47dd-b783-af3c14e331fd",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T07:32:55.383Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "5c206c41-338c-45aa-ab1b-55b62a6438e9",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T08:00:52.941Z",
+      "metadata": {}
+    },
+    {
+      "id": "ea339c06-d054-4395-a320-3d02af7b5fe5",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T08:03:50.386Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "43b16fea-e44a-4923-8960-60575d269f63",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T08:06:34.756Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "3ab84d8a-b785-460d-8a9f-0467a09ed2cc",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T08:14:03.790Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "d96978a3-1008-4689-a4b1-a9fc1d06494b",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T09:11:10.015Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "fbbb18df-e12c-4dce-ae0b-8a733905a8ad",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T09:12:57.997Z",
+      "metadata": {}
+    },
+    {
+      "id": "c6080fb4-3ae1-44ca-92d7-a0523a315b93",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T09:13:10.065Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "a0dc6fef-ebdb-44ee-910a-be106a1e5682",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-19T09:13:26.527Z",
+      "metadata": {}
+    },
+    {
+      "id": "66d5a257-4649-4ad7-92c4-d4fee035cf08",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T09:14:32.375Z",
+      "metadata": {}
+    },
+    {
+      "id": "f54cb5dd-97c7-4fc1-9a02-812926385bb1",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T09:39:47.285Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "d86043e6-34bc-4ff9-a564-4ecc09e80f87",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-19T09:41:22.362Z",
+      "metadata": {
+        "fullscreenModeEnabled": true
+      }
+    },
+    {
+      "id": "7cd5b751-6f84-4028-83df-9b5077c8f5e2",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-19T09:41:22.952Z",
+      "metadata": {
+        "fullscreenModeEnabled": false
+      }
+    },
+    {
+      "id": "ae062936-67d1-4559-8e41-c69536abe639",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "CREDENTIALS_GENERATE",
+      "timestamp": "2026-07-19T09:41:52.823Z",
+      "metadata": {
+        "count": 10
+      }
+    },
+    {
+      "id": "edcef50f-be1d-40ef-9d26-2049a6ed8a3b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PASSWORD_RESET",
+      "timestamp": "2026-07-19T09:42:59.557Z",
+      "metadata": {
+        "targetUser": "CC001"
+      }
+    },
+    {
+      "id": "9d4b47e6-3d9b-425d-ad1c-61d640666378",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T09:43:08.739Z",
+      "metadata": {}
+    },
+    {
+      "id": "1d55e027-1877-4463-b6b5-40019175b311",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T09:43:32.770Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "18c22c73-98bd-4115-a18f-0beab3726613",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_APPROVE",
+      "timestamp": "2026-07-19T09:43:49.766Z",
+      "metadata": {
+        "targetUser": "CC001"
+      }
+    },
+    {
+      "id": "7b727aba-f88b-4c11-bdbd-5cb69eb22879",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T09:44:11.512Z",
+      "metadata": {}
+    },
+    {
+      "id": "317958c0-cac1-460d-8462-1cea3cff8d24",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T09:44:20.652Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "f452bc92-416c-4056-9b2c-c4a5981d4314",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T09:44:33.746Z",
+      "metadata": {}
+    },
+    {
+      "id": "fe812c03-6167-4223-a09b-4ade9902450b",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T09:46:11.595Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "ebe95388-36a6-4291-823b-c5a5e972899b",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T09:46:19.849Z",
+      "metadata": {}
+    },
+    {
+      "id": "9a9f04cf-9919-4c68-af42-873d720fa6e1",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T09:46:32.755Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "34750163-0138-41d9-a728-e0ac7af52b6b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T09:47:30.774Z",
+      "metadata": {}
+    },
+    {
+      "id": "9b58815b-26e6-424f-90c6-3b568f7b6eb3",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T09:47:57.440Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "c25f7ea5-dea3-4ebe-a6db-78910c501d70",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN_ENABLE",
+      "timestamp": "2026-07-19T09:48:25.539Z",
+      "metadata": {
+        "targetUser": "participant1"
+      }
+    },
+    {
+      "id": "73cb3bca-12db-4fef-a8c5-7d4ad2372f31",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN_DISABLE",
+      "timestamp": "2026-07-19T09:48:25.734Z",
+      "metadata": {
+        "targetUser": "participant1"
+      }
+    },
+    {
+      "id": "fb8debcf-b5ec-4920-9d34-ea183a115113",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN_ENABLE",
+      "timestamp": "2026-07-19T09:48:30.628Z",
+      "metadata": {
+        "targetUser": "participant1"
+      }
+    },
+    {
+      "id": "c5ce9843-18e4-459b-b0d1-80c57716b1d2",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_TIMER_EXTEND",
+      "timestamp": "2026-07-19T09:48:38.810Z",
+      "metadata": {
+        "targetUser": "participant1",
+        "seconds": 300
+      }
+    },
+    {
+      "id": "a047247e-7a48-4804-b012-0346e44f87e2",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_APPROVE",
+      "timestamp": "2026-07-19T09:48:55.123Z",
+      "metadata": {
+        "targetUser": "CC002"
+      }
+    },
+    {
+      "id": "5c13ac8e-786e-420d-aa4b-418366c7b966",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T09:49:10.771Z",
+      "metadata": {}
+    },
+    {
+      "id": "95d06f60-b635-40c9-b3d7-7beb7a43abe5",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T09:54:45.952Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "256a751d-aa19-4a8e-813e-dec90be1bcde",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-19T09:55:20.111Z",
+      "metadata": {
+        "username": "CC003"
+      }
+    },
+    {
+      "id": "d0d09984-3f0f-440d-a1b1-e3f7d4f4ddad",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "CREDENTIALS_GENERATE",
+      "timestamp": "2026-07-19T09:55:31.526Z",
+      "metadata": {
+        "count": 1
+      }
+    },
+    {
+      "id": "fe28bd80-e63b-4085-958c-f2f976d46474",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T09:56:27.579Z",
+      "metadata": {}
+    },
+    {
+      "id": "c8d0a929-7f8a-4f87-b6d1-6555474449ee",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T09:57:11.639Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "36ab4e7d-8d77-4074-af98-389a6ac39c4d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_CREATE",
+      "timestamp": "2026-07-19T09:58:22.656Z",
+      "metadata": {
+        "username": "Kesavan_Coder"
+      }
+    },
+    {
+      "id": "3c7b6567-427d-4c12-b967-550be36400c2",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T09:58:39.283Z",
+      "metadata": {}
+    },
+    {
+      "id": "751fdd87-ac91-4fd3-83c0-761b47dba8cd",
+      "userId": "9c34e62e-ead9-45a2-81ce-2aabdeb72944",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T09:59:10.223Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "1724a414-90c8-4df4-9eeb-dec8381e92ef",
+      "userId": "9c34e62e-ead9-45a2-81ce-2aabdeb72944",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T09:59:19.382Z",
+      "metadata": {}
+    },
+    {
+      "id": "3082e550-064a-4cb5-ab47-266ca60924b4",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T09:59:28.382Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "8f8039b9-44c3-4836-9189-41047de8f895",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-19T09:59:48.722Z",
+      "metadata": {
+        "targetUser": "Kesavan_Coder",
+        "status": "eliminated"
+      }
+    },
+    {
+      "id": "a7804f9f-307c-4fde-916f-0e7197f898b9",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-19T09:59:51.985Z",
+      "metadata": {
+        "targetUser": "Kesavan_Coder",
+        "status": "waiting"
+      }
+    },
+    {
+      "id": "8825c061-4c8e-4744-a53c-a92f563dacb9",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-19T09:59:53.231Z",
+      "metadata": {
+        "targetUser": "Kesavan_Coder",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "3c36b695-d058-4c66-a6b1-25b7ad28f410",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-19T09:59:57.305Z",
+      "metadata": {
+        "username": "Kesavan_Coder"
+      }
+    },
+    {
+      "id": "1b1999a6-bbed-48a4-8917-dd9f05a24e34",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-19T10:00:44.121Z",
+      "metadata": {
+        "round": 2,
+        "durationMinutes": 45
+      }
+    },
+    {
+      "id": "210eebec-205c-4b10-a7ab-b38bf021849b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_PAUSE",
+      "timestamp": "2026-07-19T10:01:37.066Z",
+      "metadata": {}
+    },
+    {
+      "id": "a1378e0f-31ea-4c15-9804-38a82f6b1ef9",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PASSWORD_RESET",
+      "timestamp": "2026-07-19T10:02:46.154Z",
+      "metadata": {
+        "targetUser": "CC001"
+      }
+    },
+    {
+      "id": "dc58c31a-19af-463f-89eb-1cbe4b6147b0",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESUME",
+      "timestamp": "2026-07-19T10:02:59.264Z",
+      "metadata": {}
+    },
+    {
+      "id": "31cfd5a6-88fd-4fbc-a6ae-8cdd1681e0e2",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:03:01.877Z",
+      "metadata": {}
+    },
+    {
+      "id": "3665bcc5-5658-4dab-acf0-215ae4ef21c6",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:03:12.722Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "3d62ed38-3cef-44b8-bce6-d6a7ab804898",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:03:30.852Z",
+      "metadata": {}
+    },
+    {
+      "id": "fb59b29d-63b6-43d9-a49b-b766900943e5",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:03:39.352Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "11b70b8a-508d-45d0-904e-3d0c07bbdf77",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T10:04:12.351Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "51568ae5-0c31-4a26-9b43-0cedff066279",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_TIMER_EXTEND",
+      "timestamp": "2026-07-19T10:04:17.679Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "seconds": 300
+      }
+    },
+    {
+      "id": "4295cee4-5d01-4f6b-bda9-57aea804b0a6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T10:04:26.507Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "round": 1,
+        "status": "locked"
+      }
+    },
+    {
+      "id": "2fa1ffb6-2cea-41ce-b8db-0787bc611112",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T10:04:28.672Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "round": 2,
+        "status": "skipped"
+      }
+    },
+    {
+      "id": "abb10343-27ca-419b-b987-8b250680fa70",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T10:04:30.298Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "round": 1,
+        "status": "completed"
+      }
+    },
+    {
+      "id": "7583b4f0-b51d-4590-9f20-44cd0897bf7e",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:04:36.150Z",
+      "metadata": {}
+    },
+    {
+      "id": "aab2834b-f0e9-4204-b862-70d9fbef835f",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:04:45.957Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "2b2e4aba-68db-4fd9-8115-b1ab6d3e194a",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:05:06.945Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "74eb65ed-4bec-431b-957a-348ed7a57427",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:05:11.854Z",
+      "metadata": {}
+    },
+    {
+      "id": "91189425-56e8-45bd-a1f6-979963e4a3e3",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:05:19.005Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "11b2c27a-0791-4bdb-98cd-d7723e28a78c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T10:05:32.131Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "round": 2,
+        "status": "open"
+      }
+    },
+    {
+      "id": "92b38166-1b5c-41ec-812a-6153e7edb67f",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:05:37.064Z",
+      "metadata": {}
+    },
+    {
+      "id": "f2737629-e66e-4c75-be92-082e543e812e",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:05:49.958Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "5862540d-8a21-4830-bd75-7e6131f58cdb",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "ROUND2_SUBMIT",
+      "timestamp": "2026-07-19T10:07:28.039Z",
+      "metadata": {
+        "questionCount": 1
+      }
+    },
+    {
+      "id": "3f3f1b55-17f1-46e7-8006-65f70bf0eac4",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:08:23.991Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "d9a761f1-5f8e-4e52-8056-d66814f22538",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:08:36.859Z",
+      "metadata": {}
+    },
+    {
+      "id": "1806fda9-9a38-4610-8101-99999e30bdb6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:08:46.125Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "db37dd9d-8447-4930-a8bb-df68d4e607d2",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_STOP",
+      "timestamp": "2026-07-19T10:41:23.979Z",
+      "metadata": {}
+    },
+    {
+      "id": "d1303ff5-e2e7-4a6d-9fbe-9a9ada596ef8",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-19T10:41:33.619Z",
+      "metadata": {
+        "round": 3,
+        "durationMinutes": 10
+      }
+    },
+    {
+      "id": "b78925b5-7b4d-4867-a1ba-f15c608b5990",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:41:36.505Z",
+      "metadata": {}
+    },
+    {
+      "id": "6ace445e-ce58-4476-ba46-aa0dfef3e533",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:41:55.382Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "fe48007d-4eaa-4962-b344-3561aaeb149a",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:41:59.943Z",
+      "metadata": {}
+    },
+    {
+      "id": "ff24af1e-db3e-432a-acb1-0c6f68acbb2c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:42:16.105Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "ae8df184-1d8a-4853-b17e-b655f617b874",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-19T10:42:44.034Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "4c9a5a01-6c68-408e-a3bc-33de6c4ae242",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T10:42:48.774Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "round": 3,
+        "status": "open"
+      }
+    },
+    {
+      "id": "6c3d00a7-edbc-4cf8-8d55-2ea904551fdb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:43:20.716Z",
+      "metadata": {}
+    },
+    {
+      "id": "530986f3-22f8-44aa-abec-93b1ba7fe26c",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:43:40.656Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "53682a19-20ec-49b7-b115-e32d58d0f384",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:45:35.445Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "5a891735-939c-4483-9401-7acdfe23625e",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:46:36.460Z",
+      "metadata": {}
+    },
+    {
+      "id": "0cc7e390-2539-4188-8070-0dc95f74b3bf",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:46:56.336Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "97510d18-2d40-463c-9170-48ea117e673e",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_STOP",
+      "timestamp": "2026-07-19T10:47:01.545Z",
+      "metadata": {}
+    },
+    {
+      "id": "428156c6-57fd-4c5a-976a-2ddeb0dd155e",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-19T10:48:26.177Z",
+      "metadata": {
+        "fullscreenModeEnabled": true
+      }
+    },
+    {
+      "id": "d368393c-e77c-4332-b1b8-822284aeb485",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:48:29.871Z",
+      "metadata": {}
+    },
+    {
+      "id": "838d11c3-0c91-4005-96c8-f9a6bde998b8",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:48:42.304Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "cb520588-3a9d-4e26-9b3e-e9e7732b6a8d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-19T10:48:51.541Z",
+      "metadata": {}
+    },
+    {
+      "id": "4c8fb217-a6c9-4cb2-8fa7-109a08401d39",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_START",
+      "timestamp": "2026-07-19T10:48:59.883Z",
+      "metadata": {
+        "durationMinutes": 150
+      }
+    },
+    {
+      "id": "20b38833-f2a1-48cd-b71a-623237fa0dfc",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-19T10:49:09.836Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "e03c618b-c661-414e-b5ac-063884c21c51",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-19T10:49:09.871Z",
+      "metadata": {
+        "targetUser": "CC002",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "7fe89a73-4fe6-451c-97df-2b08ba1e0e50",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:49:25.263Z",
+      "metadata": {}
+    },
+    {
+      "id": "46614ed1-ea0e-4640-ba38-81307511f485",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:49:37.285Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "5ad64177-bf39-4efc-8364-324c3f2b9c08",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:49:58.358Z",
+      "metadata": {}
+    },
+    {
+      "id": "ff18c9bc-a74b-480d-b9ef-89a6611072b0",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:50:08.773Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "1447edac-6923-4681-a0f9-64e2cd191824",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T10:58:06.559Z",
+      "metadata": {}
+    },
+    {
+      "id": "c864d5f3-deea-4df3-a917-7bb88c3168a4",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T10:58:52.418Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "c239471c-c072-4c22-b00d-0c0f02c09952",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_STOP",
+      "timestamp": "2026-07-19T11:01:12.816Z",
+      "metadata": {}
+    },
+    {
+      "id": "e3cb8c6e-9508-4744-9918-c15ee2a2a15d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-19T11:01:38.466Z",
+      "metadata": {
+        "username": "CC001"
+      }
+    },
+    {
+      "id": "7621246d-2cf4-4a4b-a904-936b222e43e7",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-19T11:01:44.364Z",
+      "metadata": {
+        "username": "CC002"
+      }
+    },
+    {
+      "id": "369a49a6-38ec-47af-b1a3-ffe0f3a46896",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-19T11:02:01.074Z",
+      "metadata": {
+        "username": "participant1"
+      }
+    },
+    {
+      "id": "eb6aa6f3-81ee-4dd8-81e5-d9b250f25816",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-19T11:02:05.356Z",
+      "metadata": {
+        "username": "CC004"
+      }
+    },
+    {
+      "id": "c4508cd9-6911-44af-a0b5-6a816d31b0d8",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-19T11:02:17.295Z",
+      "metadata": {
+        "username": "CC005"
+      }
+    },
+    {
+      "id": "4f8666a7-fbbd-4ce6-8dbd-20721d69dcf4",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-19T11:02:22.040Z",
+      "metadata": {
+        "username": "CC006"
+      }
+    },
+    {
+      "id": "df7ff6e6-c829-4b68-853e-7ccbbf6454ae",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-19T11:02:27.159Z",
+      "metadata": {
+        "username": "CC007"
+      }
+    },
+    {
+      "id": "ad59b931-69f3-4ec0-9d51-3132b56cfd41",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-19T11:02:32.961Z",
+      "metadata": {
+        "username": "CC008"
+      }
+    },
+    {
+      "id": "25c635b8-6969-4a3c-bc06-39708ffea656",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-19T11:02:37.633Z",
+      "metadata": {
+        "username": "CC009"
+      }
+    },
+    {
+      "id": "65f9bacd-a13c-4970-bab4-56909c41e7b2",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-19T11:02:42.409Z",
+      "metadata": {
+        "username": "CC010"
+      }
+    },
+    {
+      "id": "8ba3b9ff-f1c5-4d8b-8c38-5084be1bdd0b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-19T11:02:47.405Z",
+      "metadata": {
+        "username": "CC011"
+      }
+    },
+    {
+      "id": "af6275d2-24f2-41e4-aea6-28312413a387",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "CREDENTIALS_GENERATE",
+      "timestamp": "2026-07-19T11:03:19.543Z",
+      "metadata": {
+        "count": 5
+      }
+    },
+    {
+      "id": "c92e3963-64f1-43bb-8584-b94266061b6f",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_APPROVE",
+      "timestamp": "2026-07-19T11:04:03.002Z",
+      "metadata": {
+        "targetUser": "CC001"
+      }
+    },
+    {
+      "id": "9bbd0966-21af-4eaf-8829-76130b69cc61",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_APPROVE",
+      "timestamp": "2026-07-19T11:04:06.034Z",
+      "metadata": {
+        "targetUser": "CC002"
+      }
+    },
+    {
+      "id": "81e624b3-cb3d-4fdd-bd3b-299d9b74562e",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_APPROVE",
+      "timestamp": "2026-07-19T11:04:08.972Z",
+      "metadata": {
+        "targetUser": "CC003"
+      }
+    },
+    {
+      "id": "47bddccb-60e6-4eaf-99d5-3a4a343e57f3",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_APPROVE",
+      "timestamp": "2026-07-19T11:04:11.244Z",
+      "metadata": {
+        "targetUser": "CC004"
+      }
+    },
+    {
+      "id": "df94cfc8-a93c-478f-9b4a-97ca9bf6a672",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_APPROVE",
+      "timestamp": "2026-07-19T11:04:13.848Z",
+      "metadata": {
+        "targetUser": "CC005"
+      }
+    },
+    {
+      "id": "ffdc81eb-479a-4736-bb9a-f4e2c167414f",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-19T11:07:17.280Z",
+      "metadata": {}
+    },
+    {
+      "id": "d9b0c8ba-ed2c-4f59-9591-5b8c7efc12ee",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-19T11:07:32.156Z",
+      "metadata": {
+        "rightClickBlocked": true
+      }
+    },
+    {
+      "id": "2c86301c-2a05-48c7-8c6e-72fb23d82a22",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-19T11:07:34.035Z",
+      "metadata": {
+        "copyPasteRestricted": true
+      }
+    },
+    {
+      "id": "9ec47d6d-fd3e-4ee3-b4ec-03235217b129",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-19T11:07:35.139Z",
+      "metadata": {
+        "keyboardShortcutsBlocked": true
+      }
+    },
+    {
+      "id": "18b3ac6a-0eb3-4152-9ef2-1b65d5402565",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-19T11:07:36.006Z",
+      "metadata": {
+        "devToolsDetectionEnabled": true
+      }
+    },
+    {
+      "id": "bffd328a-dd42-4227-9b9b-625cff4d23eb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-19T11:07:38.624Z",
+      "metadata": {
+        "tabSwitchDetectionEnabled": true
+      }
+    },
+    {
+      "id": "0ed1dffc-6099-4281-b27a-ae4ae2303cd6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-19T11:07:41.086Z",
+      "metadata": {
+        "autoSubmitOnTabSwitch": true
+      }
+    },
+    {
+      "id": "ce8b6b57-66ec-4257-865e-986d34db7131",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-19T11:07:44.094Z",
+      "metadata": {
+        "autoSubmitOnFullscreenExit": true
+      }
+    },
+    {
+      "id": "e0d643b9-058d-4799-b314-57806490408e",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-19T11:07:45.951Z",
+      "metadata": {
+        "singleDeviceLoginEnabled": true
+      }
+    },
+    {
+      "id": "2d62d3c1-71de-4440-9f9e-565076f1c9b9",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-19T11:08:03.098Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "13a1fa24-f777-4f9f-b74d-9d06ba961e4f",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-19T11:08:03.126Z",
+      "metadata": {
+        "targetUser": "CC002",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "ad69517a-da64-4086-abfe-1ccde0069f50",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-19T11:08:03.152Z",
+      "metadata": {
+        "targetUser": "CC003",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "ea34bbe0-880a-48fe-b899-29a6d9aef0d5",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-19T11:08:03.182Z",
+      "metadata": {
+        "targetUser": "CC004",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "b7813a5d-86df-40aa-868d-aeb30b3ca5a6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-19T11:08:03.220Z",
+      "metadata": {
+        "targetUser": "CC005",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "6b641223-f3a1-4a1e-8943-ec420ff7e7ce",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T11:08:10.029Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "6e7d92ac-b105-490f-9b46-7d8d357b6dae",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T11:08:14.215Z",
+      "metadata": {
+        "targetUser": "CC002",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "cfedd4a0-795a-4d88-acf7-81946b76928c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T11:08:18.345Z",
+      "metadata": {
+        "targetUser": "CC003",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "2f2c454a-d9bb-4983-b24c-d5a02e7deca8",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T11:08:21.744Z",
+      "metadata": {
+        "targetUser": "CC004",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "264989aa-4219-479b-8757-a92c738187c3",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T11:08:24.805Z",
+      "metadata": {
+        "targetUser": "CC005",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "92a36f31-69fb-4233-a0c8-1bf5d2834e1f",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T11:09:19.004Z",
+      "metadata": {}
+    },
+    {
+      "id": "65aa7ca4-d7c3-4099-9d6d-875ed524173e",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T11:09:35.137Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "4dd6c591-7ab6-4f2a-8dee-ee943e79e006",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T11:10:04.060Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "df562720-dd7f-40af-8b8c-74b2180da2c1",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T11:10:30.407Z",
+      "metadata": {}
+    },
+    {
+      "id": "83b6ddb8-034c-4265-bf2f-1f415f1b3561",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T11:10:43.548Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "e4766c5f-38cb-4771-a751-fd182fb600c1",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_START",
+      "timestamp": "2026-07-19T11:11:09.744Z",
+      "metadata": {
+        "durationMinutes": 150
+      }
+    },
+    {
+      "id": "4936ca63-9dd5-43ef-9ea2-ec9482ce57de",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T11:11:13.304Z",
+      "metadata": {}
+    },
+    {
+      "id": "e40c81f9-5c22-48fc-8f1a-2a1171621d43",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T11:11:25.079Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "388ff840-5a8c-4ba3-bafd-06a4de719046",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-19T11:12:06.685Z",
+      "metadata": {
+        "tabSwitches": 0
+      }
+    },
+    {
+      "id": "b4a55244-d9ad-4885-b2d9-7352cb801090",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T11:13:46.505Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "9ea41e74-92f6-4935-93bb-4fd64887b484",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T11:14:39.608Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "7d7c8a62-93b9-4986-b788-3f9531137931",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_FORCE_SUBMIT",
+      "timestamp": "2026-07-19T11:15:12.202Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "round": 2
+      }
+    },
+    {
+      "id": "09f66b98-f173-421c-812e-f68a544df904",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_CLOSE",
+      "timestamp": "2026-07-19T11:15:50.604Z",
+      "metadata": {}
+    },
+    {
+      "id": "e3605bcb-062e-4b1a-9451-2ae5894cb1f8",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T11:16:20.293Z",
+      "metadata": {
+        "targetUser": "CC004",
+        "round": 1,
+        "status": "locked"
+      }
+    },
+    {
+      "id": "aa3ff003-99fe-4682-b660-00788e6c124f",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T11:16:21.547Z",
+      "metadata": {
+        "targetUser": "CC004",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "f417d8b6-4489-436a-ac26-5bcdb1cb29e4",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T11:16:49.981Z",
+      "metadata": {}
+    },
+    {
+      "id": "0b85af86-0877-403c-b651-621a319369b3",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T11:52:11.473Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "a62cea06-e8a4-4ad5-afe1-bacc48bdb3c2",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T11:53:30.361Z",
+      "metadata": {}
+    },
+    {
+      "id": "6c6f139f-de2c-43da-9530-9f2eec736c06",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T11:53:40.725Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "f0ddd1fd-efcc-461a-a3f7-b09a2c0ba685",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-19T11:54:59.809Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "status": "waiting"
+      }
+    },
+    {
+      "id": "bd666baf-0bec-43e1-9838-c4085214cc0b",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T13:47:19.551Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "307285a9-9a3d-4ac1-8d7f-3ceebeaca033",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T13:47:39.070Z",
+      "metadata": {}
+    },
+    {
+      "id": "4bfd0094-5d62-432e-8984-a3c4cfde17af",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T13:47:49.434Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "0b88e477-c4bb-44b0-95bb-e40bd871b6df",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-19T13:47:56.068Z",
+      "metadata": {}
+    },
+    {
+      "id": "c6d82bc0-bd67-4a79-bc08-ebea052c303a",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-19T13:48:05.689Z",
+      "metadata": {
+        "round": 1,
+        "durationMinutes": 9
+      }
+    },
+    {
+      "id": "66c0b163-05ed-47bd-a0e3-f82f09638f58",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_STOP",
+      "timestamp": "2026-07-19T13:48:09.475Z",
+      "metadata": {}
+    },
+    {
+      "id": "e4c39b9f-7425-459b-b69f-bd10cea1199a",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-19T13:48:11.002Z",
+      "metadata": {}
+    },
+    {
+      "id": "939ac792-e0ee-4d53-8347-b2f12373cbeb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-19T13:48:19.264Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "8443258c-4ed3-4ec8-94ba-002b42334585",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-19T13:48:23.747Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "round": 2,
+        "status": "locked"
+      }
+    },
+    {
+      "id": "06c44cd0-293e-4b8d-a01a-d783ded4ddcf",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T13:48:26.186Z",
+      "metadata": {}
+    },
+    {
+      "id": "ccf3e657-ad1c-45cb-956a-76e4e1147507",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T13:48:45.016Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "560b4a4a-14c3-4f08-bac8-20f0c37c678c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T13:49:19.458Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "cd61c672-70fd-4095-90fd-fe6dda9e5fc6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_START",
+      "timestamp": "2026-07-19T13:49:40.326Z",
+      "metadata": {
+        "durationMinutes": 150
+      }
+    },
+    {
+      "id": "21e5cdc0-bbe2-44f3-86a5-c60987f7f9d2",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T13:49:59.161Z",
+      "metadata": {}
+    },
+    {
+      "id": "bcb57b9a-0ad1-42c6-a78c-432e9c812d60",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T13:50:27.951Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "ff40468e-7f2d-486c-b2f9-6cff79180dfd",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T13:52:22.708Z",
+      "metadata": {}
+    },
+    {
+      "id": "20d81d3c-2440-4050-9ad1-3e635d0fea2c",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T13:54:58.015Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "e63c8167-a2bd-4c32-980c-09efa53f95de",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T13:55:10.811Z",
+      "metadata": {}
+    },
+    {
+      "id": "b36082ee-e18f-443f-b833-3179c1ec02de",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T13:57:20.479Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "78a45ebe-f3a2-468e-8fe3-cd6af777c7ea",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "SCORE_OVERRIDE",
+      "timestamp": "2026-07-19T13:57:41.491Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "round": 1,
+        "score": 0
+      }
+    },
+    {
+      "id": "a0d26988-0a78-416d-aa70-b65f0084b152",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-19T13:58:10.664Z",
+      "metadata": {}
+    },
+    {
+      "id": "64d3c4a2-474f-4464-ba00-14fcc48fe14c",
+      "userId": "7e0128ad-4238-4593-8817-36d98d189213",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T13:58:33.566Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "8f2326bb-bed7-408f-9500-663eb7050688",
+      "userId": "7e0128ad-4238-4593-8817-36d98d189213",
+      "action": "TAB_SWITCH",
+      "timestamp": "2026-07-19T13:58:55.469Z",
+      "metadata": {
+        "round": 1,
+        "totalSwitches": 1
+      }
+    },
+    {
+      "id": "096143b4-7848-4106-bcf8-8dd9cddb44a7",
+      "userId": "7e0128ad-4238-4593-8817-36d98d189213",
+      "action": "TAB_SWITCH",
+      "timestamp": "2026-07-19T13:59:10.013Z",
+      "metadata": {
+        "round": 1,
+        "totalSwitches": 2
+      }
+    },
+    {
+      "id": "4ccf83a7-b5f6-4a10-aac1-13492309c04f",
+      "userId": "7e0128ad-4238-4593-8817-36d98d189213",
+      "action": "TAB_SWITCH",
+      "timestamp": "2026-07-19T13:59:19.124Z",
+      "metadata": {
+        "round": 1,
+        "totalSwitches": 3
+      }
+    },
+    {
+      "id": "868b2e75-b631-4fbe-a99d-a411d899d10d",
+      "userId": "7e0128ad-4238-4593-8817-36d98d189213",
+      "action": "TAB_SWITCH",
+      "timestamp": "2026-07-19T13:59:26.545Z",
+      "metadata": {
+        "round": 1,
+        "totalSwitches": 4
+      }
+    },
+    {
+      "id": "4dd2895f-63c6-42f3-9ad8-76105221901d",
+      "userId": "7e0128ad-4238-4593-8817-36d98d189213",
+      "action": "TAB_SWITCH",
+      "timestamp": "2026-07-19T13:59:30.904Z",
+      "metadata": {
+        "round": 1,
+        "totalSwitches": 5
+      }
+    },
+    {
+      "id": "0d921a64-86e6-408c-a99c-b1e856e9bdbb",
+      "userId": "7e0128ad-4238-4593-8817-36d98d189213",
+      "action": "TAB_SWITCH",
+      "timestamp": "2026-07-19T14:00:09.451Z",
+      "metadata": {
+        "round": 1,
+        "totalSwitches": 6
+      }
+    },
+    {
+      "id": "4036b7ca-b393-4400-9ff8-50da229a4437",
+      "userId": "7e0128ad-4238-4593-8817-36d98d189213",
+      "action": "TAB_SWITCH",
+      "timestamp": "2026-07-19T14:00:28.895Z",
+      "metadata": {
+        "round": 1,
+        "totalSwitches": 7
+      }
+    },
+    {
+      "id": "3aff06e1-29f5-47d7-895d-e12fd064a618",
+      "userId": "7e0128ad-4238-4593-8817-36d98d189213",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-19T14:00:50.574Z",
+      "metadata": {
+        "tabSwitches": 7
+      }
+    },
+    {
+      "id": "496f53e3-362d-4d72-8124-5ea896ff2e07",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T14:01:32.270Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "5ed1af19-5334-44ad-af83-c97b4b072130",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T14:04:22.874Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "ae91880d-f9dd-4c5a-ad90-f98a01a8d33d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-19T14:10:54.779Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "32c83d5c-25ae-430e-a1c5-64603eea4396",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_TIMER_EXTEND",
+      "timestamp": "2026-07-19T14:11:12.830Z",
+      "metadata": {
+        "targetUser": "CC002",
+        "seconds": 300
+      }
+    },
+    {
+      "id": "1305d115-eb0f-4500-ac12-c1cc96775206",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PUBLISH_ANNOUNCEMENT",
+      "timestamp": "2026-07-19T14:11:33.442Z",
+      "metadata": {
+        "announcement": "hi"
+      }
+    },
+    {
+      "id": "1078ab8d-9443-4ac4-b3ef-314d4d3e2dd7",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:07:08.469Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "b7d53799-ca31-43d4-97fe-3a1aadc56964",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_CLOSE",
+      "timestamp": "2026-07-20T04:07:14.336Z",
+      "metadata": {}
+    },
+    {
+      "id": "4e0123eb-3303-46ec-ac24-6a766be8d90c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-20T04:07:16.993Z",
+      "metadata": {}
+    },
+    {
+      "id": "0ced2127-bd4e-4e19-b6d6-0d55334b39c7",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "CREDENTIALS_GENERATE",
+      "timestamp": "2026-07-20T04:08:29.705Z",
+      "metadata": {
+        "count": 10
+      }
+    },
+    {
+      "id": "566827fb-fcbb-48f7-a664-37bb57da0679",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-20T04:09:17.720Z",
+      "metadata": {
+        "targetUser": "CC002",
+        "round": 1,
+        "status": "locked"
+      }
+    },
+    {
+      "id": "5e9bb667-bf58-45ab-a687-aed3db698694",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-20T04:09:18.887Z",
+      "metadata": {
+        "targetUser": "CC002",
+        "round": 1,
+        "status": "skipped"
+      }
+    },
+    {
+      "id": "7cce2377-74d2-4c01-8453-af96fa50a5e6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-20T04:09:20.006Z",
+      "metadata": {
+        "targetUser": "CC002",
+        "round": 1,
+        "status": "completed"
+      }
+    },
+    {
+      "id": "5e939b97-34e3-40aa-97d4-fb2ddeca0fab",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-20T04:09:56.262Z",
+      "metadata": {
+        "tabSwitchDetectionEnabled": false
+      }
+    },
+    {
+      "id": "ce899cf0-35ac-4135-bd62-fa004268c221",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-20T04:09:57.163Z",
+      "metadata": {
+        "tabSwitchDetectionEnabled": true
+      }
+    },
+    {
+      "id": "829dc326-4b3d-46ed-b74e-dff8c8d12d01",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T04:10:25.500Z",
+      "metadata": {}
+    },
+    {
+      "id": "ff6543a7-04a9-4720-b25c-c996112ebf45",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:10:38.906Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "c7befe95-f591-4375-b533-22c828abfe0d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:11:45.092Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "66b73a0d-a608-48f1-bbaa-3ba6b715cf73",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-20T04:15:47.531Z",
+      "metadata": {
+        "targetUser": "CC010",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "5d8d41d2-a2f3-4734-8f58-01d5e8643eac",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-20T04:15:49.274Z",
+      "metadata": {
+        "targetUser": "CC010",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "bb948db2-f3eb-46eb-bd3a-a45e76ea9862",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T04:15:52.685Z",
+      "metadata": {}
+    },
+    {
+      "id": "3c2f28b7-5ac0-4fa2-8119-5ad89f304016",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:16:03.530Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "b358117e-8cb9-466d-b478-04700529c250",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:17:01.307Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "14e68d3d-d88f-45a6-b14a-260b8ed30574",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T04:17:10.151Z",
+      "metadata": {}
+    },
+    {
+      "id": "36df5a19-04e6-43ec-af88-f5e319d26921",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:18:10.928Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "d0319896-52ac-47ec-9350-cfa713f646bc",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_APPROVE",
+      "timestamp": "2026-07-20T04:19:03.435Z",
+      "metadata": {
+        "targetUser": "CC010"
+      }
+    },
+    {
+      "id": "be8c9342-abf7-4068-9c3a-d388632acb74",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T04:19:06.957Z",
+      "metadata": {}
+    },
+    {
+      "id": "38d5f0c3-2072-471e-bd24-1191e3dc148b",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:19:15.652Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "6e3dae74-f320-4cee-be40-749392887edc",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T04:19:23.089Z",
+      "metadata": {}
+    },
+    {
+      "id": "6e49b9cb-fb65-4231-b3d1-09da77efd1c6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:19:31.684Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "f313c5e7-930f-4b51-9fba-5b3f2073651a",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_START",
+      "timestamp": "2026-07-20T04:19:36.173Z",
+      "metadata": {
+        "durationMinutes": 150
+      }
+    },
+    {
+      "id": "31298ebc-f374-4065-b633-42945a736024",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T04:19:38.555Z",
+      "metadata": {}
+    },
+    {
+      "id": "835e616a-f02f-413f-9f7d-5101bc337377",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:19:49.316Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "a9558d21-8590-417d-87d7-7f6e6f86b597",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "TAB_SWITCH",
+      "timestamp": "2026-07-20T04:20:07.613Z",
+      "metadata": {
+        "round": 1,
+        "totalSwitches": 1
+      }
+    },
+    {
+      "id": "0ac58e4c-fe59-4e47-a914-345d19241097",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-20T04:20:37.781Z",
+      "metadata": {
+        "tabSwitches": 1
+      }
+    },
+    {
+      "id": "9b0b70d3-3e6a-46db-822f-4d51732ed969",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T04:21:43.237Z",
+      "metadata": {}
+    },
+    {
+      "id": "0b6f1a4d-01d2-4508-a1cb-f192b56544a1",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:22:16.115Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "d350267b-f919-40e2-a6bc-dc828abb3d16",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_CLOSE",
+      "timestamp": "2026-07-20T04:22:21.602Z",
+      "metadata": {}
+    },
+    {
+      "id": "587b8743-1442-4292-99cb-277befe8ff1a",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-20T04:22:40.099Z",
+      "metadata": {
+        "round": 2,
+        "durationMinutes": 5
+      }
+    },
+    {
+      "id": "b70b3329-aab2-45d5-a855-379af65c0ce9",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-20T04:22:59.560Z",
+      "metadata": {
+        "targetUser": "CC010",
+        "round": 2,
+        "status": "open"
+      }
+    },
+    {
+      "id": "61ce363f-0bbb-4563-9133-0e0d7ec5d353",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-20T04:23:13.800Z",
+      "metadata": {
+        "targetUser": "CC010",
+        "round": 1,
+        "status": "completed"
+      }
+    },
+    {
+      "id": "299bf12c-3d56-4912-93db-99c86f9659cf",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T04:23:30.013Z",
+      "metadata": {}
+    },
+    {
+      "id": "43d1cd8a-2887-413a-af8f-b2e2387e9788",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:23:42.243Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "f0dedec4-47af-46c6-8a31-6f382c42a3dd",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:28:33.630Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "bfc3dba4-37b8-475f-994f-b0250bd59ebb",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "ROUND2_SUBMIT",
+      "timestamp": "2026-07-20T04:28:43.970Z",
+      "metadata": {
+        "questionCount": 2
+      }
+    },
+    {
+      "id": "26edfaa0-d0b8-483c-96be-ccdd7e7754c3",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T04:29:14.046Z",
+      "metadata": {}
+    },
+    {
+      "id": "d0a85d94-fb38-451b-bf05-7056446d5ef0",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:29:58.878Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "71dc9477-783f-4486-a2fe-7e5a9d6ba109",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-20T04:30:04.734Z",
+      "metadata": {}
+    },
+    {
+      "id": "8b27ca79-3fcf-4af3-a71c-057ffad31d72",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "CREDENTIALS_GENERATE",
+      "timestamp": "2026-07-20T04:31:33.019Z",
+      "metadata": {
+        "count": 10
+      }
+    },
+    {
+      "id": "1ce6ba34-c00d-4a19-90f2-4c9a0bdc64c2",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:32:23.705Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "3777fe07-41f6-44ac-b809-41130d34e5d5",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-20T04:33:00.379Z",
+      "metadata": {
+        "round": 3,
+        "durationMinutes": 20
+      }
+    },
+    {
+      "id": "ff15bae9-0666-4eb6-b849-c83f96a157fa",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_CLOSE",
+      "timestamp": "2026-07-20T04:34:29.162Z",
+      "metadata": {}
+    },
+    {
+      "id": "6163ef17-f90d-475a-8b92-e63b9299a9e3",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T04:39:26.316Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "0904494d-f91c-43e7-bc09-6c0a550120d2",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-20T04:39:30.534Z",
+      "metadata": {}
+    },
+    {
+      "id": "064e45a3-75e0-4735-b77b-cc4629788e55",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "CREDENTIALS_GENERATE",
+      "timestamp": "2026-07-20T04:39:47.029Z",
+      "metadata": {
+        "count": 10
+      }
+    },
+    {
+      "id": "8d8b596c-db73-4dbb-b0d7-0d6d5c0657cb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-20T04:40:20.372Z",
+      "metadata": {
+        "targetUser": "CC002",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "b0e37dad-2315-4ae5-b0c9-f54cd7e8feb6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-20T04:40:21.576Z",
+      "metadata": {
+        "targetUser": "CC002",
+        "round": 1,
+        "status": "locked"
+      }
+    },
+    {
+      "id": "0c073066-d49c-49cf-a323-9a01012e0120",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "SCORE_OVERRIDE",
+      "timestamp": "2026-07-20T04:40:29.754Z",
+      "metadata": {
+        "targetUser": "CC002",
+        "round": 1,
+        "score": 3
+      }
+    },
+    {
+      "id": "9b56679d-62c3-46e4-9961-d4262d73694e",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-20T04:41:13.491Z",
+      "metadata": {
+        "announcement": null
+      }
+    },
+    {
+      "id": "6576487a-92a4-475b-a6d3-7b54ec7366eb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T05:09:02.881Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "e27f7406-fdec-469b-bf36-021d73bff9ea",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "CREDENTIALS_GENERATE",
+      "timestamp": "2026-07-20T05:10:21.373Z",
+      "metadata": {
+        "count": 10
+      }
+    },
+    {
+      "id": "ec3c4a27-d6b2-494a-bf1a-96b64a4d7e56",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T05:16:09.970Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "9cf71c55-1c6f-451d-9ef4-f8830c7fce30",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-20T05:16:22.021Z",
+      "metadata": {
+        "targetUser": "CC010",
+        "round": 1,
+        "status": "locked"
+      }
+    },
+    {
+      "id": "0c80a2d3-0cc1-4ef6-83a6-a0f28b8ba0eb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_TIMER_EXTEND",
+      "timestamp": "2026-07-20T05:16:25.403Z",
+      "metadata": {
+        "targetUser": "CC010",
+        "seconds": 300
+      }
+    },
+    {
+      "id": "58c56035-07e6-4f91-a773-5e975bc5ee23",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T05:16:59.117Z",
+      "metadata": {}
+    },
+    {
+      "id": "b4b2ce75-6273-4908-ae72-e317c69ae9af",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T05:17:06.520Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "cb9bd0ae-33ef-4ddf-bc98-f5c744ce8e0b",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T05:17:14.606Z",
+      "metadata": {}
+    },
+    {
+      "id": "657040a0-b8b7-4652-88df-eac8246620d1",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T05:17:23.225Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "50b5207a-0889-402e-9bef-9704d08864df",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-20T05:18:02.643Z",
+      "metadata": {
+        "targetUser": "CC010",
+        "round": 2,
+        "status": "open"
+      }
+    },
+    {
+      "id": "098b8be4-69a4-42d9-8540-a391f504469d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T05:18:17.101Z",
+      "metadata": {}
+    },
+    {
+      "id": "0745d99a-f332-40b6-984a-1ffc1fc8d746",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T05:18:27.951Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "3a15f924-b920-4f5b-ab62-7697f85a5bb2",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T05:18:31.909Z",
+      "metadata": {}
+    },
+    {
+      "id": "d8261437-d5ca-4394-8dac-8114b5c663ee",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T05:18:45.631Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "05a70129-4663-4d96-b07c-d976300b27db",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_START",
+      "timestamp": "2026-07-20T05:18:51.266Z",
+      "metadata": {
+        "durationMinutes": 150
+      }
+    },
+    {
+      "id": "016745b9-feaa-4a17-8222-e3e33ad776a2",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_CLOSE",
+      "timestamp": "2026-07-20T05:18:52.968Z",
+      "metadata": {}
+    },
+    {
+      "id": "75221ec6-9761-499c-9fdf-9039eabb8999",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-20T05:18:54.475Z",
+      "metadata": {
+        "round": 2,
+        "durationMinutes": 45
+      }
+    },
+    {
+      "id": "72774b1c-7ecf-4b60-b36c-74233ad3d77c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T05:18:56.230Z",
+      "metadata": {}
+    },
+    {
+      "id": "1ac05077-7bd6-4d00-bab2-c088bb286131",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T05:19:03.951Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "85a76dcf-70ed-43a0-a682-685533ff8a7e",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "ROUND2_SUBMIT",
+      "timestamp": "2026-07-20T05:19:30.959Z",
+      "metadata": {
+        "questionCount": 2
+      }
+    },
+    {
+      "id": "8583947f-df9b-4d3f-ba38-4ff5b1bdc73e",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T05:20:42.279Z",
+      "metadata": {}
+    },
+    {
+      "id": "21ab03a1-8fee-4262-b70b-00f962bfe9fe",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T05:20:53.881Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "40224492-6851-47eb-995c-f00478fabe71",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-20T05:20:58.662Z",
+      "metadata": {}
+    },
+    {
+      "id": "1439d15c-db01-442b-9a83-a0154e29014b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-20T05:21:00.302Z",
+      "metadata": {
+        "round": 1,
+        "durationMinutes": 30
+      }
+    },
+    {
+      "id": "9a42a680-7a35-4602-9545-e65015c2c68c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T05:21:03.282Z",
+      "metadata": {}
+    },
+    {
+      "id": "987c36fb-ae52-4aa7-be95-83613520866f",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T05:21:13.917Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "584920fd-7c33-4582-9e75-516468307087",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T05:21:19.375Z",
+      "metadata": {}
+    },
+    {
+      "id": "d640276d-1357-451b-9bf0-b5cf7f7c5ef5",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T05:21:31.296Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "e00bf2bd-dd4f-44a4-a6ae-66a2e20f2388",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-20T05:21:47.370Z",
+      "metadata": {
+        "targetUser": "CC010",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "a04dbe3d-1ede-432a-8c4c-c5022de0e9d1",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T05:21:49.504Z",
+      "metadata": {}
+    },
+    {
+      "id": "56c06c6f-d49f-4cbe-9649-ba0bb9857500",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T05:21:58.078Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "70e8e605-bdd7-4562-bbfa-d559cf473778",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "TAB_SWITCH",
+      "timestamp": "2026-07-20T05:22:07.070Z",
+      "metadata": {
+        "round": 1,
+        "totalSwitches": 2
+      }
+    },
+    {
+      "id": "27dabda3-7dfc-435f-adae-7dcf2416d259",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-20T05:22:19.333Z",
+      "metadata": {
+        "tabSwitches": 2
+      }
+    },
+    {
+      "id": "a451d0c4-8f74-4527-82e9-7a7de2cc47ed",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T05:23:10.581Z",
+      "metadata": {}
+    },
+    {
+      "id": "8218c7b7-45d6-4cdb-8ffe-5102d37dcc86",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T06:39:50.997Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "ec4dc82a-860c-48dd-a273-62a4aa7678b6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "CREDENTIALS_GENERATE",
+      "timestamp": "2026-07-20T06:40:14.662Z",
+      "metadata": {
+        "count": 10
+      }
+    },
+    {
+      "id": "9a7a43aa-08a6-4bf5-abf7-a2cad15a06bb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T06:42:39.465Z",
+      "metadata": {}
+    },
+    {
+      "id": "1e2eb4f9-0743-4fa9-8754-221d114284a7",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T06:42:47.985Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "064d7c8a-c02f-49ae-b032-ae784170f8c5",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T06:43:11.783Z",
+      "metadata": {}
+    },
+    {
+      "id": "9d41c9d7-31e4-4697-8b0c-1f03f8bb3398",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T06:43:49.668Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "2c127447-dece-4c72-8a03-2e68600e8c7c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_CLOSE",
+      "timestamp": "2026-07-20T06:43:59.293Z",
+      "metadata": {}
+    },
+    {
+      "id": "87ea45af-06ff-4922-920d-ed92a9ac622a",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-20T06:44:01.975Z",
+      "metadata": {}
+    },
+    {
+      "id": "fe5fb0e1-8aeb-4762-824b-5753846f5d6a",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T16:05:04.179Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "7f4ea612-0052-44c6-a487-cd3d891eae39",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T16:05:51.385Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "2305164c-c3ca-4f40-9733-517696f79b93",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-20T16:07:24.354Z",
+      "metadata": {
+        "timerMode": "individual"
+      }
+    },
+    {
+      "id": "597720c7-cdce-4780-b92c-8ad3ee8b8a88",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_START",
+      "timestamp": "2026-07-20T16:10:05.087Z",
+      "metadata": {
+        "durationMinutes": 150
+      }
+    },
+    {
+      "id": "06980829-40bb-4fb9-93bc-ed004b598a5f",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T16:10:08.697Z",
+      "metadata": {}
+    },
+    {
+      "id": "03b924bc-0623-4dba-9ed0-9dea8ff6d9ac",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T16:10:54.339Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "934207e0-9124-4a4e-a603-078d21d175fc",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:11:44.298Z",
+      "metadata": {
+        "username": "CC010"
+      }
+    },
+    {
+      "id": "1e740913-044a-47c7-858c-a97b05276ca7",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:11:47.733Z",
+      "metadata": {
+        "username": "CC002"
+      }
+    },
+    {
+      "id": "9e91f969-5ede-4e97-a1ad-f34aefc829b5",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:11:53.452Z",
+      "metadata": {
+        "username": "CC001"
+      }
+    },
+    {
+      "id": "2063ba04-64bd-4ea8-9b5c-312425652c2d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:11:58.978Z",
+      "metadata": {
+        "username": "CC003"
+      }
+    },
+    {
+      "id": "ac44640f-3f81-4fdc-a48f-38c7962de4b0",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:12:02.885Z",
+      "metadata": {
+        "username": "CC004"
+      }
+    },
+    {
+      "id": "d170a667-6fed-4019-9d10-c92b6bf869b8",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:12:08.539Z",
+      "metadata": {
+        "username": "CC005"
+      }
+    },
+    {
+      "id": "2a816f1c-bd1f-435d-bb36-94d080ae69f6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:12:16.208Z",
+      "metadata": {
+        "username": "CC006"
+      }
+    },
+    {
+      "id": "572f6583-c367-4cb8-8e5c-cfefc9e82b08",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:12:19.078Z",
+      "metadata": {
+        "username": "CC007"
+      }
+    },
+    {
+      "id": "13ce06f6-5d6f-46e4-ae4f-251bb001f741",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:12:40.420Z",
+      "metadata": {
+        "username": "CC008"
+      }
+    },
+    {
+      "id": "0bbbcc0d-86c7-4c25-8dd9-ca73b3e83903",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:12:45.045Z",
+      "metadata": {
+        "username": "CC009"
+      }
+    },
+    {
+      "id": "fc5276ba-1c58-447e-b9f0-4e43a8588843",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:12:48.777Z",
+      "metadata": {
+        "username": "CC011"
+      }
+    },
+    {
+      "id": "fb4e45b6-3a2a-4481-b0ce-8056dbb5a799",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:12:51.745Z",
+      "metadata": {
+        "username": "CC012"
+      }
+    },
+    {
+      "id": "fa20a2da-1e21-445b-8141-07a861c1c795",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:12:54.679Z",
+      "metadata": {
+        "username": "CC013"
+      }
+    },
+    {
+      "id": "8c31da61-4d76-4d4a-9cc3-cb7ec684543b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:12:57.404Z",
+      "metadata": {
+        "username": "CC014"
+      }
+    },
+    {
+      "id": "0f4f971b-eef2-4b9b-b704-9df51b251795",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:12:59.951Z",
+      "metadata": {
+        "username": "CC016"
+      }
+    },
+    {
+      "id": "f11edbfa-2661-47db-8849-0b6ca2fb20e3",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:13:03.258Z",
+      "metadata": {
+        "username": "CC015"
+      }
+    },
+    {
+      "id": "dddb3cb3-b685-4805-a371-ccf068582a83",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:13:13.428Z",
+      "metadata": {
+        "username": "CC055"
+      }
+    },
+    {
+      "id": "ee4b37aa-a78a-45fa-b955-5a3f2a2f5c20",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:13:24.123Z",
+      "metadata": {
+        "username": "CC017"
+      }
+    },
+    {
+      "id": "eb9504eb-83d2-4fbf-9a03-1a3286fc99dc",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:13:27.333Z",
+      "metadata": {
+        "username": "CC018"
+      }
+    },
+    {
+      "id": "db8e92c3-5399-46dd-bbe3-044a56393fbb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:13:30.382Z",
+      "metadata": {
+        "username": "CC019"
+      }
+    },
+    {
+      "id": "289e5a4a-c9ac-422f-94a2-9fb6c7d22cb3",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:13:33.936Z",
+      "metadata": {
+        "username": "CC020"
+      }
+    },
+    {
+      "id": "7c134506-919b-41dc-a798-dc02c6ac11a9",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:13:36.446Z",
+      "metadata": {
+        "username": "CC021"
+      }
+    },
+    {
+      "id": "b631dcd3-8403-4ce5-b0e0-debf2dc1bfb3",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:13:39.445Z",
+      "metadata": {
+        "username": "CC022"
+      }
+    },
+    {
+      "id": "a3c585db-e9e0-496e-8634-20a9896ed3de",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:13:42.131Z",
+      "metadata": {
+        "username": "CC023"
+      }
+    },
+    {
+      "id": "ce010422-f799-48a5-a278-1a73fb338cf8",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:13:45.294Z",
+      "metadata": {
+        "username": "CC024"
+      }
+    },
+    {
+      "id": "7242b765-7a10-4c43-9567-417138f7a952",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:13:48.185Z",
+      "metadata": {
+        "username": "CC025"
+      }
+    },
+    {
+      "id": "cc0a1e17-7a7a-43aa-89c9-56bd3de1ccf1",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-20T16:13:50.823Z",
+      "metadata": {
+        "username": "CC026"
+      }
+    },
+    {
+      "id": "55233410-66f3-48f1-8405-2eaf988b3c0d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_APPROVE",
+      "timestamp": "2026-07-20T16:14:11.775Z",
+      "metadata": {
+        "targetUser": "CC027"
+      }
+    },
+    {
+      "id": "1818cd3d-9be3-4e23-b422-9b304b8a5015",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_CREATE",
+      "timestamp": "2026-07-20T16:15:24.061Z",
+      "metadata": {
+        "username": "Kesavan"
+      }
+    },
+    {
+      "id": "5f062ac3-c7fb-4c3d-8bf9-97937ca05b84",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_APPROVE",
+      "timestamp": "2026-07-20T16:15:41.440Z",
+      "metadata": {
+        "targetUser": "Kesavan"
+      }
+    },
+    {
+      "id": "10243eaa-cb6f-42ba-97c6-e667e8631921",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-20T16:15:58.770Z",
+      "metadata": {
+        "targetUser": "Kesavan",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "48c5995b-85fe-41e4-8342-f505564e5fe2",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-20T16:16:01.856Z",
+      "metadata": {
+        "targetUser": "Kesavan",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "b7f9a983-7513-470c-8fca-2ca4d802faeb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T16:16:12.060Z",
+      "metadata": {}
+    },
+    {
+      "id": "502ff20f-6e9f-4c40-a95b-2347106a9d7f",
+      "userId": "6017c191-88f6-46bb-9e49-ef3bdb312cce",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T16:16:22.696Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "bf9c546f-ed31-4ab6-920f-ab6055c04581",
+      "userId": "6017c191-88f6-46bb-9e49-ef3bdb312cce",
+      "action": "TAB_SWITCH",
+      "timestamp": "2026-07-20T16:17:00.242Z",
+      "metadata": {
+        "round": 1,
+        "totalSwitches": 1
+      }
+    },
+    {
+      "id": "92545722-b54a-4b42-8464-4c42c182aa6d",
+      "userId": "6017c191-88f6-46bb-9e49-ef3bdb312cce",
+      "action": "TAB_SWITCH",
+      "timestamp": "2026-07-20T16:17:09.876Z",
+      "metadata": {
+        "round": 1,
+        "totalSwitches": 2
+      }
+    },
+    {
+      "id": "25361238-7fb0-4931-b3b5-002b24133e64",
+      "userId": "6017c191-88f6-46bb-9e49-ef3bdb312cce",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T16:19:11.253Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "d5cd3f1d-6959-4490-be7f-7cda0ee947e4",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T16:19:55.778Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "ca73df2b-2ce0-43d9-bfef-6cba50608118",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T17:14:36.221Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "ea199e81-16cf-4a6b-a49f-8f59bb6e30e0",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_STOP",
+      "timestamp": "2026-07-20T17:14:52.300Z",
+      "metadata": {}
+    },
+    {
+      "id": "a0c6d29b-553f-4aed-80c0-8b92ba0feca5",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PASSWORD_RESET",
+      "timestamp": "2026-07-20T17:15:47.912Z",
+      "metadata": {
+        "targetUser": "CC027"
+      }
+    },
+    {
+      "id": "7624ebd4-58e1-4932-8386-841022b732e8",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T17:17:06.739Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "be6f09dc-5ef3-4014-80ef-8c203febd915",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "CREDENTIALS_GENERATE",
+      "timestamp": "2026-07-20T17:34:56.806Z",
+      "metadata": {
+        "count": 1
+      }
+    },
+    {
+      "id": "d0390a01-dc78-4ed8-abc7-411b40a59f9d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-20T17:52:22.649Z",
+      "metadata": {}
+    },
+    {
+      "id": "c189b67a-36ba-45e6-bd3e-97b1c9b43a93",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-20T17:52:33.038Z",
+      "metadata": {
+        "round": 1,
+        "durationMinutes": 30
+      }
+    },
+    {
+      "id": "8bd41941-f7fa-4844-aba4-323e6ebb3afb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-20T17:52:39.378Z",
+      "metadata": {}
+    },
+    {
+      "id": "1d4ca761-2471-44a0-be7e-20fa46b48d28",
+      "userId": "6017c191-88f6-46bb-9e49-ef3bdb312cce",
+      "action": "LOGIN",
+      "timestamp": "2026-07-20T17:52:51.008Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "d70f32c4-53ae-4694-9c9a-a05b12ce3f5b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-21T13:57:31.836Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "e9c3d129-03fc-4353-863d-ab85ede4cb85",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "CREDENTIALS_GENERATE",
+      "timestamp": "2026-07-21T14:00:30.773Z",
+      "metadata": {
+        "count": 10
+      }
+    },
+    {
+      "id": "b7bd9fb9-7625-49cc-9f56-0979791708ac",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:34.989Z",
+      "metadata": {
+        "username": "CC028"
+      }
+    },
+    {
+      "id": "d43b6f2c-a1c2-411d-84db-f66c7a86b35f",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:34.995Z",
+      "metadata": {
+        "username": "CC029"
+      }
+    },
+    {
+      "id": "a304d0a5-a14b-4f9c-8159-22eac81a8048",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:34.999Z",
+      "metadata": {
+        "username": "CC030"
+      }
+    },
+    {
+      "id": "d9159c73-3df9-47af-a03b-f1ec641b8aa0",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.004Z",
+      "metadata": {
+        "username": "CC031"
+      }
+    },
+    {
+      "id": "cacb4387-4458-42d9-a8f2-f4ee96aa92b6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.010Z",
+      "metadata": {
+        "username": "CC032"
+      }
+    },
+    {
+      "id": "e2449e63-b46e-4914-8d94-deb252cba49c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.014Z",
+      "metadata": {
+        "username": "CC033"
+      }
+    },
+    {
+      "id": "30f4d1bc-df60-4dbf-af11-459f95e9fab2",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.018Z",
+      "metadata": {
+        "username": "CC034"
+      }
+    },
+    {
+      "id": "db4cb86c-56bb-4d9e-b73f-29f739e29955",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.025Z",
+      "metadata": {
+        "username": "CC035"
+      }
+    },
+    {
+      "id": "782c293c-7b33-457a-990a-8e65a03be359",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.033Z",
+      "metadata": {
+        "username": "CC036"
+      }
+    },
+    {
+      "id": "dd8de786-b331-4f7c-b997-2f44208fda34",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.036Z",
+      "metadata": {
+        "username": "CC037"
+      }
+    },
+    {
+      "id": "87b165c1-7a7c-4d79-9f5d-3a18c36c8e8f",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.040Z",
+      "metadata": {
+        "username": "CC038"
+      }
+    },
+    {
+      "id": "b0a305a4-2058-427a-a6b9-ec3510443ec4",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.045Z",
+      "metadata": {
+        "username": "CC039"
+      }
+    },
+    {
+      "id": "5bb786ed-72a2-47ff-b93e-6cc2223bab2e",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.048Z",
+      "metadata": {
+        "username": "CC040"
+      }
+    },
+    {
+      "id": "9a731e22-de22-4b52-854e-8b4ef1ae2d38",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.052Z",
+      "metadata": {
+        "username": "CC041"
+      }
+    },
+    {
+      "id": "b68614ee-b366-4fc4-bb52-52765b9e56f1",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.058Z",
+      "metadata": {
+        "username": "CC042"
+      }
+    },
+    {
+      "id": "fdf7a87c-e3aa-4d23-99ec-b31921c0ed09",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.062Z",
+      "metadata": {
+        "username": "CC043"
+      }
+    },
+    {
+      "id": "e62ccbe5-7a66-4b9b-ac79-ac2fa2206f35",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.065Z",
+      "metadata": {
+        "username": "CC044"
+      }
+    },
+    {
+      "id": "424c5936-6388-4f4e-a5a0-004c83f54c0c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.069Z",
+      "metadata": {
+        "username": "CC045"
+      }
+    },
+    {
+      "id": "82297c9c-404c-4300-b2ad-e4be0651210d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.073Z",
+      "metadata": {
+        "username": "CC046"
+      }
+    },
+    {
+      "id": "42153496-d970-4f7f-a548-49af8c7a42b8",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.077Z",
+      "metadata": {
+        "username": "CC047"
+      }
+    },
+    {
+      "id": "a569665f-977a-4002-9882-79f0e6a44ecf",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.081Z",
+      "metadata": {
+        "username": "CC048"
+      }
+    },
+    {
+      "id": "75419fee-2b51-4589-8efd-8254fd8101ea",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.085Z",
+      "metadata": {
+        "username": "CC049"
+      }
+    },
+    {
+      "id": "b8268f0d-e122-4be8-bd37-2e84862d21a6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.089Z",
+      "metadata": {
+        "username": "CC050"
+      }
+    },
+    {
+      "id": "76cb66c0-6d84-49d2-9f62-bd42db7e1bdb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.096Z",
+      "metadata": {
+        "username": "CC051"
+      }
+    },
+    {
+      "id": "006c9362-50be-4d2f-8e95-af3bdf394b35",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.101Z",
+      "metadata": {
+        "username": "CC052"
+      }
+    },
+    {
+      "id": "1527f091-6158-44d3-80ce-272ea953000f",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.105Z",
+      "metadata": {
+        "username": "CC053"
+      }
+    },
+    {
+      "id": "8fa2a9a5-a634-4b5a-9417-19d14e43238b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.109Z",
+      "metadata": {
+        "username": "CC054"
+      }
+    },
+    {
+      "id": "a3e8f0c6-2d94-4c2f-a9f3-2747c56191cc",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.113Z",
+      "metadata": {
+        "username": "CC055"
+      }
+    },
+    {
+      "id": "d7d0a135-2101-4da6-9ad5-d4149b3c3870",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.118Z",
+      "metadata": {
+        "username": "CC056"
+      }
+    },
+    {
+      "id": "2a376260-5a90-4524-9eed-04f49ed7d653",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.122Z",
+      "metadata": {
+        "username": "CC057"
+      }
+    },
+    {
+      "id": "396ca8e1-503f-4888-844f-b041e59d95d4",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.126Z",
+      "metadata": {
+        "username": "CC058"
+      }
+    },
+    {
+      "id": "b0bd1623-a9e1-49df-ba5d-c752646c0a0a",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.130Z",
+      "metadata": {
+        "username": "CC059"
+      }
+    },
+    {
+      "id": "f8874fb8-58c9-4b18-a095-bf75b9096387",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.134Z",
+      "metadata": {
+        "username": "CC060"
+      }
+    },
+    {
+      "id": "b9947879-94f9-44eb-9c95-ae89cde7fc8d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.137Z",
+      "metadata": {
+        "username": "CC061"
+      }
+    },
+    {
+      "id": "f18603be-5495-4bbb-a56b-24410c76ea24",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.141Z",
+      "metadata": {
+        "username": "CC062"
+      }
+    },
+    {
+      "id": "6c53e8cc-a119-456a-8010-c70515cdf1ff",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.145Z",
+      "metadata": {
+        "username": "CC063"
+      }
+    },
+    {
+      "id": "8b3649ac-823c-4f97-b6fb-5d98b7097a83",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.149Z",
+      "metadata": {
+        "username": "CC064"
+      }
+    },
+    {
+      "id": "e8ff40b1-ac89-40c8-aa11-ce11fd877aad",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:01:35.152Z",
+      "metadata": {
+        "username": "CC065"
+      }
+    },
+    {
+      "id": "a60162cd-a26f-4d0e-8c08-7810421118d5",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_STOP",
+      "timestamp": "2026-07-21T14:02:21.184Z",
+      "metadata": {}
+    },
+    {
+      "id": "0e438d90-878b-4329-9aa8-0ccf75cd8328",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-21T14:02:26.675Z",
+      "metadata": {}
+    },
+    {
+      "id": "e03c52e1-2375-4c80-b102-fe42c784fffd",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-21T14:02:37.605Z",
+      "metadata": {
+        "round": 1,
+        "durationMinutes": 10
+      }
+    },
+    {
+      "id": "14ab6aca-3a8a-4c82-bb9b-ff0ed041274e",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_CLOSE",
+      "timestamp": "2026-07-21T14:02:38.850Z",
+      "metadata": {}
+    },
+    {
+      "id": "6d7e3b23-d237-4326-bd46-4b0f64620c46",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:03:22.130Z",
+      "metadata": {
+        "username": "Kesavan"
+      }
+    },
+    {
+      "id": "9e989d10-e366-4a64-819c-1f0fe403b5c5",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_DELETE",
+      "timestamp": "2026-07-21T14:03:29.823Z",
+      "metadata": {
+        "username": "CC027"
+      }
+    },
+    {
+      "id": "8a436845-5825-448b-b3e3-c53d898edf3b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_STOP",
+      "timestamp": "2026-07-21T14:03:52.941Z",
+      "metadata": {}
+    },
+    {
+      "id": "5ebe8e47-52f3-468b-81e3-c80988cd3bcf",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-21T14:03:54.233Z",
+      "metadata": {}
+    },
+    {
+      "id": "aba47055-b9d5-4ecd-af2f-c2338ff3cfbf",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "CREDENTIALS_GENERATE",
+      "timestamp": "2026-07-21T14:04:57.571Z",
+      "metadata": {
+        "count": 2
+      }
+    },
+    {
+      "id": "93f96ffa-5e34-4837-b1b8-35e808a2aae6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-21T14:07:28.979Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "941962f7-9c09-4169-8b6b-c6ee297348cf",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-21T14:07:31.223Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "status": "waiting"
+      }
+    },
+    {
+      "id": "e71e7147-0b1e-44c1-9963-21041e282327",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_APPROVE",
+      "timestamp": "2026-07-21T14:07:40.425Z",
+      "metadata": {
+        "targetUser": "CC001"
+      }
+    },
+    {
+      "id": "4b78d7f9-31dd-46f7-b311-27c144ca8eb6",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_APPROVE",
+      "timestamp": "2026-07-21T14:07:43.945Z",
+      "metadata": {
+        "targetUser": "CC002"
+      }
+    },
+    {
+      "id": "7179bda7-7981-438f-96d4-bbdfa990679b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_START",
+      "timestamp": "2026-07-21T14:56:25.597Z",
+      "metadata": {
+        "durationMinutes": 150
+      }
+    },
+    {
+      "id": "e57cf615-058c-45ac-981a-9879dec37915",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_STOP",
+      "timestamp": "2026-07-21T14:56:27.125Z",
+      "metadata": {}
+    },
+    {
+      "id": "a876d19c-a45b-4b09-a444-49b75bdd592b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-21T14:56:28.284Z",
+      "metadata": {}
+    },
+    {
+      "id": "8c1f887c-c50e-4fc5-a1e8-72294d3deae8",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-21T14:56:40.143Z",
+      "metadata": {
+        "round": 1,
+        "durationMinutes": 5
+      }
+    },
+    {
+      "id": "fe6ecead-1ba3-4492-a455-cf5246c655c0",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_CLOSE",
+      "timestamp": "2026-07-21T14:57:04.953Z",
+      "metadata": {}
+    },
+    {
+      "id": "8f9a22d5-37a9-45ca-8090-6b1770352cee",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-21T14:57:06.700Z",
+      "metadata": {}
+    },
+    {
+      "id": "954d294f-d021-4ee4-a67b-ddee37938a7c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-21T14:57:19.711Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "a024f7d2-ff3b-450c-a9ac-a199a6d01622",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-21T14:57:19.764Z",
+      "metadata": {
+        "targetUser": "CC002",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "746eab7c-0fa3-4d65-99de-55bedbfedbf3",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-21T14:57:32.066Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "6cc6ba4e-1958-42e2-b0da-5718a03af8f7",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-21T14:57:47.472Z",
+      "metadata": {
+        "round": 1,
+        "durationMinutes": 30
+      }
+    },
+    {
+      "id": "3af3ccb5-1019-48a3-806e-4cab97f1f9ee",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_CLOSE",
+      "timestamp": "2026-07-21T14:57:49.690Z",
+      "metadata": {}
+    },
+    {
+      "id": "8e61da2d-3792-4fc6-9f1d-7af281c68ac5",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-21T14:57:51.557Z",
+      "metadata": {}
+    },
+    {
+      "id": "2a3c4aa0-3ff4-49ea-abc6-fa3fc5a1c9ba",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-21T14:58:01.426Z",
+      "metadata": {
+        "round": 1,
+        "durationMinutes": 2
+      }
+    },
+    {
+      "id": "01f2f7f3-e062-4adb-a58b-f646686b4589",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-21T14:58:14.574Z",
+      "metadata": {}
+    },
+    {
+      "id": "8e1c117b-9a8e-4102-945f-82e8ebf6b61f",
+      "userId": "75e601d2-001e-49bb-b6a7-6650a9af48cf",
+      "action": "LOGIN",
+      "timestamp": "2026-07-21T14:58:26.085Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "ee245368-ebd2-4386-a124-a7bf00987044",
+      "userId": "75e601d2-001e-49bb-b6a7-6650a9af48cf",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-21T14:59:05.099Z",
+      "metadata": {
+        "tabSwitches": 0
+      }
+    },
+    {
+      "id": "68c533e2-a6ae-4905-8ab4-f2a1cdfd49fd",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-21T15:01:23.139Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "1a4db0b3-62e5-4c8c-9cdb-76d7d3ffc721",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_STOP",
+      "timestamp": "2026-07-21T15:01:30.858Z",
+      "metadata": {}
+    },
+    {
+      "id": "c1b24bd8-7c9b-4107-a5ce-8f6b53200691",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-21T15:04:45.604Z",
+      "metadata": {}
+    },
+    {
+      "id": "069a46a9-9118-4ac2-b242-eaaacba30189",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-21T15:06:36.372Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "1c31a283-3145-46bd-b625-716607c81e92",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-21T15:11:50.440Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "round": 2,
+        "status": "open"
+      }
+    },
+    {
+      "id": "b92f633f-f7fb-4c9e-995e-9411b8797871",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-21T15:12:11.263Z",
+      "metadata": {
+        "round": 2,
+        "durationMinutes": 5
+      }
+    },
+    {
+      "id": "de9342e6-47f5-4d24-aa7c-b5d01f1e0887",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-21T15:12:13.716Z",
+      "metadata": {}
+    },
+    {
+      "id": "cb56f4d4-dbbe-49bb-bffa-96b63ec71ea0",
+      "userId": "75e601d2-001e-49bb-b6a7-6650a9af48cf",
+      "action": "LOGIN",
+      "timestamp": "2026-07-21T15:12:42.362Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "41eef36b-ce57-403e-886f-b167eabe27bd",
+      "userId": "75e601d2-001e-49bb-b6a7-6650a9af48cf",
+      "action": "ROUND2_SUBMIT",
+      "timestamp": "2026-07-21T15:14:46.590Z",
+      "metadata": {
+        "questionCount": 3
+      }
+    },
+    {
+      "id": "563dcd10-dfca-4fad-9782-617ee8918bf2",
+      "userId": "75e601d2-001e-49bb-b6a7-6650a9af48cf",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-21T15:15:14.353Z",
+      "metadata": {}
+    },
+    {
+      "id": "03f4cc0f-9c13-4323-9dcf-2529c5d6407c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-21T15:15:26.201Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "d2ed3a74-1c4f-43a1-9997-a50c9bb064c7",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-21T15:16:20.648Z",
+      "metadata": {
+        "targetUser": "CC001",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "052de8fb-1831-4a47-959c-124a101f5e41",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-21T15:16:28.657Z",
+      "metadata": {}
+    },
+    {
+      "id": "ae67a057-99e8-4db3-9f1f-27ed8837bb63",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-21T15:16:38.260Z",
+      "metadata": {
+        "round": 1,
+        "durationMinutes": 5
+      }
+    },
+    {
+      "id": "e1586f65-c179-47bd-9f12-f7a8445a81ac",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-21T15:16:53.552Z",
+      "metadata": {}
+    },
+    {
+      "id": "516a0cd7-2863-4a18-9d22-210bfa02c54e",
+      "userId": "75e601d2-001e-49bb-b6a7-6650a9af48cf",
+      "action": "LOGIN",
+      "timestamp": "2026-07-21T15:17:08.839Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "a6d6c6d2-bbe4-4f9e-8252-ba0c4990525b",
+      "userId": "75e601d2-001e-49bb-b6a7-6650a9af48cf",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-21T15:17:36.289Z",
+      "metadata": {
+        "tabSwitches": 0
+      }
+    },
+    {
+      "id": "bb4801e9-af3f-4a5d-8580-fd7f286db9cb",
+      "userId": "75e601d2-001e-49bb-b6a7-6650a9af48cf",
+      "action": "LOGIN",
+      "timestamp": "2026-07-21T15:19:01.086Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "63ecd843-99b1-412c-8f0d-729bcae0a692",
+      "userId": "75e601d2-001e-49bb-b6a7-6650a9af48cf",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-21T15:19:47.275Z",
+      "metadata": {}
+    },
+    {
+      "id": "3e05c2fb-e731-4245-9c06-bf73b0ef0fad",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-21T15:20:01.299Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "ca34ba43-869f-45f2-a0a3-ac6f08a85e6e",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-21T15:23:31.149Z",
+      "metadata": {
+        "autoSaveIntervalSeconds": 10
+      }
+    },
+    {
+      "id": "b40c1171-b999-413d-a023-a24538e9197b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_CLOSE",
+      "timestamp": "2026-07-21T15:28:06.140Z",
+      "metadata": {}
+    },
+    {
+      "id": "e1c1917c-3c75-4d1d-94f7-e55cccbcfd04",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-21T15:28:09.125Z",
+      "metadata": {}
+    },
+    {
+      "id": "ea9bfaf3-5ddf-4cb5-884a-d7424f0a6cbb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-21T15:29:25.592Z",
+      "metadata": {}
+    },
+    {
+      "id": "cad2bfae-2a36-4bdc-9637-316bc61450b4",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-21T15:44:34.141Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "085f26a0-22c5-4829-8ea0-6b43f9fc9426",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-24T10:41:42.385Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "99ace526-e227-44dc-993f-27b52e61f9c9",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "CREDENTIALS_GENERATE",
+      "timestamp": "2026-07-24T10:42:37.371Z",
+      "metadata": {
+        "count": 10
+      }
+    },
+    {
+      "id": "cf972ef5-72ae-44ec-928e-675141b296f0",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-24T10:46:27.269Z",
+      "metadata": {
+        "fullscreenModeEnabled": false
+      }
+    },
+    {
+      "id": "0e1681ab-8a2c-4c63-a1a6-bdd368dd4957",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-24T10:46:28.126Z",
+      "metadata": {
+        "fullscreenModeEnabled": true
+      }
+    },
+    {
+      "id": "abd85c36-ed91-4df5-afdb-f0439d2e0d5d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T02:13:16.499Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "b355c0e6-beb4-48a1-b08a-37e351526abb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "CREDENTIALS_GENERATE",
+      "timestamp": "2026-07-25T02:18:13.140Z",
+      "metadata": {
+        "count": 1
+      }
+    },
+    {
+      "id": "5c44c0c9-4a17-4d65-b033-35245fdbf0fb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_APPROVE",
+      "timestamp": "2026-07-25T02:18:38.446Z",
+      "metadata": {
+        "targetUser": "CC013"
+      }
+    },
+    {
+      "id": "80b687df-a8fa-473e-9bc7-7b6be34894b4",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-25T02:18:48.334Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "b1e5a44a-ca44-4c55-a794-b6437619dda1",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-25T02:19:13.254Z",
+      "metadata": {
+        "round": 1,
+        "durationMinutes": 30
+      }
+    },
+    {
+      "id": "0809afab-5e96-4fea-a2e2-08f05ff87290",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-25T02:19:15.042Z",
+      "metadata": {}
+    },
+    {
+      "id": "6a64fc1b-4027-48f0-b8d8-b96a1fe5482d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T02:19:53.738Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "c837ea9e-b72e-4fa7-8bb5-01244f223c72",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-25T02:20:25.279Z",
+      "metadata": {}
+    },
+    {
+      "id": "00a1d74b-06de-4767-9b09-b04d251c1f41",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T02:20:42.847Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "72917add-5e4b-4a67-a747-c62d0662d388",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-25T02:20:50.651Z",
+      "metadata": {}
+    },
+    {
+      "id": "c47cdee7-8c1f-4f0f-b1c2-eefdad40df87",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T02:20:57.863Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "df678326-6ed4-4f2e-a198-bb2804958105",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "PROFILE_NAME_SETUP",
+      "timestamp": "2026-07-25T02:21:22.433Z",
+      "metadata": {
+        "fullName": "Naveenkumar K"
+      }
+    },
+    {
+      "id": "785cda4e-25c4-4c52-bc0d-fb5a19bb983c",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-25T02:21:53.736Z",
+      "metadata": {
+        "tabSwitches": 0
+      }
+    },
+    {
+      "id": "7e48af71-04ff-4b86-a857-9e5d1d8b1cf2",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T02:25:11.066Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "1d5bef0f-8257-4d63-b816-2d026380593d",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-25T02:25:19.152Z",
+      "metadata": {}
+    },
+    {
+      "id": "7d4c4343-0718-4167-b85e-c2afd26ad6bc",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T02:26:28.662Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "452556bb-fccd-4f51-97ad-9d0ead341358",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-25T02:28:09.341Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "efb9fadd-5710-4366-85b4-1d393046d874",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_TIMER_EXTEND",
+      "timestamp": "2026-07-25T02:28:12.080Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "seconds": 300
+      }
+    },
+    {
+      "id": "19231419-0b3f-468f-91f6-b80fc382319b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-25T02:28:15.055Z",
+      "metadata": {}
+    },
+    {
+      "id": "3a953232-bda1-4626-a696-e39ea76fc909",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T02:28:38.420Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "ca14ebb9-21a2-49b8-aab0-41fd9988fc87",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-25T02:29:31.230Z",
+      "metadata": {
+        "tabSwitches": 0
+      }
+    },
+    {
+      "id": "1b2b45d7-ca20-4ef2-b684-745b90c8302b",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T02:35:17.097Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "a50a059e-63d9-4f56-a92f-2897b072cc66",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T02:36:05.313Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "d65f7f67-8231-4ede-96ee-1a5417d15fee",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-25T02:36:21.247Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "339db4ea-f14a-4c18-8044-6807ba5c3dae",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T02:42:26.424Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "262cfc96-d926-4a39-82f0-67220fc4b7b6",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-25T02:42:36.799Z",
+      "metadata": {
+        "tabSwitches": 0
+      }
+    },
+    {
+      "id": "aabbffee-f9b8-4dbe-9a58-244c75e54042",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-25T02:58:50.121Z",
+      "metadata": {}
+    },
+    {
+      "id": "4df0d0b9-eeb3-45f9-a8ff-f1011a2769ae",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T02:59:15.128Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "91095f1a-a94d-40e8-9b1a-2aaf23459391",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-25T02:59:36.982Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "ea1cf082-5490-47aa-b2c6-05003957fd56",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_TIMER_EXTEND",
+      "timestamp": "2026-07-25T02:59:39.287Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "seconds": 300
+      }
+    },
+    {
+      "id": "024303cf-bdb5-483e-812c-982bc08909cd",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T02:59:54.721Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "ea37d036-cb95-4d32-922f-480b5824f5d5",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-25T03:00:15.173Z",
+      "metadata": {
+        "tabSwitches": 0
+      }
+    },
+    {
+      "id": "b1c4854e-5575-4948-a81d-2f31889bc78b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T15:21:06.947Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "a448c685-a91b-44f7-9bcd-f02e77850a21",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T15:22:10.438Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "b0feabde-dd98-4c02-8b09-c87d9327074c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-25T15:23:17.176Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "0cb8b785-6050-4c93-8626-2c102fddbc58",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_TIMER_EXTEND",
+      "timestamp": "2026-07-25T15:23:56.884Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "seconds": 300
+      }
+    },
+    {
+      "id": "cecba302-4cd1-4f5f-b19d-f155e8f5f590",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-25T15:24:06.422Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "round": 2,
+        "status": "open"
+      }
+    },
+    {
+      "id": "04868674-b3c1-451d-ae1f-3c42eaa04173",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-25T15:24:07.996Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "round": 3,
+        "status": "open"
+      }
+    },
+    {
+      "id": "6e49db5b-1e58-4408-89a8-990ccfb63589",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-25T15:24:23.630Z",
+      "metadata": {}
+    },
+    {
+      "id": "56f6589d-a41b-417d-94cb-0ccbc88f5b92",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T15:24:41.266Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "406d78bc-da7a-468d-b058-68f9ff1e9dab",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-25T15:25:30.455Z",
+      "metadata": {
+        "tabSwitches": 0
+      }
+    },
+    {
+      "id": "7f359c4e-1576-437c-8310-421a8013207d",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-25T15:31:18.460Z",
+      "metadata": {}
+    },
+    {
+      "id": "a15c0e54-40e8-41d7-bbc0-0a1dda642194",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T15:32:43.684Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "879456d9-d784-4f8c-8be0-5581f16a376d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-25T15:33:14.276Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "8bc2d4ef-d1a3-488d-b114-84515a77ad47",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-25T15:36:28.481Z",
+      "metadata": {}
+    },
+    {
+      "id": "80809187-b6e4-451a-bf27-ff7395c1c67b",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T15:36:38.524Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "70c0bafd-b87a-4b3e-b4bf-c50aff02700a",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-25T15:37:13.824Z",
+      "metadata": {
+        "tabSwitches": 0
+      }
+    },
+    {
+      "id": "de91f242-855e-4627-a1e6-dcb1fcdfc270",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T15:38:36.561Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "f4b4e63b-7af2-4ace-a57d-e43b2d6127c0",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-25T15:39:59.239Z",
+      "metadata": {
+        "round": 2,
+        "durationMinutes": 45
+      }
+    },
+    {
+      "id": "234dab21-33e7-4b93-8a50-20d2facc37b1",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-25T15:40:03.785Z",
+      "metadata": {}
+    },
+    {
+      "id": "e798ddbd-e8e2-4253-96d8-b24b68a0200f",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T15:40:19.450Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "cc2faf53-0edf-4687-805a-d41a81deb97c",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "ROUND2_SUBMIT",
+      "timestamp": "2026-07-25T15:41:55.261Z",
+      "metadata": {
+        "questionCount": 3
+      }
+    },
+    {
+      "id": "b0a916fb-bff5-46a0-9a7f-167a67a0cb34",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-25T15:43:47.758Z",
+      "metadata": {}
+    },
+    {
+      "id": "d8df198a-a052-4be2-b5e7-dc7ea5ce11ce",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T15:45:01.821Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "c2558144-47b5-4195-a94d-258c2ffec59b",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-25T15:52:46.194Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "ae9d80f6-3a44-4827-8a13-8f4ca196c060",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_CLOSE",
+      "timestamp": "2026-07-25T15:53:35.158Z",
+      "metadata": {}
+    },
+    {
+      "id": "bb474981-f9dc-43b3-b6f1-f974bec20b92",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_PAUSE",
+      "timestamp": "2026-07-25T15:53:39.292Z",
+      "metadata": {}
+    },
+    {
+      "id": "b4295f92-f553-48aa-91a0-578040c723e0",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-25T15:53:42.230Z",
+      "metadata": {}
+    },
+    {
+      "id": "31ae3366-b4bf-4c52-9ec8-c596364fe018",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-25T15:53:43.748Z",
+      "metadata": {
+        "round": 1,
+        "durationMinutes": 30
+      }
+    },
+    {
+      "id": "cd4d3766-e8e0-482e-9fd6-e79700de59ae",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-25T15:54:06.936Z",
+      "metadata": {}
+    },
+    {
+      "id": "5e90269f-2c6a-4576-80d7-ca8cc2e0f0a1",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGIN",
+      "timestamp": "2026-07-25T15:54:37.136Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "9d91f76c-722f-4dd3-a2ed-752c20de2244",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "ROUND1_SUBMIT",
+      "timestamp": "2026-07-25T15:55:41.297Z",
+      "metadata": {
+        "tabSwitches": 0
+      }
+    },
+    {
+      "id": "1ca51649-7a64-435d-b845-4ad395ab53e1",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-25T15:58:57.612Z",
+      "metadata": {}
+    },
+    {
+      "id": "4d00001e-1889-496d-a9f8-bc84f07b5e9c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-26T10:57:49.487Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "af4a2146-f5e5-4b5d-8c43-68e94d1cf975",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_CLOSE",
+      "timestamp": "2026-07-26T12:07:24.468Z",
+      "metadata": {}
+    },
+    {
+      "id": "96fb429a-5821-4b17-a54f-3df55d39be42",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_ROUND_OVERRIDE",
+      "timestamp": "2026-07-26T12:07:43.621Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "round": 1,
+        "status": "open"
+      }
+    },
+    {
+      "id": "f4abdf98-49b2-476d-a77c-6d63b702f88c",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-26T12:18:56.491Z",
+      "metadata": {}
+    },
+    {
+      "id": "73041f6b-0ebb-40cb-ba37-d26e3aaafdb8",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "ROUND_OPEN",
+      "timestamp": "2026-07-26T12:19:07.701Z",
+      "metadata": {
+        "round": 1,
+        "durationMinutes": 31
+      }
+    },
+    {
+      "id": "c2e19217-452d-4f08-adb7-7424f090516f",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "PARTICIPANT_QUALIFICATION",
+      "timestamp": "2026-07-26T12:19:42.021Z",
+      "metadata": {
+        "targetUser": "CC013",
+        "status": "qualified"
+      }
+    },
+    {
+      "id": "ab7ea72f-a6dc-401f-be9c-9d0566a9aba7",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "COMPETITION_RESET",
+      "timestamp": "2026-07-26T12:20:23.639Z",
+      "metadata": {}
+    },
+    {
+      "id": "3bf62fd3-6a47-4dc8-971a-e57d98678ef7",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-26T12:29:15.437Z",
+      "metadata": {}
+    },
+    {
+      "id": "d014b19b-5d6b-43ab-bee5-f32efa2eb836",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-26T12:29:42.689Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "id": "c486d8c3-465e-4c92-8484-a9c5021f0209",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "SCORE_OVERRIDE",
+      "timestamp": "2026-07-26T12:49:53.300Z",
+      "metadata": {
+        "targetUser": "CC002",
+        "round": 1,
+        "score": 6
+      }
+    },
+    {
+      "id": "85d99022-ac30-4358-bd30-18833ae24a56",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "SCORE_OVERRIDE",
+      "timestamp": "2026-07-26T12:50:00.938Z",
+      "metadata": {
+        "targetUser": "CC002",
+        "round": 1,
+        "score": 7
+      }
+    },
+    {
+      "id": "86435dbd-f37f-4747-907a-01dd231fc9ef",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-26T13:00:25.638Z",
+      "metadata": {
+        "fullscreenModeEnabled": false
+      }
+    },
+    {
+      "id": "93b751fb-acca-4d6f-a178-ad3be2a08ffb",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "UPDATE_SETTINGS",
+      "timestamp": "2026-07-26T13:00:26.511Z",
+      "metadata": {
+        "fullscreenModeEnabled": true
+      }
+    },
+    {
+      "id": "a080d3f8-e021-48eb-b413-59bf34e0fa1d",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGOUT",
+      "timestamp": "2026-07-26T13:41:40.604Z",
+      "metadata": {}
+    },
+    {
+      "id": "5eda9d19-c036-442c-990c-8e4288fef227",
+      "userId": "688d7106-16f9-4289-9746-94fcbfcc9edc",
+      "action": "LOGIN",
+      "timestamp": "2026-07-26T14:12:19.177Z",
+      "metadata": {
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+      }
+    }
+  ],
+  "questionsMCQ": [
+    {
+      "id": "3b9634ee-eb62-4a5b-9580-77e1f3965c07",
+      "questionText": "What is the time complexity of searching in a balanced Binary Search Tree (BST)?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n log n)"
+      ],
+      "correctAnswer": 2,
+      "difficulty": "easy",
+      "order": 1
+    },
+    {
+      "id": "512bb239-4d5e-48de-a831-86ce66a50757",
+      "questionText": "Which data structure operates on a Last In First Out (LIFO) basis?",
+      "options": [
+        "Queue",
+        "Stack",
+        "Binary Tree",
+        "Heap"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "easy",
+      "order": 2
+    },
+    {
+      "id": "28b1287a-b624-4fa8-b7f3-0ad0ad0e1110",
+      "questionText": "Which of the following sorting algorithms has a worst-case time complexity of O(n^2)?",
+      "options": [
+        "Merge Sort",
+        "Quick Sort",
+        "Heap Sort",
+        "Bubble Sort"
+      ],
+      "correctAnswer": 2,
+      "difficulty": "medium",
+      "order": 3
+    },
+    {
+      "id": "134c3030-028f-4f8d-8258-23b9d0f39cbe",
+      "questionText": "What is the size of an integer variable (int) in standard Java?",
+      "options": [
+        "1 byte",
+        "2 bytes",
+        "4 bytes",
+        "8 bytes"
+      ],
+      "correctAnswer": 3,
+      "difficulty": "easy",
+      "order": 4
+    },
+    {
+      "id": "edbe179c-5b34-4098-8784-09ee35503ce2",
+      "questionText": "In JavaScript, what is the type of a variable that has not been assigned a value?",
+      "options": [
+        "null",
+        "undefined",
+        "NaN",
+        "void"
+      ],
+      "correctAnswer": 2,
+      "difficulty": "easy",
+      "order": 5
+    },
+    {
+      "id": "47627dbf-2438-4941-9dfd-542390566f2f",
+      "questionText": "Who is Java inventor",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": 1,
+      "difficulty": "medium",
+      "order": 6
+    }
+  ],
+  "submissions": [
+    {
+      "id": "351d25e1-6ea9-4221-b8bc-7e13bd021402",
+      "updatedAt": "2026-07-19T07:30:17.678Z",
+      "userId": "a96463c9-8883-45eb-8124-bbb0fe9aff14",
+      "roundId": 1,
+      "answerData": {
+        "3b9634ee-eb62-4a5b-9580-77e1f3965c07": {
+          "answer": 1,
+          "markedForReview": false
+        },
+        "512bb239-4d5e-48de-a831-86ce66a50757": {
+          "answer": 0,
+          "markedForReview": false
+        },
+        "28b1287a-b624-4fa8-b7f3-0ad0ad0e1110": {
+          "answer": 1,
+          "markedForReview": false
+        },
+        "134c3030-028f-4f8d-8258-23b9d0f39cbe": {
+          "answer": 2,
+          "markedForReview": false
+        },
+        "edbe179c-5b34-4098-8784-09ee35503ce2": {
+          "answer": 2,
+          "markedForReview": false
+        }
+      },
+      "submittedAt": "2026-07-19T07:30:17.678Z",
+      "status": "submitted",
+      "tabSwitchCount": 1
+    },
+    {
+      "id": "9e24b0e9-645a-4720-9ff3-ca718002264f",
+      "updatedAt": "2026-07-19T11:12:06.624Z",
+      "userId": "21396bd5-b92d-4b9a-a373-c06fd6b766c8",
+      "roundId": 1,
+      "answerData": {
+        "3b9634ee-eb62-4a5b-9580-77e1f3965c07": {
+          "answer": 1,
+          "markedForReview": false
+        },
+        "512bb239-4d5e-48de-a831-86ce66a50757": {
+          "answer": 1,
+          "markedForReview": false
+        },
+        "28b1287a-b624-4fa8-b7f3-0ad0ad0e1110": {
+          "answer": 2,
+          "markedForReview": false
+        },
+        "134c3030-028f-4f8d-8258-23b9d0f39cbe": {
+          "answer": 2,
+          "markedForReview": false
+        },
+        "edbe179c-5b34-4098-8784-09ee35503ce2": {
+          "answer": 2,
+          "markedForReview": false
+        }
+      },
+      "submittedAt": "2026-07-19T11:12:06.624Z",
+      "status": "submitted",
+      "tabSwitchCount": 0
+    },
+    {
+      "id": "788b1267-22c2-456f-9de1-47ef198c2c91",
+      "updatedAt": "2026-07-20T04:40:21.570Z",
+      "userId": "7e0128ad-4238-4593-8817-36d98d189213",
+      "roundId": 1,
+      "answerData": {
+        "3b9634ee-eb62-4a5b-9580-77e1f3965c07": {
+          "answer": 1,
+          "markedForReview": false
+        },
+        "512bb239-4d5e-48de-a831-86ce66a50757": {
+          "answer": 2,
+          "markedForReview": false
+        },
+        "28b1287a-b624-4fa8-b7f3-0ad0ad0e1110": {
+          "answer": 3,
+          "markedForReview": false
+        },
+        "134c3030-028f-4f8d-8258-23b9d0f39cbe": {
+          "answer": 3,
+          "markedForReview": false
+        },
+        "edbe179c-5b34-4098-8784-09ee35503ce2": {
+          "answer": 2,
+          "markedForReview": false
+        }
+      },
+      "submittedAt": "2026-07-19T14:00:50.519Z",
+      "status": "submitted",
+      "tabSwitchCount": 7
+    },
+    {
+      "id": "2164a37b-72b8-4b53-99ff-f3f0cbaba33f",
+      "updatedAt": "2026-07-20T05:22:19.326Z",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "roundId": 1,
+      "answerData": {
+        "3b9634ee-eb62-4a5b-9580-77e1f3965c07": {
+          "answer": 0,
+          "markedForReview": false
+        },
+        "512bb239-4d5e-48de-a831-86ce66a50757": {
+          "answer": 1,
+          "markedForReview": true
+        },
+        "28b1287a-b624-4fa8-b7f3-0ad0ad0e1110": {
+          "answer": 1,
+          "markedForReview": false
+        },
+        "134c3030-028f-4f8d-8258-23b9d0f39cbe": {
+          "answer": 3,
+          "markedForReview": false
+        },
+        "edbe179c-5b34-4098-8784-09ee35503ce2": {
+          "answer": 1,
+          "markedForReview": false
+        }
+      },
+      "submittedAt": "2026-07-20T05:22:19.326Z",
+      "status": "submitted",
+      "tabSwitchCount": 2
+    },
+    {
+      "id": "cf764095-0947-4b09-8964-630ed3e2827b",
+      "updatedAt": "2026-07-20T16:17:09.878Z",
+      "userId": "6017c191-88f6-46bb-9e49-ef3bdb312cce",
+      "roundId": 1,
+      "answerData": {
+        "3b9634ee-eb62-4a5b-9580-77e1f3965c07": {
+          "answer": 1,
+          "markedForReview": false
+        },
+        "512bb239-4d5e-48de-a831-86ce66a50757": {
+          "answer": 2,
+          "markedForReview": false
+        },
+        "28b1287a-b624-4fa8-b7f3-0ad0ad0e1110": {
+          "answer": 2,
+          "markedForReview": false
+        },
+        "134c3030-028f-4f8d-8258-23b9d0f39cbe": {
+          "answer": 1,
+          "markedForReview": false
+        },
+        "edbe179c-5b34-4098-8784-09ee35503ce2": {
+          "answer": 0,
+          "markedForReview": false
+        }
+      },
+      "submittedAt": "2026-07-20T16:17:09.878Z",
+      "status": "submitted",
+      "tabSwitchCount": 2
+    },
+    {
+      "id": "ac0243c3-69a9-4fcc-8ee9-57c51bb01d0f",
+      "updatedAt": "2026-07-21T15:17:36.281Z",
+      "userId": "75e601d2-001e-49bb-b6a7-6650a9af48cf",
+      "roundId": 1,
+      "answerData": {
+        "3b9634ee-eb62-4a5b-9580-77e1f3965c07": {
+          "answer": 0,
+          "markedForReview": false
+        },
+        "512bb239-4d5e-48de-a831-86ce66a50757": {
+          "answer": 2,
+          "markedForReview": false
+        },
+        "28b1287a-b624-4fa8-b7f3-0ad0ad0e1110": {
+          "answer": 1,
+          "markedForReview": false
+        },
+        "134c3030-028f-4f8d-8258-23b9d0f39cbe": {
+          "answer": 0,
+          "markedForReview": false
+        },
+        "edbe179c-5b34-4098-8784-09ee35503ce2": {
+          "answer": 3,
+          "markedForReview": false
+        }
+      },
+      "submittedAt": "2026-07-21T15:17:36.281Z",
+      "status": "submitted",
+      "tabSwitchCount": 0
+    },
+    {
+      "id": "4f4455a6-59aa-4473-ad54-bc33470c339e",
+      "updatedAt": "2026-07-26T12:07:43.616Z",
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "roundId": 1,
+      "answerData": {
+        "3b9634ee-eb62-4a5b-9580-77e1f3965c07": {
+          "answer": 1,
+          "markedForReview": false
+        },
+        "512bb239-4d5e-48de-a831-86ce66a50757": {
+          "answer": 0,
+          "markedForReview": false
+        },
+        "28b1287a-b624-4fa8-b7f3-0ad0ad0e1110": {
+          "answer": 2,
+          "markedForReview": false
+        },
+        "134c3030-028f-4f8d-8258-23b9d0f39cbe": {
+          "answer": 0,
+          "markedForReview": false
+        },
+        "edbe179c-5b34-4098-8784-09ee35503ce2": {
+          "answer": 2,
+          "markedForReview": false
+        }
+      },
+      "submittedAt": "2026-07-25T15:55:40.764Z",
+      "status": "in_progress",
+      "tabSwitchCount": 0
+    }
+  ],
+  "questionsCoding": [
+    {
+      "id": "785a5e34-678c-4d9a-b545-0cfbd2307a6b",
+      "title": "Even or Odd Sum",
+      "story": "The tech wizard of Codeville needs a program that reads a list of space-separated integers from standard input, calculates their sum, and outputs 'EVEN' if the sum is even, or 'ODD' if the sum is odd.",
+      "constraints": "The input contains a single line of space-separated integers. Each integer is between -1000 and 1000.",
+      "examples": [
+        {
+          "input": "1 2 3",
+          "output": "EVEN",
+          "explanation": "1 + 2 + 3 = 6, which is even."
+        },
+        {
+          "input": "4 5",
+          "output": "ODD",
+          "explanation": "4 + 5 = 9, which is odd."
+        }
+      ],
+      "visibleTestCases": [
+        {
+          "input": "1 2 3",
+          "expectedOutput": "EVEN"
+        },
+        {
+          "input": "4 5",
+          "expectedOutput": "ODD"
+        },
+        {
+          "input": "10",
+          "expectedOutput": "EVEN"
+        }
+      ],
+      "difficulty": "easy",
+      "order": 1,
+      "timeLimit": 2,
+      "memoryLimit": 256
+    },
+    {
+      "id": "fbfe4b84-8fcf-4bf7-ba8b-3e509b51ec52",
+      "title": "The Cipher's Reverse",
+      "story": "For encrypted transmissions, you need to reverse each individual word in a sentence while maintaining the original order of the words. Words are separated by a single space.",
+      "constraints": "Input contains words separated by single spaces. Maximum length of sentence is 1000 characters.",
+      "examples": [
+        {
+          "input": "hello world",
+          "output": "olleh dlrow",
+          "explanation": "Reversing 'hello' gives 'olleh' and 'world' gives 'dlrow'."
+        }
+      ],
+      "visibleTestCases": [
+        {
+          "input": "hello world",
+          "expectedOutput": "olleh dlrow"
+        },
+        {
+          "input": "code crackers",
+          "expectedOutput": "edoc srekcarc"
+        }
+      ],
+      "difficulty": "medium",
+      "order": 2,
+      "timeLimit": 2,
+      "memoryLimit": 256
+    },
+    {
+      "id": "c0d975ae-cf77-4f03-b12e-16582f0c85be",
+      "title": "Find the Duplicate Signal",
+      "story": "You are monitoring sensor data. The signal stream is a list of space-separated integers. There is exactly one number that is duplicated. Find and print the duplicate number.",
+      "constraints": "Input consists of N space-separated integers. 2 <= N <= 1000.",
+      "examples": [
+        {
+          "input": "1 3 2 1",
+          "output": "1",
+          "explanation": "1 appears twice in the input."
+        }
+      ],
+      "visibleTestCases": [
+        {
+          "input": "1 3 2 1",
+          "expectedOutput": "1"
+        },
+        {
+          "input": "3 1 2 2",
+          "expectedOutput": "2"
+        }
+      ],
+      "difficulty": "medium",
+      "order": 3,
+      "timeLimit": 2,
+      "memoryLimit": 256
+    }
+  ],
+  "codeSubmissions": [
+    {
+      "id": "c4bc2b72-125f-40f6-95c4-840a0eba6167",
+      "updatedAt": "2026-07-19T10:07:28.036Z",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "roundId": 2,
+      "answerData": {
+        "785a5e34-678c-4d9a-b545-0cfbd2307a6b": {
+          "code": "// Java Template\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        StringBuilder sb = new StringBuilder();\n        String line;\n        while ((line = br.readLine()) != null) {\n            sb.append(line).append(\"\\n\");\n        }\n        \n        // Write your logic here\n        System.out.print(sb.toString());\n    }\n}",
+          "language": "java",
+          "lastSaved": "2026-07-19T10:06:38.448Z",
+          "isSubmitted": true
+        }
+      },
+      "submittedAt": "2026-07-19T10:07:28.036Z",
+      "status": "submitted"
+    },
+    {
+      "id": "da7f19cf-646e-4a7a-9140-3549c7905941",
+      "updatedAt": "2026-07-20T05:19:30.950Z",
+      "userId": "0fca3e95-000f-43aa-b993-4e7eca5e93bb",
+      "roundId": 2,
+      "answerData": {
+        "785a5e34-678c-4d9a-b545-0cfbd2307a6b": {
+          "code": "// Java Template\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        StringBuilder sb = new StringBuilder();\n        String line;\n        while ((line = br.readLine()) != null) {\n            sb.append(line).append(\"\\n\");\n        }\n        \n        // Write your logic here\n        System.out.print(sb.toString());\n    }\n}",
+          "language": "java",
+          "lastSaved": "2026-07-20T04:25:07.766Z",
+          "isSubmitted": true
+        },
+        "c0d975ae-cf77-4f03-b12e-16582f0c85be": {
+          "code": "// Java Template\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        StringBuilder sb = new StringBuilder();\n        String line;\n        while ((line = br.readLine()) != null) {\n            sb.append(line).append(\"\\n\");\n        }\n        \n        // Write your logic here\n        System.out.print(sb.toString());\n    }\n}",
+          "language": "java",
+          "lastSaved": "2026-07-20T04:25:47.988Z",
+          "isSubmitted": true
+        }
+      },
+      "submittedAt": "2026-07-20T05:19:30.950Z",
+      "status": "submitted"
+    },
+    {
+      "id": "f5595ae6-a1ba-4ed4-8bc1-36016316a43a",
+      "updatedAt": "2026-07-21T15:14:46.584Z",
+      "tabSwitchCount": 0,
+      "userId": "75e601d2-001e-49bb-b6a7-6650a9af48cf",
+      "roundId": 2,
+      "answerData": {
+        "785a5e34-678c-4d9a-b545-0cfbd2307a6b": {
+          "code": "// Java Template\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        StringBuilder sb = new StringBuilder();\n        String line;\n        while ((line = br.readLine()) != null) {\n            sb.append(line).append(\"\\n\");\n        }\n        \n        // Write your logic here\n        System.out.print(sb.toString());\n    }\n}",
+          "language": "java",
+          "lastSaved": "2026-07-21T15:13:07.836Z",
+          "isSubmitted": true
+        },
+        "c0d975ae-cf77-4f03-b12e-16582f0c85be": {
+          "code": "// Java Template\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        StringBuilder sb = new StringBuilder();\n        String line;\n        while ((line = br.readLine()) != null) {\n            sb.append(line).append(\"\\n\");\n        }\n        \n        // Write your logic here\n        System.out.print(sb.toString());\n    }\n}",
+          "language": "java",
+          "lastSaved": "2026-07-21T15:13:54.082Z",
+          "isSubmitted": true
+        },
+        "fbfe4b84-8fcf-4bf7-ba8b-3e509b51ec52": {
+          "code": "// Java Template\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        StringBuilder sb = new StringBuilder();\n        String line;\n        while ((line = br.readLine()) != null) {\n            sb.append(line).append(\"\\n\");\n        }\n        \n        // Write your logic here\n        System.out.print(sb.toString());\n    }\n}",
+          "language": "java",
+          "lastSaved": "2026-07-21T15:14:01.607Z",
+          "isSubmitted": true
+        }
+      },
+      "submittedAt": "2026-07-21T15:14:46.584Z",
+      "status": "submitted"
+    },
+    {
+      "id": "ced78bbd-a167-4cbe-801c-e0e8cc314c70",
+      "updatedAt": "2026-07-25T15:41:55.248Z",
+      "tabSwitchCount": 0,
+      "userId": "b7356645-5230-4132-b82c-ceb3b2ca7f7f",
+      "roundId": 2,
+      "answerData": {
+        "785a5e34-678c-4d9a-b545-0cfbd2307a6b": {
+          "code": "// Java Template\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        StringBuilder sb = new StringBuilder();\n        String line;\n        while ((line = br.readLine()) != null) {\n            sb.append(line).append(\"\\n\");\n        }\n        \n        // Write your logic here\n        System.out.print(sb.toString());\n    }\n}",
+          "language": "java",
+          "lastSaved": "2026-07-25T15:40:48.754Z",
+          "isSubmitted": true
+        },
+        "fbfe4b84-8fcf-4bf7-ba8b-3e509b51ec52": {
+          "code": "// Java Template\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        StringBuilder sb = new StringBuilder();\n        String line;\n        while ((line = br.readLine()) != null) {\n            sb.append(line).append(\"\\n\");\n        }\n        \n        // Write your logic here\n        System.out.print(sb.toString());\n    }\n}",
+          "language": "java",
+          "lastSaved": "2026-07-25T15:40:56.589Z",
+          "isSubmitted": true
+        },
+        "c0d975ae-cf77-4f03-b12e-16582f0c85be": {
+          "code": "// Java Template\nimport java.io.*;\nimport java.util.*;\n\npublic class Main {\n    public static void main(String[] args) throws IOException {\n        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));\n        StringBuilder sb = new StringBuilder();\n        String line;\n        while ((line = br.readLine()) != null) {\n            sb.append(line).append(\"\\n\");\n        }\n        \n        // Write your logic here\n        System.out.print(sb.toString());\n    }\n}",
+          "language": "java",
+          "lastSaved": "2026-07-25T15:41:10.328Z",
+          "isSubmitted": true
+        }
+      },
+      "submittedAt": "2026-07-25T15:41:55.248Z",
+      "status": "submitted"
+    }
+  ],
+  "questionsDebug": [],
+  "debugSubmissions": [
+    {
+      "id": "458c21bf-814f-439b-94ab-bb67dbed8049",
+      "updatedAt": "2026-07-19T10:45:48.775Z",
+      "userId": "628f6522-6a3d-4fca-8e26-fc72d61e2ed7",
+      "roundId": 3,
+      "answerData": {},
+      "submittedAt": "2026-07-19T10:45:48.773Z",
+      "status": "submitted"
+    }
+  ]
+}
