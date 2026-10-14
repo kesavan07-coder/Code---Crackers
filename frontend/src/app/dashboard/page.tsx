@@ -3,18 +3,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
+import { usePortal } from "@/lib/portalContext";
 import { motion } from "framer-motion";
 import { LogOut } from "lucide-react";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-
-interface CompetitionState {
-  currentRound: number;
-  roundStatus: "locked" | "open" | "closed";
-  competitionState: "idle" | "running" | "paused" | "ended";
-  startedAt: string | null;
-  endsAt: string | null;
-}
 
 /* ─── Round state config ──────────────────────────────────────── */
 function getRoundState(compStatus: any, roundNumber: number) {
@@ -59,6 +52,7 @@ const STATE_STYLES = {
 
 export default function ParticipantDashboard() {
   const { user, token, logout, isLoading: authLoading } = useAuth();
+  const { portalSettings, dynamicRounds } = usePortal();
   const router = useRouter();
   const [compStatus, setCompStatus] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -66,7 +60,7 @@ export default function ParticipantDashboard() {
   useEffect(() => {
     if (authLoading) return; // Wait for auth hydration before redirecting
     if (!token) { router.replace("/login"); return; }
-    if (user && user.role === "admin") { router.replace("/admin"); return; }
+    if (user && (user.role === "admin" || user.role === "super_admin")) { router.replace("/admin"); return; }
 
     const fetchStatus = async () => {
       try {
@@ -105,55 +99,32 @@ export default function ParticipantDashboard() {
     );
   }
 
-  const roundDurations = compStatus?.roundDurations || { 1: 30, 2: 45, 3: 20 };
-
-  const rounds = [
-    {
-      num: 1,
-      title: "Basic Coding MCQ",
-      description: "Solve 30 multiple-choice questions focused on data structures, algorithms, and core programming paradigms under a strict time limit.",
-      duration: `${roundDurations[1] || 30} Minutes`,
-      questions: "30 MCQs",
-      route: "/round1",
-      icon: "01",
-    },
-    {
-      num: 2,
-      title: "Story-Based Coding",
-      description: "Tackle narrative coding challenges in Monaco Editor. Choose your language, write code, and run against visible test cases.",
-      duration: `${roundDurations[2] || 45} Minutes`,
-      questions: "3 Challenges",
-      route: "/round2",
-      icon: "02",
-    },
-    {
-      num: 3,
-      title: "Bug Hunter",
-      description: "Review buggy code snippets, identify logic and syntax issues, implement clean fixes, and secure points before the timer runs out.",
-      duration: `${roundDurations[3] || 20} Minutes`,
-      questions: "5 Puzzles",
-      route: "/round3",
-      icon: "03",
-    },
-  ];
+  // Use dynamic rounds configured by Super Admin (enabled ones), or fallback to built-in rounds
+  const activeRoundsList = dynamicRounds.length > 0
+    ? dynamicRounds.filter((r) => r.enabled !== false)
+    : [
+        { id: "1", order: 1, name: "Round 1 – MCQ Quiz", description: "Solve 30 multiple-choice questions focused on core concepts under a strict time limit.", icon: "❓", type: "mcq", timeLimit: 30 },
+        { id: "2", order: 2, name: "Round 2 – Coding Challenge", description: "Tackle narrative coding challenges in Monaco Editor with test case execution.", icon: "💻", type: "coding", timeLimit: 45 },
+        { id: "3", order: 3, name: "Round 3 – Bug Hunter", description: "Review buggy code snippets, identify flaws, and implement clean fixes.", icon: "🐛", type: "bug_hunter", timeLimit: 20 },
+      ];
 
   const compState = compStatus?.competitionState || "idle";
 
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 text-black">
       {/* ── Nav ── */}
-      <header className="w-full h-16 bg-white px-6 md:px-12 flex items-center justify-between sticky top-0 z-50 border-b border-neutral-200">
+      <header className="w-full h-auto min-h-[56px] bg-white px-4 sm:px-6 md:px-12 py-3 flex items-center justify-between sticky top-0 z-50 border-b border-neutral-200 flex-wrap gap-2">
         <div className="flex items-center gap-3">
           <img
-            src="/college_logo.png"
-            alt="Muthayammal Engineering College"
+            src={portalSettings.collegeLogo || "/college_logo.png"}
+            alt={portalSettings.collegeName || "College Logo"}
             className="w-8 h-8 object-contain rounded-lg border border-neutral-200 p-0.5 bg-white"
           />
           {compState === "running" && (
             <span className="w-2.5 h-2.5 rounded-full bg-black animate-pulse" />
           )}
           <span className="font-extrabold text-lg uppercase tracking-tight leading-none text-black">
-            Code Crackers
+            {portalSettings.eventName || "Code Crackers"}
           </span>
         </div>
 
@@ -172,18 +143,18 @@ export default function ParticipantDashboard() {
       </header>
 
       {/* ── Main ── */}
-      <main className="flex-1 max-w-6xl mx-auto w-full px-6 md:px-12 py-10 flex flex-col gap-8">
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 md:px-12 py-6 md:py-10 flex flex-col gap-6 md:gap-8">
 
         {/* Hero info bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="bg-white rounded-2xl p-6 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-8 border border-neutral-200"
+          className="bg-white rounded-2xl p-4 sm:p-6 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-8 border border-neutral-200"
         >
           <div className="flex flex-col gap-2">
-            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-black leading-none">
-              Symposium<br/>Competition
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight text-black leading-none">
+              {portalSettings.symposiumName || "Symposium"}<br/>{portalSettings.eventName || "Competition"}
             </h1>
             <p className="text-sm font-semibold text-neutral-500 mt-2">
               Rounds unlock sequentially — complete each in order.
@@ -193,7 +164,7 @@ export default function ParticipantDashboard() {
           <div className="flex gap-4 font-bold text-sm flex-wrap">
             <div className="px-5 py-4 rounded-xl bg-zinc-100 flex flex-col gap-1 min-w-[120px]">
               <span className="text-xs text-neutral-500 uppercase tracking-widest">Department</span>
-              <span className="text-lg text-black leading-none">{user?.department || "CSBS"}</span>
+              <span className="text-lg text-black leading-none">{user?.department || portalSettings.departmentName || "CSBS"}</span>
             </div>
 
             <div className="px-5 py-4 rounded-xl bg-zinc-100 flex flex-col gap-1 min-w-[120px]">
@@ -203,22 +174,27 @@ export default function ParticipantDashboard() {
           </div>
         </motion.div>
 
-        {/* Round cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {rounds.map((round, idx) => {
-            const state = getRoundState(compStatus, round.num);
+        {/* Dynamic Round cards grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+          {activeRoundsList.map((round, idx) => {
+            const roundNum = round.order || idx + 1;
+            const state = getRoundState(compStatus, roundNum);
             const styles = STATE_STYLES[state.variant];
+            
+            // Map round type or order to route
+            const route = round.type === "mcq" ? "/round1" : round.type === "coding" ? "/round2" : round.type === "bug_hunter" ? "/round3" : `/round1`;
+
             return (
                <motion.div
-                key={round.num}
+                key={round.id || roundNum}
                 initial={{ opacity: 0, y: 32 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1 * idx, ease: [0.16, 1, 0.3, 1] }}
-                className={`group flex flex-col h-full rounded-2xl p-6 md:p-8 border border-neutral-200 transition-all duration-300 ${!state.locked ? 'bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1' : 'bg-neutral-50'}`}
+                className={`group flex flex-col h-full rounded-2xl p-5 sm:p-6 md:p-8 border border-neutral-200 transition-all duration-300 ${!state.locked ? 'bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1' : 'bg-neutral-50'}`}
               >
                 <div className="flex items-start justify-between mb-8">
                    <div className="w-12 h-12 rounded-full border-2 border-black flex items-center justify-center text-lg font-bold text-black">
-                      {round.icon}
+                      {round.icon || String(roundNum).padStart(2, "0")}
                    </div>
                    <span
                     className="text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider"
@@ -229,7 +205,7 @@ export default function ParticipantDashboard() {
                 </div>
 
                 <h3 className="text-2xl font-bold tracking-tight leading-tight text-black mb-3">
-                  {round.title}
+                  {round.name}
                 </h3>
                 
                 <p className="text-sm font-semibold leading-relaxed text-neutral-500 mb-8 flex-1">
@@ -238,13 +214,13 @@ export default function ParticipantDashboard() {
 
                 <div className="flex flex-col gap-4 pt-6 border-t border-neutral-200">
                   <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-black">
-                    <span>{round.questions}</span>
-                    <span>{round.duration}</span>
+                    <span>Round {roundNum}</span>
+                    <span>{round.timeLimit} Minutes</span>
                   </div>
 
                   {!state.locked ? (
                     <button
-                      onClick={() => router.push(round.route)}
+                      onClick={() => router.push(route)}
                       className="w-full py-4 bg-black rounded-xl text-white font-bold text-sm tracking-wide hover:bg-neutral-800 transition-colors"
                     >
                       Enter Round

@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePortal } from "@/lib/portalContext";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
@@ -66,6 +67,7 @@ function ScoreBar({ score, total }: { score: number; total: number }) {
 function AdminNav({ active }: { active: string }) {
   const router = useRouter();
   const { logout } = useAuth();
+  const { portalSettings } = usePortal();
   const navItems = [
     { label: "Dashboard", href: "/admin" },
     { label: "Questions", href: "/admin/questions" },
@@ -77,12 +79,12 @@ function AdminNav({ active }: { active: string }) {
     <header className="w-full h-16 px-6 md:px-12 flex items-center justify-between sticky top-0 z-50 bg-white border-b border-neutral-200">
       <div className="flex items-center gap-4">
         <img
-          src="/college_logo.png"
-          alt="Muthayammal Engineering College Logo"
+          src={portalSettings.collegeLogo || "/college_logo.png"}
+          alt={portalSettings.collegeName || "College Logo"}
           className="w-9 h-9 object-contain rounded-xl border border-neutral-200 p-0.5 bg-white"
         />
         <div>
-          <span className="font-extrabold text-base tracking-wider text-black uppercase block leading-none">Code Crackers</span>
+          <span className="font-extrabold text-base tracking-wider text-black uppercase block leading-none">{portalSettings.eventName || "Code Crackers"}</span>
           <span className="text-xs font-bold tracking-widest uppercase text-neutral-500">ADMIN CONTROL CENTER</span>
         </div>
       </div>
@@ -254,7 +256,7 @@ export default function AdminParticipantsPage() {
 
   useEffect(() => {
     if (!token) { router.replace("/login"); return; }
-    if (user && user.role !== "admin") { router.replace("/dashboard"); return; }
+    if (user && user.role !== "admin" && user.role !== "super_admin") { router.replace("/dashboard"); return; }
     fetchParticipants();
     const timer = setInterval(() => fetchParticipants(true), 6000);
     return () => clearInterval(timer);
@@ -583,20 +585,34 @@ export default function AdminParticipantsPage() {
       const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
 
       // ─── Header ────────────────────────────────────────────
-      doc.setFillColor(0, 0, 0);
-      doc.rect(0, 0, 210, 28, "F");
-      doc.setTextColor(255, 255, 255);
-      doc.setFontSize(14);
+      doc.setFontSize(13);
       doc.setFont("helvetica", "bold");
-      doc.text("CODE CRACKERS", 14, 11);
+      doc.setTextColor(0, 0, 0);
+      doc.text("Muthayammal Engineering College (Autonomous)", 14, 12);
+
       doc.setFontSize(9);
       doc.setFont("helvetica", "normal");
-      doc.text("PARTICIPANT LOGIN CREDENTIALS", 14, 18);
-      doc.text(`Generated: ${new Date().toLocaleString("en-IN")}  |  Total: ${credentials.length}`, 14, 24);
+      doc.setTextColor(0, 0, 0);
+      doc.text("Rasipuram, Namakkal – 637 408 | Dept. of Computer Science & Business Systems (CSBS)", 14, 17);
+
+      doc.setFontSize(11);
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(0, 0, 0);
+      doc.text(`NEXUS'26 Symposium – Code Crackers Login Credentials`, 14, 24);
+
+      doc.setFontSize(9);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(60, 60, 60);
+      doc.text(`Generated: ${new Date().toLocaleString("en-IN")}  |  Total Credentials: ${credentials.length}`, 14, 30);
+
+      // Horizontal line
+      doc.setDrawColor(0, 0, 0);
+      doc.setLineWidth(0.5);
+      doc.line(14, 33, 196, 33);
 
       // ─── Table ─────────────────────────────────────────────
       autoTable(doc, {
-        startY: 34,
+        startY: 37,
         head: [["#", "Username", "Password", "Full Name", "Department"]],
         body: credentials.map((c, i) => [
           i + 1,
@@ -606,14 +622,14 @@ export default function AdminParticipantsPage() {
           c.department || "—",
         ]),
         theme: "grid",
-        headStyles: { fillColor: [0, 0, 0], textColor: [255, 255, 255], fontStyle: "bold", fontSize: 8 },
-        bodyStyles: { fontSize: 8, cellPadding: 3 },
-        alternateRowStyles: { fillColor: [250, 250, 249] },
+        styles: { fontSize: 8, cellPadding: 3, textColor: [0, 0, 0], lineColor: [200, 200, 200], lineWidth: 0.3 },
+        headStyles: { fillColor: [0, 0, 0], textColor: [255, 255, 255], fontStyle: "bold", fontSize: 8.5 },
+        alternateRowStyles: { fillColor: [248, 248, 248] },
         columnStyles: {
           0: { cellWidth: 10, halign: "center" },
-          1: { cellWidth: 38 },
-          2: { cellWidth: 38 },
-          3: { cellWidth: 60 },
+          1: { cellWidth: 38, fontStyle: "bold" },
+          2: { cellWidth: 38, fontStyle: "bold" },
+          3: { cellWidth: 56 },
           4: { cellWidth: 40 },
         },
         margin: { left: 14, right: 14 },
@@ -623,9 +639,10 @@ export default function AdminParticipantsPage() {
       const pageCount = (doc as any).internal.getNumberOfPages();
       for (let i = 1; i <= pageCount; i++) {
         doc.setPage(i);
-        doc.setFontSize(7);
-        doc.setTextColor(150, 150, 150);
-        doc.text(`Page ${i} / ${pageCount}  –  Code Crackers Admin  –  CONFIDENTIAL`, 14, 292);
+        doc.setFontSize(8);
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(60, 60, 60);
+        doc.text(`MEC CSBS – NEXUS'26 – Code Crackers Credentials  |  CONFIDENTIAL  |  Page ${i} of ${pageCount}`, 105, 290, { align: "center" });
       }
 
       doc.save(`code_crackers_credentials_${new Date().toISOString().slice(0, 10)}.pdf`);
@@ -679,7 +696,7 @@ export default function AdminParticipantsPage() {
       <AdminNav active="/admin/participants" />
 
       {/* Top statistics summary panel */}
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 py-8 grid grid-cols-2 md:grid-cols-4 gap-5">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 py-6 sm:py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
         {[
           { label: "Total Accounts", value: totalRegistered },
           { label: "Online Now", value: onlineCount },
@@ -694,7 +711,7 @@ export default function AdminParticipantsPage() {
       </div>
 
       {/* Controls Bar */}
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 pb-6 flex items-center gap-4 flex-wrap">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 pb-6 flex items-center gap-4 flex-wrap">
         
         {/* Search */}
         <input
@@ -757,7 +774,7 @@ export default function AdminParticipantsPage() {
       </div>
 
       {/* Bulk Selection & Actions Bar */}
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 pb-6">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 pb-6">
         <div className="bg-white border border-neutral-200 rounded-2xl p-4 flex items-center gap-6 flex-wrap shadow-sm">
           <div className="flex items-center gap-3">
             <input
@@ -864,7 +881,7 @@ export default function AdminParticipantsPage() {
       </div>
 
       {/* Main List */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-6 md:px-12 pb-24">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 pb-24">
         {filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-24 gap-6">
             <div className="text-6xl opacity-20">👥</div>

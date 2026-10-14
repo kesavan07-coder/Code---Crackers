@@ -2,10 +2,12 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
+import { usePortal } from "@/lib/portalContext";
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
 export default function WaitingRoomPage() {
   const { user, token, logout, isLoading: authLoading } = useAuth();
+  const { portalSettings } = usePortal();
   const router = useRouter();
   const [timeLeftStr, setTimeLeftStr] = useState("Initializing...");
   const [adminMessage, setAdminMessage] = useState("Waiting for the host to start the competition");
@@ -19,7 +21,7 @@ export default function WaitingRoomPage() {
       router.replace("/login");
       return;
     }
-    if (user && user.role === "admin") {
+    if (user && (user.role === "admin" || user.role === "super_admin")) {
       router.replace("/admin");
       return;
     }
@@ -55,8 +57,11 @@ export default function WaitingRoomPage() {
           return;
         }
 
-        // If approved and the competition is already running/paused, redirect to dashboard
-        if (status.competitionState === "running" || status.competitionState === "paused") {
+        // If approved and the admin has explicitly started the round, redirect to dashboard
+        const currentRound = status.currentRound || 1;
+        const isRoundExplicitlyStarted = !!(status.roundStartedAt && status.roundStartedAt[currentRound]);
+
+        if ((status.competitionState === "running" || status.competitionState === "paused") && isRoundExplicitlyStarted) {
           router.replace("/dashboard");
           return;
         }
@@ -67,10 +72,16 @@ export default function WaitingRoomPage() {
           return;
         }
 
+        if (status.roundStatus === "open" && !isRoundExplicitlyStarted) {
+          setTimeLeftStr("Ready");
+          setAdminMessage(`Round ${currentRound} is open. Waiting for the admin to click "Start Round"...`);
+          return;
+        }
+
         if (status.startedAt) {
+          const serverNow = status.serverTime ? new Date(status.serverTime).getTime() : Date.now();
           const startTime = new Date(status.startedAt).getTime();
-          const now = new Date().getTime();
-          const diff = startTime - now;
+          const diff = startTime - serverNow;
 
           if (diff > 0) {
             const minutes = Math.floor(diff / 60000);
@@ -113,22 +124,22 @@ export default function WaitingRoomPage() {
           </div>
         )}
 
-        <div className="bg-white rounded-2xl p-8 md:p-14 text-center flex flex-col items-center border-2 border-neutral-200 shadow-[0_8px_30px_rgb(0,0,0,0.03)]">
+        <div className="bg-white rounded-2xl p-5 sm:p-8 md:p-14 text-center flex flex-col items-center border-2 border-neutral-200 shadow-[0_8px_30px_rgb(0,0,0,0.03)]">
           <img
-            src="/college_logo.png"
-            alt="Muthayammal Engineering College Logo"
+            src={portalSettings.collegeLogo || "/college_logo.png"}
+            alt={portalSettings.collegeName || "College Logo"}
             className="w-16 h-16 object-contain mb-4 rounded-xl border border-neutral-200 p-1 bg-white"
           />
           <span className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-8">
             {isApproved ? "Lounge" : "Authorization Lounge"}
           </span>
 
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-black leading-tight mb-8">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-black leading-tight mb-6 sm:mb-8">
             {isApproved ? "Waiting for the competition to begin..." : "Approval Required"}
           </h1>
 
           <div className="flex flex-col items-center gap-2 mb-8">
-            <span className="text-6xl md:text-8xl font-extrabold tabular-nums tracking-tighter text-black">
+            <span className="text-5xl sm:text-6xl md:text-8xl font-extrabold tabular-nums tracking-tighter text-black">
               {timeLeftStr}
             </span>
             <p className="text-sm font-bold text-neutral-500 max-w-md">
@@ -148,9 +159,9 @@ export default function WaitingRoomPage() {
             </div>
           )}
 
-          <div className="w-full border-t border-neutral-200 pt-8 mt-2 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="w-full border-t border-neutral-200 pt-6 sm:pt-8 mt-2 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
             <p className="text-xs font-bold text-neutral-500 uppercase tracking-widest">
-              Participant <span className="text-black font-extrabold">{user?.username}</span> <span className="text-neutral-400">({user?.department || "CSBS"})</span>
+              Participant <span className="text-black font-extrabold">{user?.username}</span> <span className="text-neutral-400">({user?.department || portalSettings.departmentName || "CSBS"})</span>
             </p>
             <button
               onClick={logout}

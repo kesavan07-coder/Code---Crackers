@@ -7,7 +7,13 @@ const router = Router();
 // ── GET /api/admin/questions/debug ───────────────────────────────────
 router.get("/debug", authenticateToken, requireAdmin, (req: AuthRequest, res: Response): void => {
   try {
-    res.json(QuestionsDebug.findAll());
+    const { roundId } = req.query;
+    let list = QuestionsDebug.findAll();
+    if (roundId) {
+      const rId = String(roundId);
+      list = list.filter((q) => q.roundId === rId || (!q.roundId && (rId === "built_in_3" || rId === "3")));
+    }
+    res.json(list);
   } catch {
     res.status(500).json({ message: "Server error." });
   }
@@ -16,12 +22,13 @@ router.get("/debug", authenticateToken, requireAdmin, (req: AuthRequest, res: Re
 // ── POST /api/admin/questions/debug ──────────────────────────────────
 router.post("/debug", authenticateToken, requireAdmin, (req: AuthRequest, res: Response): void => {
   try {
-    const { title, description, buggyCode, fixedCode, language, hints, points, difficulty, order } = req.body;
+    const { title, description, buggyCode, fixedCode, language, hints, points, difficulty, order, roundId } = req.body;
     if (!title || !buggyCode || !fixedCode) {
       res.status(400).json({ message: "Title, buggyCode, and fixedCode are required." });
       return;
     }
     const q = QuestionsDebug.create({
+      roundId: roundId ? String(roundId) : "built_in_3",
       title,
       description: description || "",
       buggyCode,
@@ -71,7 +78,7 @@ router.delete("/debug/:id", authenticateToken, requireAdmin, (req: AuthRequest, 
 // ── POST /api/admin/questions/debug/bulk-import ───────────────────────
 router.post("/debug/bulk-import", authenticateToken, requireAdmin, (req: AuthRequest, res: Response): void => {
   try {
-    const { questions } = req.body;
+    const { questions, roundId } = req.body;
     if (!Array.isArray(questions)) {
       res.status(400).json({ message: "Questions must be an array." });
       return;
@@ -80,6 +87,7 @@ router.post("/debug/bulk-import", authenticateToken, requireAdmin, (req: AuthReq
     questions.forEach((q) => {
       if (q.title && q.buggyCode && q.fixedCode) {
         QuestionsDebug.create({
+          roundId: q.roundId ? String(q.roundId) : roundId ? String(roundId) : "built_in_3",
           title: q.title,
           description: q.description || "",
           buggyCode: q.buggyCode,

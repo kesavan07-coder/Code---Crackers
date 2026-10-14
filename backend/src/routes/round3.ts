@@ -10,12 +10,18 @@ const router = Router();
 router.get("/questions", authenticateToken, (req: AuthRequest, res: Response): void => {
   try {
     const comp = Competition.get();
-    if (comp.currentRound < 3 || comp.competitionState === "idle") {
-      res.status(403).json({ message: "Round 3 is not currently active." });
+    const targetRoundId = req.query.roundId ? String(req.query.roundId) : ((comp as any).currentRoundId || "built_in_3");
+
+    if (comp.competitionState === "idle" && comp.roundStatus !== "open") {
+      res.status(403).json({ message: "Round is not currently active." });
       return;
     }
 
-    const questions = QuestionsDebug.findAll().map((q) => ({
+    const rawQuestions = QuestionsDebug.findAll().filter(
+      (q) => q.roundId === targetRoundId || (!q.roundId && (targetRoundId === "built_in_3" || targetRoundId === "3"))
+    );
+
+    const questions = rawQuestions.map((q) => ({
       id: q.id,
       title: q.title,
       description: q.description,
@@ -28,11 +34,13 @@ router.get("/questions", authenticateToken, (req: AuthRequest, res: Response): v
       // fixedCode is intentionally excluded from participant view
     }));
 
-    const submission = DebugSubmissions.findOne({ userId: req.user!.id, roundId: 3 });
+    const submission = DebugSubmissions.findOne({ userId: req.user!.id, roundId: targetRoundId }) || DebugSubmissions.findOne({ userId: req.user!.id, roundId: 3 });
 
     res.json({
       questions,
       endsAt: comp.endsAt,
+      countdownStartedAt: (comp as any).countdownStartedAt?.[3] || null,
+      roundStartedAt: comp.roundStartedAt?.[3] || null,
       submission: submission
         ? {
             status: submission.status,

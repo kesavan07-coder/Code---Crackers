@@ -9,10 +9,11 @@ const router = Router();
 router.get("/questions", authenticateToken, (req: AuthRequest, res: Response): void => {
   try {
     const comp = Competition.get();
+    const targetRoundId = req.query.roundId ? String(req.query.roundId) : ((comp as any).currentRoundId || "built_in_1");
 
-    // Check if competition is running and current round is 1
-    if (comp.currentRound !== 1 || comp.roundStatus !== "open") {
-      res.status(403).json({ message: "Round 1 is not active." });
+    // Check if competition is running or open
+    if (comp.roundStatus !== "open" && comp.competitionState !== "running") {
+      res.status(403).json({ message: "Round is not active." });
       return;
     }
 
@@ -24,7 +25,9 @@ router.get("/questions", authenticateToken, (req: AuthRequest, res: Response): v
     const userId = req.user.id;
 
     // Fetch questions and strip correct answers to prevent inspect-cheat
-    const rawQuestions = QuestionsMCQ.findAll();
+    const rawQuestions = QuestionsMCQ.findAll().filter(
+      (q) => q.roundId === targetRoundId || (!q.roundId && (targetRoundId === "built_in_1" || targetRoundId === "1"))
+    );
     const questions = rawQuestions.map((q) => ({
       id: q.id,
       questionText: q.questionText,
@@ -34,7 +37,7 @@ router.get("/questions", authenticateToken, (req: AuthRequest, res: Response): v
     }));
 
     // Find or initialize submission record
-    let submission = Submissions.findOne({ userId, roundId: 1 });
+    let submission = Submissions.findOne({ userId, roundId: targetRoundId }) || Submissions.findOne({ userId, roundId: 1 });
     if (!submission) {
       // Create empty initial structure: { "q_id": { answer: null, markedForReview: false } }
       const initialAnswerData: Record<string, { answer: number | null; markedForReview: boolean }> = {};
@@ -44,7 +47,7 @@ router.get("/questions", authenticateToken, (req: AuthRequest, res: Response): v
 
       submission = Submissions.create({
         userId,
-        roundId: 1,
+        roundId: targetRoundId,
         answerData: initialAnswerData,
         submittedAt: null,
         status: "in_progress",
@@ -61,6 +64,9 @@ router.get("/questions", authenticateToken, (req: AuthRequest, res: Response): v
         tabSwitchCount: submission.tabSwitchCount,
       },
       endsAt: comp.endsAt,
+      startedAt: comp.startedAt,
+      countdownStartedAt: (comp as any).countdownStartedAt?.[1] || null,
+      roundStartedAt: comp.roundStartedAt?.[1] || null,
     });
   } catch (error) {
     console.error("Fetch round 1 error:", error);

@@ -12,6 +12,8 @@ import round2Routes from "./routes/round2";
 import adminQuestionsCodingRoutes from "./routes/adminQuestionsCoding";
 import round3Routes from "./routes/round3";
 import adminQuestionsDebugRoutes from "./routes/adminQuestionsDebug";
+import portalManagementRoutes from "./routes/portalManagement";
+import adminManagementRoutes from "./routes/adminManagement";
 
 dotenv.config();
 
@@ -46,6 +48,8 @@ app.use("/api/admin/questions", adminQuestionsRoutes);
 app.use("/api/admin/questions", adminQuestionsCodingRoutes);
 app.use("/api/admin/questions", adminQuestionsDebugRoutes);
 app.use("/api/admin/participants", adminParticipantsRoutes);
+app.use("/api/admin/management", adminManagementRoutes);
+app.use("/api/portal", portalManagementRoutes);
 
 // Health check
 app.get("/status", (req, res) => {

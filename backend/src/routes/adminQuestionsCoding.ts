@@ -7,7 +7,13 @@ const router = Router();
 // ── GET /api/admin/questions/coding ──────────────────────────────────
 router.get("/coding", authenticateToken, requireAdmin, (req: AuthRequest, res: Response): void => {
   try {
-    res.json(QuestionsCoding.findAll());
+    const { roundId } = req.query;
+    let list = QuestionsCoding.findAll();
+    if (roundId) {
+      const rId = String(roundId);
+      list = list.filter((q) => q.roundId === rId || (!q.roundId && (rId === "built_in_2" || rId === "2")));
+    }
+    res.json(list);
   } catch {
     res.status(500).json({ message: "Server error." });
   }
@@ -16,12 +22,13 @@ router.get("/coding", authenticateToken, requireAdmin, (req: AuthRequest, res: R
 // ── POST /api/admin/questions/coding ─────────────────────────────────
 router.post("/coding", authenticateToken, requireAdmin, (req: AuthRequest, res: Response): void => {
   try {
-    const { title, story, examples, constraints, visibleTestCases, difficulty, order, timeLimit, memoryLimit } = req.body;
+    const { title, story, examples, constraints, visibleTestCases, difficulty, order, timeLimit, memoryLimit, roundId } = req.body;
     if (!title || !story) {
       res.status(400).json({ message: "Title and story are required." });
       return;
     }
     const q = QuestionsCoding.create({
+      roundId: roundId ? String(roundId) : "built_in_2",
       title,
       story,
       examples: examples || [],
@@ -71,7 +78,7 @@ router.delete("/coding/:id", authenticateToken, requireAdmin, (req: AuthRequest,
 // ── POST /api/admin/questions/coding/bulk-import ─────────────────────
 router.post("/coding/bulk-import", authenticateToken, requireAdmin, (req: AuthRequest, res: Response): void => {
   try {
-    const { questions } = req.body;
+    const { questions, roundId } = req.body;
     if (!Array.isArray(questions)) {
       res.status(400).json({ message: "Questions must be an array." });
       return;
@@ -80,6 +87,7 @@ router.post("/coding/bulk-import", authenticateToken, requireAdmin, (req: AuthRe
     questions.forEach((q) => {
       if (q.title && q.story) {
         QuestionsCoding.create({
+          roundId: q.roundId ? String(q.roundId) : roundId ? String(roundId) : "built_in_2",
           title: q.title,
           story: q.story,
           examples: q.examples || [],

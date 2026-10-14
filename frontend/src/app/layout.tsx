@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth";
+import { PortalProvider } from "@/lib/portalContext";
 import ClientLayout from "@/components/ClientLayout";
 
 export const metadata: Metadata = {
   title: "Code Crackers – Technical Quiz",
   description:
-    "Code Crackers is a 3-round live technical quiz and coding competition platform for Muthayammal Engineering College. Compete in MCQ, story-based coding, and bug hunting rounds.",
+    "Live technical quiz and competition platform. Compete in MCQ, coding, and debugging rounds.",
   keywords: ["coding competition", "technical quiz", "symposium", "hackathon", "MCQ"],
   icons: {
     icon: "/college_logo.png",
@@ -27,11 +28,13 @@ export default function RootLayout({
         <link href="https://db.onlinewebfonts.com/c/42acf9aa4a6dc2f2886a3f682e337ead?family=Open+Sauce+One+Bold" rel="stylesheet" />
       </head>
       <body className="antialiased">
-        <AuthProvider>
-          <ClientLayout>
-            {children}
-          </ClientLayout>
-        </AuthProvider>
+        <PortalProvider>
+          <AuthProvider>
+            <ClientLayout>
+              {children}
+            </ClientLayout>
+          </AuthProvider>
+        </PortalProvider>
       </body>
     </html>
   );

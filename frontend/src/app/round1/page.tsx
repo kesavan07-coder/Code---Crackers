@@ -5,6 +5,9 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
 import { useAntiCheat } from "@/hooks/useAntiCheat";
 import { motion, AnimatePresence } from "framer-motion";
+import CountdownOverlay from "@/components/CountdownOverlay";
+
+import { usePortal } from "@/lib/portalContext";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
@@ -29,6 +32,7 @@ const DIFF_STYLES = {
 
 export default function Round1Page() {
   const { token, isLoading: authLoading } = useAuth();
+  const { portalSettings, dynamicRounds } = usePortal();
   const router = useRouter();
 
   const [questions, setQuestions]             = useState<Question[]>([]);
@@ -41,6 +45,9 @@ export default function Round1Page() {
   const [showSuccess, setShowSuccess]         = useState(false);
   const [tabSwitchCount, setTabSwitchCount]   = useState(0);
   const [isFullscreen, setIsFullscreen]       = useState(false);
+  const [countdownStartedAt, setCountdownStartedAt] = useState<string | null>(null);
+  const [roundStartedAt, setRoundStartedAt]         = useState<string | null>(null);
+  const [countdownDone, setCountdownDone]           = useState(false);
 
   const saveTimerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -91,11 +98,21 @@ export default function Round1Page() {
     } catch {}
   }, [token]);
 
+  const logViolation = useCallback((type: string, details?: string) => {
+    if (!token) return;
+    fetch(`${API_BASE}/api/competition/violation`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ type, round: 1, details }),
+    }).catch(() => {});
+  }, [token]);
+
   const { enterFullscreen } = useAntiCheat({
     disablePaste: true,
     disableRightClick: true,
     onTabSwitch: handleTabSwitch,
     onFullscreenExit: () => {},
+    onViolation: logViolation,
   });
 
   const resumeTest = async () => {
@@ -124,6 +141,16 @@ export default function Round1Page() {
         setTabSwitchCount(data.submission.tabSwitchCount || 0);
 
         if (data.submission.status === "submitted") { handleRoundComplete(); return; }
+
+        // Server-synced countdown fields
+        setCountdownStartedAt(data.countdownStartedAt || null);
+        setRoundStartedAt(data.roundStartedAt || null);
+
+        // If no countdown active (e.g. late joiner or countdown already done), skip overlay
+        const roundStart = data.roundStartedAt ? new Date(data.roundStartedAt).getTime() : 0;
+        if (!data.countdownStartedAt || Date.now() >= roundStart) {
+          setCountdownDone(true);
+        }
 
         const endTime = new Date(data.endsAt).getTime();
         setTimeLeft(Math.max(0, Math.floor((endTime - Date.now()) / 1000)));
@@ -244,16 +271,26 @@ export default function Round1Page() {
 
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 text-black">
+      {/* Server-synced countdown overlay */}
+      {!countdownDone && !loading && (
+        <CountdownOverlay
+          countdownStartedAt={countdownStartedAt}
+          roundStartedAt={roundStartedAt}
+          roundName="Round 1 — MCQ"
+          message="Get ready! Your MCQ test is about to start. Stay focused!"
+          onComplete={() => setCountdownDone(true)}
+        />
+      )}
       {/* ── Top Bar ── */}
-      <header className="w-full h-16 px-6 md:px-12 flex items-center justify-between sticky top-0 z-40 bg-white border-b border-neutral-200">
+      <header className="w-full h-auto min-h-[56px] px-4 sm:px-6 md:px-12 py-3 flex items-center justify-between sticky top-0 z-40 bg-white border-b border-neutral-200 flex-wrap gap-2">
         <div className="flex items-center gap-3">
           <img
-            src="/college_logo.png"
-            alt="Muthayammal Engineering College"
+            src={portalSettings.collegeLogo || "/college_logo.png"}
+            alt={portalSettings.collegeName || "College Logo"}
             className="w-7 h-7 object-contain rounded border border-neutral-200 p-0.5 bg-white"
           />
           <span className="font-extrabold text-sm tracking-widest uppercase text-black">
-            Round 1 — MCQ
+            {dynamicRounds.find((r) => r.type === "mcq" || r.order === 1)?.name || "Round 1 — MCQ"}
           </span>
         </div>
 
@@ -288,11 +325,11 @@ export default function Round1Page() {
       </header>
 
       {/* ── Main Layout ── */}
-      <div className="flex-1 flex flex-col md:flex-row w-full max-w-7xl mx-auto px-6 md:px-12 py-8 gap-8 overflow-hidden">
+      <div className="flex-1 flex flex-col lg:flex-row w-full max-w-7xl mx-auto px-3 sm:px-6 md:px-12 py-4 sm:py-8 gap-4 sm:gap-8 overflow-hidden">
         
         {/* ── Question Pane ── */}
         <main className="flex-1 flex flex-col gap-6">
-          <div className="bg-white rounded-2xl p-8 md:p-10 flex flex-col gap-8 flex-1 border border-neutral-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+          <div className="bg-white rounded-2xl p-4 sm:p-8 md:p-10 flex flex-col gap-5 sm:gap-8 flex-1 border border-neutral-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
             
             {/* Question header */}
             <div className="flex items-center gap-4 flex-wrap">
@@ -308,7 +345,7 @@ export default function Round1Page() {
             </div>
 
             {/* Question text */}
-            <h2 className="text-2xl md:text-3xl font-extrabold leading-tight text-black">
+            <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold leading-tight text-black">
               {currentQuestion?.questionText}
             </h2>
 
@@ -336,7 +373,7 @@ export default function Round1Page() {
             </div>
 
             {/* Navigation toolbar */}
-            <div className="flex items-center justify-between border-t border-neutral-200 pt-6 mt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between border-t border-neutral-200 pt-4 sm:pt-6 mt-2 gap-3 sm:gap-0">
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setCurrentIdx((p) => Math.max(0, p - 1))}
@@ -365,14 +402,14 @@ export default function Round1Page() {
         </main>
 
         {/* ── Question Palette Panel ── */}
-        <aside className="w-full md:w-80 flex flex-col gap-6">
+        <aside className="w-full lg:w-80 flex flex-col gap-6">
           <div className="bg-white rounded-2xl p-6 md:p-8 flex flex-col gap-6 border border-neutral-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-full">
             <span className="text-xs font-bold tracking-widest uppercase text-neutral-500">
               Palette
             </span>
 
             {/* Palette grid */}
-            <div className="grid grid-cols-5 gap-3 max-h-[350px] overflow-y-auto pr-2">
+            <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-5 gap-2 max-h-[200px] lg:max-h-[350px] overflow-y-auto pr-1">
               {questions.map((q, idx) => {
                 const ans       = answers[q.id];
                 const isCurrent = idx === currentIdx;

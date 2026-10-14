@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePortal } from "@/lib/portalContext";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
@@ -33,6 +34,7 @@ const EMPTY_FORM = {
 function AdminNav({ active }: { active: string }) {
   const router = useRouter();
   const { logout } = useAuth();
+  const { portalSettings } = usePortal();
   const navItems = [
     { label: "Dashboard", href: "/admin" },
     { label: "Questions", href: "/admin/questions" },
@@ -43,12 +45,12 @@ function AdminNav({ active }: { active: string }) {
     <header className="w-full h-16 px-6 md:px-12 flex items-center justify-between sticky top-0 z-50 bg-white border-b border-neutral-200">
       <div className="flex items-center gap-4">
         <img
-          src="/college_logo.png"
-          alt="Muthayammal Engineering College Logo"
+          src={portalSettings.collegeLogo || "/college_logo.png"}
+          alt={portalSettings.collegeName || "College Logo"}
           className="w-9 h-9 object-contain rounded-xl border border-neutral-200 p-0.5 bg-white"
         />
         <div>
-          <span className="font-extrabold text-base tracking-wider text-black uppercase block leading-none">Code Crackers</span>
+          <span className="font-extrabold text-base tracking-wider text-black uppercase block leading-none">{portalSettings.eventName || "Code Crackers"}</span>
           <span className="text-xs font-bold tracking-widest uppercase text-neutral-500">ADMIN CONTROL CENTER</span>
         </div>
       </div>
@@ -69,6 +71,8 @@ export default function AdminQuestionsPage() {
   const { user, token, isLoading: authLoading } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
+  const { dynamicRounds } = usePortal();
+  const [selectedRoundId, setSelectedRoundId] = useState<string>("built_in_1");
   const [questions, setQuestions] = useState<MCQQuestion[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -88,10 +92,11 @@ export default function AdminQuestionsPage() {
     setTimeout(() => setToast(null), 3500);
   };
 
-  const fetchQuestions = useCallback(async () => {
+  const fetchQuestions = useCallback(async (rId: string) => {
     if (!token) return;
+    setLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/api/admin/questions/mcq`, {
+      const res = await fetch(`${API_BASE}/api/admin/questions/mcq?roundId=${rId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) setQuestions(await res.json());
@@ -101,9 +106,9 @@ export default function AdminQuestionsPage() {
 
   useEffect(() => {
     if (!token) { router.replace("/login"); return; }
-    if (user && user.role !== "admin") { router.replace("/dashboard"); return; }
-    fetchQuestions();
-  }, [token, user, router, fetchQuestions]);
+    if (user && user.role !== "admin" && user.role !== "super_admin") { router.replace("/dashboard"); return; }
+    fetchQuestions(selectedRoundId);
+  }, [token, user, router, fetchQuestions, selectedRoundId]);
 
   const openCreate = () => {
     setEditingId(null);
@@ -126,10 +131,10 @@ export default function AdminQuestionsPage() {
       const res = await fetch(url, {
         method: editingId ? "PUT" : "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, roundId: selectedRoundId }),
       });
       const data = await res.json();
-      if (res.ok) { showToast(editingId ? "Question updated." : "Question created."); setShowForm(false); fetchQuestions(); }
+      if (res.ok) { showToast(editingId ? "Question updated." : "Question created."); setShowForm(false); fetchQuestions(selectedRoundId); }
       else showToast(data.message || "Failed.", "error");
     } catch { showToast("Network error.", "error"); }
     finally { setSubmitting(false); }
@@ -141,7 +146,7 @@ export default function AdminQuestionsPage() {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
-      if (res.ok) { showToast("Question deleted."); setDeleteConfirm(null); fetchQuestions(); }
+      if (res.ok) { showToast("Question deleted."); setDeleteConfirm(null); fetchQuestions(selectedRoundId); }
       else showToast("Failed to delete.", "error");
     } catch { showToast("Network error.", "error"); }
   };
@@ -153,10 +158,10 @@ export default function AdminQuestionsPage() {
       const res = await fetch(`${API_BASE}/api/admin/questions/mcq/bulk-import`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ questions: qs }),
+        body: JSON.stringify({ questions: qs, roundId: selectedRoundId }),
       });
       const data = await res.json();
-      if (res.ok) { showToast(data.message); setBulkText(""); setShowBulk(false); fetchQuestions(); }
+      if (res.ok) { showToast(data.message); setBulkText(""); setShowBulk(false); fetchQuestions(selectedRoundId); }
       else showToast(data.message || "Import failed.", "error");
     } catch { showToast("Invalid JSON format.", "error"); }
     finally { setBulkLoading(false); }
@@ -168,7 +173,13 @@ export default function AdminQuestionsPage() {
     return matchDiff && matchSearch;
   });
 
-  if (authLoading || loading) {
+  const roundsList = dynamicRounds.length > 0 ? dynamicRounds : [
+    { id: "built_in_1", name: "Round 1: MCQs", type: "mcq" },
+    { id: "built_in_2", name: "Round 2: Coding", type: "coding" },
+    { id: "built_in_3", name: "Round 3: Bug Hunter", type: "bug_hunter" },
+  ];
+
+  if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-stone-50">
         <div className="w-8 h-8 rounded-full border-2 border-black border-t-transparent animate-spin" />
@@ -194,22 +205,29 @@ export default function AdminQuestionsPage() {
 
       <AdminNav active="/admin/questions" />
 
-      {/* Subtabs */}
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 mt-8 flex justify-between items-center border-b border-neutral-200 pb-0">
-        <div className="flex gap-1">
-          {[
-            { label: "Round 1: MCQs", href: "/admin/questions" },
-            { label: "Round 2: Coding", href: "/admin/questions/coding" },
-            { label: "Round 3: Bug Hunter", href: "/admin/questions/debug" },
-          ].map((item) => (
-            <button
-              key={item.href}
-              onClick={() => router.push(item.href)}
-              className={`px-5 py-3 text-xs font-bold tracking-wider uppercase cursor-pointer border-b-2 transition-colors ${pathname === item.href ? 'border-black text-black' : 'border-transparent text-neutral-400 hover:text-black'}`}
-            >
-              {item.label}
-            </button>
-          ))}
+      {/* Subtabs for Dynamic Rounds */}
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 mt-4 sm:mt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-neutral-200 pb-2 sm:pb-0 gap-3">
+        <div className="flex gap-1 overflow-x-auto max-w-full pb-1">
+          {roundsList.map((r) => {
+            const isActive = selectedRoundId === r.id;
+            return (
+              <button
+                key={r.id}
+                onClick={() => {
+                  if (r.type === "coding") {
+                    router.push(`/admin/questions/coding?roundId=${r.id}`);
+                  } else if (r.type === "bug_hunter") {
+                    router.push(`/admin/questions/debug?roundId=${r.id}`);
+                  } else {
+                    setSelectedRoundId(r.id);
+                  }
+                }}
+                className={`px-5 py-3 text-xs font-bold tracking-wider uppercase cursor-pointer border-b-2 transition-colors whitespace-nowrap ${isActive ? 'border-black text-black font-extrabold' : 'border-transparent text-neutral-400 hover:text-black'}`}
+              >
+                {r.name}
+              </button>
+            );
+          })}
         </div>
         <div className="flex items-center gap-3 mb-0 pb-3">
           <button
@@ -228,7 +246,7 @@ export default function AdminQuestionsPage() {
       </div>
 
       {/* Filters */}
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 py-6 flex items-center gap-4 flex-wrap">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 py-4 sm:py-6 flex items-center gap-4 flex-wrap">
         <input
           type="text"
           placeholder="Search questions…"
@@ -248,7 +266,7 @@ export default function AdminQuestionsPage() {
       </div>
 
       {/* Question list */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-6 md:px-12 pb-12">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 pb-12">
         {filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-24 gap-6">
             <div className="text-6xl opacity-20">📝</div>

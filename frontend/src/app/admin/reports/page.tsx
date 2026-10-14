@@ -11,6 +11,7 @@ import {
   RefreshCw,
   ChevronRight,
 } from "lucide-react";
+import { usePortal } from "@/lib/portalContext";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
@@ -18,8 +19,10 @@ interface ParticipantReportData {
   rank: number;
   username: string;
   fullName: string;
+  year?: string;
   department: string;
   college: string;
+  createdAt?: string;
   qualificationStatus: string;
   round1: { score: number; submissionTime: string; status: string; timeTaken: string };
   round2: { score: number; submissionTime: string; status: string; timeTaken: string };
@@ -30,7 +33,7 @@ interface ParticipantReportData {
 interface SavedReport {
   id: string;
   name: string;
-  type: "Round 1" | "Round 2" | "Round 3" | "Overall";
+  type: "Round 1" | "Round 2" | "Round 3" | "Overall" | "Participant List";
   generatedAt: string;
   size: string;
   url: string;
@@ -72,11 +75,12 @@ const NAV_ITEMS: NavItem[] = [
 function AdminNav({ active }: { active: string }) {
   const { logout } = useAuth();
   const router = useRouter();
+  const { portalSettings } = usePortal();
   return (
     <header className="w-full h-16 bg-white px-6 md:px-12 flex items-center gap-6 sticky top-0 z-50 border-b border-neutral-200 shadow-sm">
       <img
-        src="/college_logo.png"
-        alt="Muthayammal Engineering College Logo"
+        src={portalSettings.collegeLogo || "/college_logo.png"}
+        alt={portalSettings.collegeName || "College Logo"}
         className="w-9 h-9 object-contain rounded-xl border border-neutral-200 p-0.5 bg-white flex-shrink-0"
       />
       <nav className="flex items-center gap-1 overflow-x-auto">
@@ -107,6 +111,7 @@ function AdminNav({ active }: { active: string }) {
 export default function ReportsPage() {
   const { user, token, isLoading: authLoading } = useAuth();
   const router = useRouter();
+  const { portalSettings } = usePortal();
 
   const [reportData, setReportData] = useState<ParticipantReportData[] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -121,7 +126,7 @@ export default function ReportsPage() {
 
   useEffect(() => {
     if (!token) { router.replace("/login"); return; }
-    if (user && user.role !== "admin") { router.replace("/dashboard"); return; }
+    if (user && user.role !== "admin" && user.role !== "super_admin") { router.replace("/dashboard"); return; }
     setSavedReports(loadReports());
   }, [token, user, router]);
 
@@ -148,6 +153,110 @@ export default function ReportsPage() {
     }
   }, [token]);
 
+  const addCollegeHeader = (doc: any, title: string, subtitle: string, dateStr: string, timeStr: string) => {
+    // Dynamic Institution & Event Header
+    doc.setFontSize(13);
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(0, 0, 0);
+    doc.text(portalSettings.collegeName || "Muthayammal Engineering College (Autonomous)", 14, 12);
+
+    doc.setFontSize(9);
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(0, 0, 0);
+    doc.text(`${portalSettings.departmentName || "Dept. of Computer Science & Business Systems"}`, 14, 17);
+
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(0, 0, 0);
+    doc.text(`${portalSettings.symposiumName || "NEXUS'26"} Symposium – ${portalSettings.eventName || "Code Crackers"} | ${title}`, 14, 24);
+
+    doc.setFontSize(9);
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(60, 60, 60);
+    doc.text(subtitle, 14, 30);
+    doc.text(`Generated: ${dateStr} at ${timeStr}`, 14, 35);
+
+    // Horizontal rule
+    const pageWidth = doc.internal.pageSize.width;
+    doc.setDrawColor(0, 0, 0);
+    doc.setLineWidth(0.5);
+    doc.line(14, 38, pageWidth - 14, 38);
+  };
+
+  const generateParticipantListPDF = async () => {
+    setGenerating("Participant List");
+    let data = reportData;
+    if (!data) data = await fetchReportData();
+    if (!data) { setGenerating(null); return; }
+
+    try {
+      const jsPDF = (await import("jspdf")).default;
+      const autoTable = (await import("jspdf-autotable")).default;
+      const doc = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+      const now = new Date();
+      const dateStr = now.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+      const timeStr = now.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: true });
+
+      addCollegeHeader(doc, "Participant Registration List", `Total Registered: ${data.length} participants`, dateStr, timeStr);
+
+      const tableHead = [["S.No", "Username", "Full Name", "Year", "Department", "College", "Registered At", "Status"]];
+      const tableBody = data.map((p, idx) => [
+        idx + 1,
+        p.username,
+        p.fullName,
+        p.year || "N/A",
+        p.department,
+        p.college,
+        p.createdAt ? new Date(p.createdAt).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }) : "N/A",
+        p.qualificationStatus.charAt(0).toUpperCase() + p.qualificationStatus.slice(1),
+      ]);
+
+      autoTable(doc, {
+        head: tableHead,
+        body: tableBody,
+        startY: 42,
+        styles: { fontSize: 9, cellPadding: 3, textColor: [0, 0, 0], lineColor: [200, 200, 200], lineWidth: 0.3 },
+        headStyles: { fillColor: [0, 0, 0], textColor: [255, 255, 255], fontStyle: "bold", fontSize: 9 },
+        alternateRowStyles: { fillColor: [248, 248, 248] },
+        tableWidth: "auto",
+      });
+
+      const pageCount = doc.getNumberOfPages();
+      for (let i = 1; i <= pageCount; i++) {
+        doc.setPage(i);
+        doc.setFontSize(8);
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(80, 80, 80);
+        doc.text(
+          `MEC CSBS – NEXUS'26 – Code Crackers  |  Confidential  |  Page ${i} of ${pageCount}`,
+          doc.internal.pageSize.width / 2, doc.internal.pageSize.height - 8, { align: "center" }
+        );
+      }
+
+      const fileName = `Participant_List_${now.toISOString().slice(0, 10)}.pdf`;
+      const blob = doc.output("blob");
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", fileName);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      const size = `${(blob.size / 1024).toFixed(1)} KB`;
+      const newReport: SavedReport = { id: `${Date.now()}`, name: fileName, type: "Participant List", generatedAt: now.toISOString(), size, url };
+      const updatedReports = [newReport, ...savedReports].slice(0, 20);
+      setSavedReports(updatedReports);
+      saveReports(updatedReports);
+      showToast("Participant List PDF generated and downloaded.");
+    } catch (err) {
+      console.error(err);
+      showToast("Failed to generate Participant List PDF.", "error");
+    } finally {
+      setGenerating(null);
+    }
+  };
+
   const generatePDF = async (type: "Round 1" | "Round 2" | "Round 3" | "Overall") => {
     setGenerating(type);
     let data = reportData;
@@ -166,16 +275,6 @@ export default function ReportsPage() {
       const dateStr = now.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
       const timeStr = now.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: true });
 
-      // Title
-      doc.setFontSize(20);
-      doc.setFont("helvetica", "bold");
-      doc.text("Code Crackers Symposium", 14, 16);
-      doc.setFontSize(12);
-      doc.setFont("helvetica", "normal");
-      doc.text(`${type} Report`, 14, 23);
-      doc.setFontSize(9);
-      doc.text(`Generated: ${dateStr} at ${timeStr}`, 14, 29);
-
       // Stats summary
       const submitted = data.filter(p => {
         if (type === "Round 1") return p.round1.status === "submitted";
@@ -184,82 +283,47 @@ export default function ReportsPage() {
         return p.totalScore > 0;
       }).length;
 
-      doc.setFont("helvetica", "bold");
-      doc.text(`Total Participants: ${data.length}  |  Submitted: ${submitted}`, 14, 35);
+      const roundTitle = `${type} Report`;
+      const roundSubtitle = `Total Participants: ${data.length}  |  Submitted: ${submitted}`;
+      addCollegeHeader(doc, roundTitle, roundSubtitle, dateStr, timeStr);
 
       let tableHead: string[][];
       let tableBody: (string | number)[][];
 
       if (type === "Round 1") {
-        tableHead = [["Rank", "Username", "Full Name", "Dept", "R1 Score", "Submission Time", "Time Taken", "Status"]];
+        tableHead = [["Rank", "Username", "Full Name", "Year", "Dept", "R1 Score", "Sub. Time", "Time Taken", "Status"]];
         tableBody = data.map(p => [
-          p.rank,
-          p.username,
-          p.fullName,
-          p.department,
-          `${p.round1.score} pts`,
-          p.round1.submissionTime,
-          p.round1.timeTaken,
-          getStatusLabel(p.round1.status),
+          p.rank, p.username, p.fullName, p.year || "N/A", p.department,
+          `${p.round1.score} pts`, p.round1.submissionTime, p.round1.timeTaken, getStatusLabel(p.round1.status),
         ]);
       } else if (type === "Round 2") {
-        tableHead = [["Rank", "Username", "Full Name", "Dept", "R2 Score", "Submission Time", "Time Taken", "Status"]];
+        tableHead = [["Rank", "Username", "Full Name", "Year", "Dept", "R2 Score", "Sub. Time", "Time Taken", "Status"]];
         tableBody = data.map(p => [
-          p.rank,
-          p.username,
-          p.fullName,
-          p.department,
-          `${p.round2.score} pts`,
-          p.round2.submissionTime,
-          p.round2.timeTaken,
-          getStatusLabel(p.round2.status),
+          p.rank, p.username, p.fullName, p.year || "N/A", p.department,
+          `${p.round2.score} pts`, p.round2.submissionTime, p.round2.timeTaken, getStatusLabel(p.round2.status),
         ]);
       } else if (type === "Round 3") {
-        tableHead = [["Rank", "Username", "Full Name", "Dept", "R3 Score", "Submission Time", "Time Taken", "Status"]];
+        tableHead = [["Rank", "Username", "Full Name", "Year", "Dept", "R3 Score", "Sub. Time", "Time Taken", "Status"]];
         tableBody = data.map(p => [
-          p.rank,
-          p.username,
-          p.fullName,
-          p.department,
-          `${p.round3.score} pts`,
-          p.round3.submissionTime,
-          p.round3.timeTaken,
-          getStatusLabel(p.round3.status),
+          p.rank, p.username, p.fullName, p.year || "N/A", p.department,
+          `${p.round3.score} pts`, p.round3.submissionTime, p.round3.timeTaken, getStatusLabel(p.round3.status),
         ]);
       } else {
         // Overall
-        tableHead = [["Rank", "Username", "Full Name", "Dept", "College", "R1", "R2", "R3", "Total", "Status"]];
+        tableHead = [["Rank", "Username", "Full Name", "Year", "Dept", "College", "R1", "R2", "R3", "Total", "Status"]];
         tableBody = data.map(p => [
-          p.rank,
-          p.username,
-          p.fullName,
-          p.department,
-          p.college,
-          `${p.round1.score}`,
-          `${p.round2.score}`,
-          `${p.round3.score}`,
-          `${p.totalScore} pts`,
-          p.qualificationStatus.toUpperCase(),
+          p.rank, p.username, p.fullName, p.year || "N/A", p.department, p.college,
+          `${p.round1.score}`, `${p.round2.score}`, `${p.round3.score}`,
+          `${p.totalScore} pts`, p.qualificationStatus.toUpperCase(),
         ]);
       }
 
       autoTable(doc, {
         head: tableHead,
         body: tableBody,
-        startY: 40,
-        styles: {
-          fontSize: 9,
-          cellPadding: 3,
-          textColor: [20, 20, 20],
-          lineColor: [220, 220, 220],
-          lineWidth: 0.3,
-        },
-        headStyles: {
-          fillColor: [0, 0, 0],
-          textColor: [255, 255, 255],
-          fontStyle: "bold",
-          fontSize: 9,
-        },
+        startY: 42,
+        styles: { fontSize: 9, cellPadding: 3, textColor: [0, 0, 0], lineColor: [200, 200, 200], lineWidth: 0.3 },
+        headStyles: { fillColor: [0, 0, 0], textColor: [255, 255, 255], fontStyle: "bold", fontSize: 9 },
         alternateRowStyles: { fillColor: [248, 248, 248] },
         tableWidth: "auto",
       });
@@ -270,11 +334,10 @@ export default function ReportsPage() {
         doc.setPage(i);
         doc.setFontSize(8);
         doc.setFont("helvetica", "normal");
+        doc.setTextColor(80, 80, 80);
         doc.text(
-          `Code Crackers — Confidential  |  Page ${i} of ${pageCount}`,
-          doc.internal.pageSize.width / 2,
-          doc.internal.pageSize.height - 8,
-          { align: "center" }
+          `MEC CSBS – NEXUS'26 – Code Crackers  |  Confidential  |  Page ${i} of ${pageCount}`,
+          doc.internal.pageSize.width / 2, doc.internal.pageSize.height - 8, { align: "center" }
         );
       }
 
@@ -334,6 +397,9 @@ export default function ReportsPage() {
     { type: "Overall", description: "Combined leaderboard across all three rounds", icon: "★" },
   ];
 
+  // Participant list has its own handler
+  const isGeneratingParticipantList = generating === "Participant List";
+
   return (
     <div className="min-h-screen bg-stone-50 text-black flex flex-col">
       <AdminNav active="/admin/reports" />
@@ -351,7 +417,7 @@ export default function ReportsPage() {
         )}
       </AnimatePresence>
 
-      <main className="max-w-5xl mx-auto w-full px-6 md:px-12 py-10 flex flex-col gap-10 flex-1">
+      <main className="max-w-5xl mx-auto w-full px-4 sm:px-6 md:px-12 py-6 sm:py-10 flex flex-col gap-6 sm:gap-10 flex-1">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
@@ -371,7 +437,7 @@ export default function ReportsPage() {
         {/* Report Generation Cards */}
         <div>
           <h2 className="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-4">Generate Report</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {reportTypes.map(({ type, description, icon }) => (
               <div
                 key={type}
@@ -406,6 +472,28 @@ export default function ReportsPage() {
               </div>
             ))}
           </div>
+
+          {/* Participant List PDF – separate card */}
+          <div className="bg-white border-2 border-neutral-200 rounded-2xl p-6 flex flex-col gap-4 shadow-sm hover:border-neutral-400 transition-colors">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-zinc-100 rounded-2xl flex items-center justify-center text-2xl font-extrabold text-black border border-neutral-200">👥</div>
+              <div>
+                <h3 className="text-sm font-extrabold text-black">Participant List</h3>
+                <p className="text-xs text-neutral-400 font-semibold mt-0.5">Full registration list with Name, Year, Department, College</p>
+              </div>
+            </div>
+            <button
+              onClick={generateParticipantListPDF}
+              disabled={generating !== null}
+              className="w-full py-3 bg-black text-white font-bold text-xs tracking-widest uppercase rounded-xl hover:bg-neutral-800 transition-colors disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+            >
+              {isGeneratingParticipantList ? (
+                <><div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />Generating…</>
+              ) : (
+                <><Download size={14} />Generate PDF</>
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Report Repository */}
@@ -435,7 +523,8 @@ export default function ReportsPage() {
             </div>
           ) : (
             <div className="bg-white border-2 border-neutral-200 rounded-2xl overflow-hidden shadow-sm">
-              <table className="w-full">
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[500px]">
                 <thead>
                   <tr className="border-b border-neutral-100">
                     <th className="text-left text-[10px] font-bold uppercase tracking-widest text-neutral-400 px-5 py-3.5">Report Name</th>
@@ -492,7 +581,8 @@ export default function ReportsPage() {
                     </tr>
                   ))}
                 </tbody>
-              </table>
+                </table>
+              </div>
             </div>
           )}
         </div>

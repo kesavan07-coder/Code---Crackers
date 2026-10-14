@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/lib/auth";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePortal } from "@/lib/portalContext";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
@@ -41,6 +42,7 @@ const EMPTY_FORM = {
 function AdminNav({ active }: { active: string }) {
   const router = useRouter();
   const { logout } = useAuth();
+  const { portalSettings } = usePortal();
   const navItems = [
     { label: "Dashboard", href: "/admin" },
     { label: "Questions", href: "/admin/questions" },
@@ -51,12 +53,12 @@ function AdminNav({ active }: { active: string }) {
     <header className="w-full h-16 px-6 md:px-12 flex items-center justify-between sticky top-0 z-50 bg-white border-b border-neutral-200">
       <div className="flex items-center gap-4">
         <img
-          src="/college_logo.png"
-          alt="Muthayammal Engineering College Logo"
+          src={portalSettings.collegeLogo || "/college_logo.png"}
+          alt={portalSettings.collegeName || "College Logo"}
           className="w-9 h-9 object-contain rounded-xl border border-neutral-200 p-0.5 bg-white"
         />
         <div>
-          <span className="font-extrabold text-base tracking-wider text-black uppercase block leading-none">Code Crackers</span>
+          <span className="font-extrabold text-base tracking-wider text-black uppercase block leading-none">{portalSettings.eventName || "Code Crackers"}</span>
           <span className="text-xs font-bold tracking-widest uppercase text-neutral-500">ADMIN CONTROL CENTER</span>
         </div>
       </div>
@@ -77,6 +79,9 @@ export default function AdminDebugQuestionsPage() {
   const { user, token, isLoading: authLoading } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const { dynamicRounds } = usePortal();
+  const selectedRoundId = searchParams.get("roundId") || "built_in_3";
 
   const [questions, setQuestions] = useState<DebugQuestion[]>([]);
   const [loading, setLoading] = useState(true);
@@ -99,16 +104,17 @@ export default function AdminDebugQuestionsPage() {
 
   const fetchQuestions = useCallback(async () => {
     if (!token) return;
+    setLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/api/admin/questions/debug`, { headers: { Authorization: `Bearer ${token}` } });
+      const res = await fetch(`${API_BASE}/api/admin/questions/debug?roundId=${selectedRoundId}`, { headers: { Authorization: `Bearer ${token}` } });
       if (res.ok) setQuestions(await res.json());
     } catch { showToast("Failed to connect to server.", "error"); }
     finally { setLoading(false); }
-  }, [token]);
+  }, [token, selectedRoundId]);
 
   useEffect(() => {
     if (!token) { router.replace("/login"); return; }
-    if (user && user.role !== "admin") { router.replace("/dashboard"); return; }
+    if (user && user.role !== "admin" && user.role !== "super_admin") { router.replace("/dashboard"); return; }
     fetchQuestions();
   }, [token, user, router, fetchQuestions]);
 
@@ -145,7 +151,7 @@ export default function AdminDebugQuestionsPage() {
       const res = await fetch(url, {
         method: editingId ? "PUT" : "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, hints: validHints }),
+        body: JSON.stringify({ ...form, hints: validHints, roundId: selectedRoundId }),
       });
       const data = await res.json();
       if (res.ok) { showToast(editingId ? "Debug question updated." : "Debug question created."); setShowForm(false); fetchQuestions(); }
@@ -169,7 +175,7 @@ export default function AdminDebugQuestionsPage() {
       const res = await fetch(`${API_BASE}/api/admin/questions/debug/bulk-import`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ questions: parsed }),
+        body: JSON.stringify({ questions: parsed, roundId: selectedRoundId }),
       });
       const data = await res.json();
       if (res.ok) { showToast(data.message); setBulkText(""); setShowBulk(false); fetchQuestions(); }
@@ -184,19 +190,19 @@ export default function AdminDebugQuestionsPage() {
     return matchDiff && matchSearch;
   });
 
-  if (authLoading || loading) {
+  const roundsList = dynamicRounds.length > 0 ? dynamicRounds : [
+    { id: "built_in_1", name: "Round 1: MCQs", type: "mcq" },
+    { id: "built_in_2", name: "Round 2: Coding", type: "coding" },
+    { id: "built_in_3", name: "Round 3: Bug Hunter", type: "bug_hunter" },
+  ];
+
+  if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-stone-50">
         <div className="w-8 h-8 rounded-full border-2 border-black border-t-transparent animate-spin" />
       </div>
     );
   }
-
-  const tabItems = [
-    { label: "Round 1: MCQs", href: "/admin/questions" },
-    { label: "Round 2: Coding", href: "/admin/questions/coding" },
-    { label: "Round 3: Bug Hunter", href: "/admin/questions/debug" },
-  ];
 
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 text-black">
@@ -214,13 +220,28 @@ export default function AdminDebugQuestionsPage() {
       <AdminNav active="/admin/questions" />
 
       {/* Subtabs */}
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 mt-8 flex justify-between items-end border-b border-neutral-200">
-        <div className="flex gap-1">
-          {tabItems.map((item) => (
-            <button key={item.href} onClick={() => router.push(item.href)}
-              className={`px-5 py-3 text-xs font-bold tracking-wider uppercase cursor-pointer border-b-2 transition-colors ${pathname === item.href ? 'border-black text-black' : 'border-transparent text-neutral-400 hover:text-black'}`}
-            >{item.label}</button>
-          ))}
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 mt-4 sm:mt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-neutral-200 pb-2 sm:pb-0 gap-3">
+        <div className="flex gap-1 overflow-x-auto max-w-full pb-1">
+          {roundsList.map((r) => {
+            const isActive = selectedRoundId === r.id;
+            return (
+              <button
+                key={r.id}
+                onClick={() => {
+                  if (r.type === "mcq" || r.type === "rapid_fire" || r.type === "aptitude") {
+                    router.push(`/admin/questions?roundId=${r.id}`);
+                  } else if (r.type === "coding") {
+                    router.push(`/admin/questions/coding?roundId=${r.id}`);
+                  } else {
+                    router.push(`/admin/questions/debug?roundId=${r.id}`);
+                  }
+                }}
+                className={`px-5 py-3 text-xs font-bold tracking-wider uppercase cursor-pointer border-b-2 transition-colors whitespace-nowrap ${isActive ? 'border-black text-black font-extrabold' : 'border-transparent text-neutral-400 hover:text-black'}`}
+              >
+                {r.name}
+              </button>
+            );
+          })}
         </div>
         <div className="flex items-center gap-3 pb-3">
           <button onClick={() => setShowBulk(true)} className="px-5 py-2.5 rounded-xl text-xs font-bold tracking-widest uppercase cursor-pointer border-2 border-neutral-200 bg-white text-neutral-500 hover:border-black hover:text-black transition-colors">
@@ -233,7 +254,7 @@ export default function AdminDebugQuestionsPage() {
       </div>
 
       {/* Filters */}
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 py-6 flex items-center gap-4 flex-wrap">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 py-4 sm:py-6 flex items-center gap-4 flex-wrap">
         <input type="text" placeholder="Search bug hunter questions…" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
           className="flex-1 min-w-[200px] px-5 py-3 rounded-xl text-sm font-semibold bg-white border-2 border-neutral-200 text-black placeholder-neutral-400 focus:outline-none focus:border-black transition-colors"
         />
@@ -245,7 +266,7 @@ export default function AdminDebugQuestionsPage() {
       </div>
 
       {/* Question list */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-6 md:px-12 pb-12">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 pb-12">
         {filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-24 gap-6">
             <div className="text-6xl opacity-20">🐛</div>

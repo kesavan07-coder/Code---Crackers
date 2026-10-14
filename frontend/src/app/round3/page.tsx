@@ -6,6 +6,8 @@ import { useAuth } from "@/lib/auth";
 import { motion, AnimatePresence } from "framer-motion";
 import Editor from "@monaco-editor/react";
 import { useAntiCheat } from "@/hooks/useAntiCheat";
+import CountdownOverlay from "@/components/CountdownOverlay";
+import { usePortal } from "@/lib/portalContext";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
@@ -30,7 +32,8 @@ interface SavedAnswer {
 }
 
 export default function Round3BugHunterPage() {
-  const { token, user, isLoading: authLoading } = useAuth();
+  const { token, user, isLoading: authLoading, logout } = useAuth();
+  const { portalSettings, dynamicRounds } = usePortal();
   const router = useRouter();
 
   const [questions, setQuestions] = useState<DebugQuestion[]>([]);
@@ -45,6 +48,9 @@ export default function Round3BugHunterPage() {
   const [submissionStatus, setSubmissionStatus] = useState<"in_progress" | "submitted">("in_progress");
   const [isSubmittingRound, setIsSubmittingRound] = useState(false);
   const [autosaveStatus, setAutosaveStatus] = useState<"saved" | "saving" | "error">("saved");
+  const [countdownStartedAt, setCountdownStartedAt] = useState<string | null>(null);
+  const [roundStartedAt, setRoundStartedAt]         = useState<string | null>(null);
+  const [countdownDone, setCountdownDone]           = useState(false);
 
   // Verification Console
   const [isVerifying, setIsVerifying] = useState(false);
@@ -76,6 +82,17 @@ export default function Round3BugHunterPage() {
     };
   }, []);
 
+  const [showFullscreenExitModal, setShowFullscreenExitModal] = useState(false);
+
+  const logViolation = useCallback((type: string, details?: string) => {
+    if (!token) return;
+    fetch(`${API_BASE}/api/competition/violation`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ type, round: 3, details }),
+    }).catch(() => {});
+  }, [token]);
+
   const handleTabSwitch = useCallback(async () => {
     if (!token) return;
     try {
@@ -93,11 +110,24 @@ export default function Round3BugHunterPage() {
     } catch {}
   }, [token]);
 
+  const handleFullscreenExit = useCallback(async () => {
+    if (submissionStatus === "submitted" || loading) return;
+    logViolation("FULLSCREEN_EXIT", "Participant exited fullscreen mode during Round 3");
+    setShowFullscreenExitModal(true);
+    try {
+      await handleFinalSubmit(true);
+    } catch {}
+    setTimeout(() => {
+      logout();
+    }, 5000);
+  }, [submissionStatus, loading, logViolation, logout]);
+
   const { enterFullscreen } = useAntiCheat({
     disablePaste: true,
     disableRightClick: true,
     onTabSwitch: handleTabSwitch,
-    onFullscreenExit: () => {},
+    onFullscreenExit: handleFullscreenExit,
+    onViolation: logViolation,
   });
 
   const resumeTest = async () => {
@@ -122,6 +152,15 @@ export default function Round3BugHunterPage() {
       const data = await res.json();
       setQuestions(data.questions || []);
       setEndsAt(data.endsAt);
+
+      // Server-synced countdown fields
+      setCountdownStartedAt(data.countdownStartedAt || null);
+      setRoundStartedAt(data.roundStartedAt || null);
+
+      const roundStart = data.roundStartedAt ? new Date(data.roundStartedAt).getTime() : 0;
+      if (!data.countdownStartedAt || Date.now() >= roundStart) {
+        setCountdownDone(true);
+      }
 
       if (data.submission) {
         setSubmissionStatus(data.submission.status);
@@ -332,7 +371,16 @@ export default function Round3BugHunterPage() {
   const activeDiff = activeQuestion?.difficulty;
 
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50 text-black">
+    <div className="min-h-screen bg-[#080511] text-white flex flex-col font-sans overflow-hidden">
+      {!countdownDone && !loading && (
+        <CountdownOverlay
+          countdownStartedAt={countdownStartedAt}
+          roundStartedAt={roundStartedAt}
+          roundName="Round 3 — Bug Hunter"
+          message="Get ready! Debug the broken code and hunt all bugs!"
+          onComplete={() => setCountdownDone(true)}
+        />
+      )}
       
       {/* ── Celebratory Submission Overlay ── */}
       <AnimatePresence>
@@ -390,19 +438,19 @@ export default function Round3BugHunterPage() {
       </AnimatePresence>
 
       {/* ── Top Bar ── */}
-      <header className="w-full h-16 px-6 flex items-center justify-between sticky top-0 z-50 bg-white border-b border-neutral-200">
+      <header className="w-full h-auto min-h-[56px] px-3 sm:px-6 py-2.5 flex items-center justify-between sticky top-0 z-50 bg-white border-b border-neutral-200 flex-wrap gap-2">
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3">
             <img
-              src="/college_logo.png"
-              alt="Muthayammal Engineering College"
+              src={portalSettings.collegeLogo || "/college_logo.png"}
+              alt={portalSettings.collegeName || "College Logo"}
               className="w-7 h-7 object-contain rounded border border-neutral-200 p-0.5 bg-white"
             />
             <span className="font-extrabold text-sm tracking-widest uppercase text-black">
-              ROUND 03: BUG HUNTER
+              {dynamicRounds.find((r) => r.type === "bug_hunter" || r.order === 3)?.name || "ROUND 03: BUG HUNTER"}
             </span>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 overflow-x-auto pb-1 max-w-[150px] sm:max-w-none">
             {questions.map((q, idx) => {
               const isCurrent = activeIdx === idx;
               const hasAnswer = savedAnswers[q.id];
@@ -464,10 +512,10 @@ export default function Round3BugHunterPage() {
       </header>
 
       {/* ── Main content pane (3-column/split layout) ── */}
-      <main className="flex-1 flex overflow-hidden">
+      <main className="flex-1 flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden">
         
         {/* Left Side: Question Narrative & Description */}
-        <section className="w-1/3 p-6 overflow-y-auto flex flex-col gap-6 bg-stone-50 border-r border-neutral-200">
+        <section className="w-full lg:w-1/3 p-4 sm:p-6 overflow-y-auto flex flex-col gap-4 sm:gap-6 bg-stone-50 border-b lg:border-b-0 lg:border-r border-neutral-200 max-h-[50vh] lg:max-h-none">
           {activeQuestion && (
             <>
               <div className="flex flex-col gap-2">
@@ -524,9 +572,9 @@ export default function Round3BugHunterPage() {
         </section>
 
         {/* Right Side: Workspace Pane */}
-        <section className="flex-1 flex flex-col relative bg-[#1e1e1e]">
+        <section className="w-full lg:flex-1 flex flex-col relative bg-[#1e1e1e] min-h-[400px] lg:min-h-0">
           {/* Workspace header / actions */}
-          <div className="h-14 border-b border-[#333333] px-6 flex items-center justify-between bg-[#1e1e1e]">
+          <div className="h-auto min-h-[48px] py-2 border-b border-[#333333] px-3 sm:px-6 flex items-center justify-between bg-[#1e1e1e] flex-wrap gap-2">
             <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">
               Your Workspace ({activeQuestion?.language})
             </span>
@@ -627,6 +675,37 @@ export default function Round3BugHunterPage() {
           </AnimatePresence>
         </section>
       </main>
+
+      {/* ── Fullscreen Exit Violation Modal ── */}
+      <AnimatePresence>
+        {showFullscreenExitModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 z-[99999] bg-black/95 backdrop-blur-md flex items-center justify-center p-6"
+          >
+            <div className="bg-neutral-900 border-2 border-red-500 rounded-3xl p-8 md:p-12 max-w-lg w-full text-center flex flex-col gap-6 items-center shadow-2xl">
+              <div className="w-16 h-16 rounded-2xl bg-red-500/20 text-red-500 border border-red-500/40 flex items-center justify-center text-3xl font-extrabold">
+                ⚠
+              </div>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
+                Full Screen Mode Was Exited
+              </h2>
+              <div className="bg-red-950/40 border border-red-800/60 rounded-2xl p-5 text-left text-xs space-y-2 text-red-200 font-medium leading-relaxed w-full">
+                <p className="font-bold text-white text-sm">
+                  As per the competition rules, your submission has been automatically submitted.
+                </p>
+                <p>
+                  <strong className="text-red-400">Reason:</strong> Full Screen Exit
+                </p>
+                <p className="text-neutral-400 text-[11px] pt-2">
+                  Please contact the event organizers if you believe this occurred in error. Logging out in 5 seconds...
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

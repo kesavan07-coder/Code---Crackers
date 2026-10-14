@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { usePortal } from "@/lib/portalContext";
+
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
 interface CompetitionState {
@@ -13,6 +15,7 @@ interface CompetitionState {
   competitionState: "idle" | "running" | "paused" | "ended";
   startedAt: string | null;
   endsAt: string | null;
+  roundStartedAt?: Record<number, string | null>;
 }
 
 interface OnlineStats {
@@ -37,32 +40,34 @@ function StatCard({ label, value, sub, accent }: {
   );
 }
 
-function RoundControlCard({ round, label, description, duration, onOpen, isActive, isClosed, onClose }: {
+function RoundControlCard({ round, label, description, duration, onOpen, onStart, isActive, isStarted, isClosed, onClose }: {
   round: number;
   label: string;
   description: string;
   duration: number;
   onOpen: (round: number, mins: number) => void;
+  onStart: (round: number, mins: number) => void;
   isActive: boolean;
+  isStarted: boolean;
   isClosed: boolean;
   onClose: () => void;
 }) {
   const [mins, setMins] = useState(duration);
 
   return (
-    <div className={`bg-white rounded-2xl p-6 flex flex-col gap-5 border-2 transition-colors ${isActive ? 'border-black' : 'border-neutral-200'} shadow-[0_4px_20px_rgb(0,0,0,0.03)]`}>
+    <div className={`bg-white rounded-2xl p-6 flex flex-col gap-5 border-2 transition-colors ${isStarted ? 'border-black' : isActive ? 'border-amber-400' : 'border-neutral-200'} shadow-[0_4px_20px_rgb(0,0,0,0.03)]`}>
       <div className="flex items-start justify-between gap-3">
         <div>
           <span className="text-xs font-bold tracking-widest uppercase text-neutral-500">ROUND 0{round}</span>
           <h3 className="text-base font-extrabold text-black mt-1">{label}</h3>
           <p className="text-xs mt-2 text-neutral-500 leading-relaxed">{description}</p>
         </div>
-        <span className={`text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider whitespace-nowrap flex-shrink-0 ${isActive ? 'bg-black text-white' : isClosed ? 'bg-zinc-200 text-black' : 'bg-zinc-100 text-neutral-500'}`}>
-          {isActive ? "● Live" : isClosed ? "Closed" : "Locked"}
+        <span className={`text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider whitespace-nowrap flex-shrink-0 ${isStarted ? 'bg-black text-white' : isActive ? 'bg-amber-100 text-amber-900 border border-amber-300' : isClosed ? 'bg-zinc-200 text-black' : 'bg-zinc-100 text-neutral-500'}`}>
+          {isStarted ? "● Live" : isActive ? "● Lounge Open" : isClosed ? "Closed" : "Locked"}
         </span>
       </div>
 
-      {!isActive && !isClosed && (
+      {!isClosed && (
         <div className="flex items-center gap-3">
           <label className="text-xs font-bold text-neutral-500 whitespace-nowrap uppercase tracking-widest">Duration (min):</label>
           <input
@@ -76,19 +81,34 @@ function RoundControlCard({ round, label, description, duration, onOpen, isActiv
         </div>
       )}
 
-      {isActive ? (
+      {isStarted ? (
         <button
           onClick={onClose}
           className="w-full py-3 rounded-xl text-sm font-bold tracking-widest uppercase cursor-pointer border-2 border-red-200 bg-red-50 text-red-600 hover:bg-red-600 hover:text-white hover:border-red-600 transition-colors"
         >
           Close Round
         </button>
+      ) : isActive ? (
+        <div className="flex flex-col gap-2">
+          <button
+            onClick={() => onStart(round, mins)}
+            className="w-full py-3 rounded-xl text-sm font-bold tracking-widest uppercase cursor-pointer bg-black text-white hover:bg-neutral-800 transition-colors shadow-lg"
+          >
+            ▶ Start Round (Release All Live)
+          </button>
+          <button
+            onClick={onClose}
+            className="w-full py-2.5 rounded-xl text-xs font-bold tracking-widest uppercase cursor-pointer border-2 border-neutral-200 bg-white text-neutral-500 hover:border-red-500 hover:text-red-500 transition-colors"
+          >
+            Close Round
+          </button>
+        </div>
       ) : !isClosed ? (
         <button
           onClick={() => onOpen(round, mins)}
-          className="w-full py-3 rounded-xl text-sm font-bold tracking-widest uppercase cursor-pointer bg-black text-white hover:bg-neutral-800 transition-colors"
+          className="w-full py-3 rounded-xl text-sm font-bold tracking-widest uppercase cursor-pointer border-2 border-black bg-white text-black hover:bg-black hover:text-white transition-colors"
         >
-          Open Round
+          Open Round (Send to Lounge)
         </button>
       ) : (
         <div className="text-center text-xs font-bold py-3 bg-zinc-100 border-2 border-neutral-200 rounded-xl text-neutral-500 uppercase tracking-widest">
@@ -102,28 +122,31 @@ function RoundControlCard({ round, label, description, duration, onOpen, isActiv
 function AdminNav({ active }: { active: string }) {
   const router = useRouter();
   const { logout } = useAuth();
+  const { portalSettings } = usePortal();
   const navItems = [
     { label: "Dashboard", href: "/admin" },
-    { label: "Questions", href: "/admin/questions" },
     { label: "Participants", href: "/admin/participants" },
-    { label: "Security", href: "/admin/security" },
+    { label: "Questions", href: "/admin/questions" },
     { label: "Reports", href: "/admin/reports" },
+    { label: "Portal", href: "/admin/portal" },
   ];
 
   return (
-    <header className="w-full h-16 px-6 md:px-12 flex items-center justify-between sticky top-0 z-50 bg-white border-b border-neutral-200">
+    <header className="w-full h-auto min-h-[64px] px-4 sm:px-6 md:px-12 py-3 flex items-center justify-between sticky top-0 z-50 bg-white border-b border-neutral-200 flex-wrap gap-3">
       <div className="flex items-center gap-4">
         <img
-          src="/college_logo.png"
-          alt="Muthayammal Engineering College Logo"
+          src={portalSettings.collegeLogo || "/college_logo.png"}
+          alt={portalSettings.collegeName || "College Logo"}
           className="w-9 h-9 object-contain rounded-xl border border-neutral-200 p-0.5 bg-white"
         />
         <div>
-          <span className="font-extrabold text-base tracking-wider text-black uppercase block leading-none">Code Crackers</span>
+          <span className="font-extrabold text-base tracking-wider text-black uppercase block leading-none">
+            {portalSettings.eventName || "Code Crackers"}
+          </span>
           <span className="text-xs font-bold tracking-widest uppercase text-neutral-500">ADMIN CONTROL CENTER</span>
         </div>
       </div>
-      <nav className="flex items-center gap-2">
+      <nav className="flex items-center gap-2 overflow-x-auto max-w-full pb-1">
         {navItems.map((item) => (
           <button
             key={item.href}
@@ -145,6 +168,7 @@ function AdminNav({ active }: { active: string }) {
 export default function AdminDashboard() {
   const { user, token, isLoading: authLoading } = useAuth();
   const router = useRouter();
+  const { dynamicRounds } = usePortal();
   const [compStatus, setCompStatus] = useState<CompetitionState | null>(null);
   const [onlineStats, setOnlineStats] = useState<OnlineStats | null>(null);
   const [loading, setLoading] = useState(true);
@@ -177,7 +201,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     if (!token) { router.replace("/login"); return; }
-    if (user && user.role !== "admin") { router.replace("/dashboard"); return; }
+    if (user && user.role !== "admin" && user.role !== "super_admin") { router.replace("/dashboard"); return; }
     fetchStatus();
     const timer = setInterval(fetchStatus, 5000);
     return () => clearInterval(timer);
@@ -207,8 +231,23 @@ export default function AdminDashboard() {
         body: JSON.stringify({ round, durationMinutes }),
       });
       const data = await res.json();
-      if (res.ok) { setCompStatus(data.status); showToast(`Round ${round} is now live!`); }
+      if (res.ok) { setCompStatus(data.status); showToast(`Round ${round} opened! Participants are in waiting room.`); }
       else showToast(data.message || "Failed to open round.", "error");
+    } catch { showToast("Network error.", "error"); }
+    finally { setActionLoading(null); }
+  };
+
+  const startRound = async (round: number, durationMinutes: number) => {
+    setActionLoading("start-round");
+    try {
+      const res = await fetch(`${API_BASE}/api/competition/start-round`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ round, durationMinutes }),
+      });
+      const data = await res.json();
+      if (res.ok) { setCompStatus(data.status); showToast(`Round ${round} STARTED! All participants released live.`); }
+      else showToast(data.message || "Failed to start round.", "error");
     } catch { showToast("Network error.", "error"); }
     finally { setActionLoading(null); }
   };
@@ -242,16 +281,34 @@ export default function AdminDashboard() {
   const currentRound = compStatus?.currentRound || 0;
   const roundStatus = compStatus?.roundStatus || "locked";
 
-  const getRoundState = (round: number) => ({
-    isActive: currentRound === round && roundStatus === "open",
-    isClosed: currentRound > round || (currentRound === round && roundStatus === "closed"),
-  });
+  const getRoundState = (round: number) => {
+    const isRoundOpen = currentRound === round && roundStatus === "open";
+    const isRoundStarted = isRoundOpen && !!(compStatus?.roundStartedAt && (compStatus.roundStartedAt as any)[round]);
+    const isClosed = currentRound > round || (currentRound === round && roundStatus === "closed");
+    return {
+      isActive: isRoundOpen,
+      isStarted: isRoundStarted,
+      isClosed,
+    };
+  };
 
-  const rounds = [
+  // Use dynamic rounds from portal context; fall back to defaults if not yet loaded
+  const DEFAULT_ROUNDS = [
     { round: 1, label: "Basic Coding MCQ", description: "30 multiple-choice questions on DSA, algorithms & CS fundamentals.", duration: 30 },
     { round: 2, label: "Story-Based Coding", description: "3 narrative coding challenges with visible & hidden test cases.", duration: 45 },
     { round: 3, label: "Bug Hunter", description: "5 buggy code snippets. Identify and fix all issues before time runs out.", duration: 20 },
   ];
+  const rounds = dynamicRounds.length > 0
+    ? dynamicRounds
+        .filter((r) => r.enabled !== false)
+        .sort((a, b) => a.order - b.order)
+        .map((r, idx) => ({
+          round: r.order || idx + 1,
+          label: r.name,
+          description: r.description,
+          duration: r.timeLimit,
+        }))
+    : DEFAULT_ROUNDS;
 
   const stateLabel = isIdle ? "Idle" : isRunning ? "Running" : isPaused ? "Paused" : "Ended";
   const stateColor = isRunning ? "#000000" : isPaused ? "#D97706" : isEnded ? "#52525b" : "#a1a1aa";
@@ -274,9 +331,9 @@ export default function AdminDashboard() {
 
       <AdminNav active="/admin" />
 
-      <main className="flex-1 max-w-7xl mx-auto w-full px-6 md:px-12 py-10 flex flex-col gap-10">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 py-6 sm:py-10 flex flex-col gap-6 sm:gap-10">
         {/* Stats row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
           <StatCard label="Competition State" value={stateLabel} accent={stateColor} />
           <StatCard
             label="Online Participants"
@@ -362,7 +419,7 @@ export default function AdminDashboard() {
           <h2 className="text-2xl font-extrabold text-black mb-6">Round Management</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {rounds.map((r) => {
-              const { isActive, isClosed } = getRoundState(r.round);
+              const { isActive, isStarted, isClosed } = getRoundState(r.round);
               return (
                 <RoundControlCard
                   key={r.round}
@@ -371,8 +428,10 @@ export default function AdminDashboard() {
                   description={r.description}
                   duration={r.duration}
                   isActive={isActive}
+                  isStarted={isStarted}
                   isClosed={isClosed}
                   onOpen={openRound}
+                  onStart={startRound}
                   onClose={closeRound}
                 />
               );

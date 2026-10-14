@@ -73,6 +73,8 @@ router.post("/login", async (req: Request, res: Response): Promise<void> => {
         department: user.department,
         email: user.email,
         fullName: user.fullName || "",
+        year: user.year || "",
+        college: user.college || "",
         firstLoginCompleted: !!user.firstLoginCompleted,
       },
     });
@@ -116,6 +118,8 @@ router.get("/me", authenticateToken, (req: AuthRequest, res: Response): void => 
       department: user.department,
       email: user.email,
       fullName: user.fullName || "",
+      year: user.year || "",
+      college: user.college || "",
       firstLoginCompleted: !!user.firstLoginCompleted,
       needsNameSetup,
     });
@@ -132,20 +136,35 @@ router.post("/update-profile", authenticateToken, (req: AuthRequest, res: Respon
       res.status(401).json({ message: "Not authenticated." });
       return;
     }
-    const { fullName } = req.body;
+    const { fullName, year, department, college, collegeName } = req.body;
     if (!fullName || typeof fullName !== "string" || !fullName.trim()) {
       res.status(400).json({ message: "Full Name is required." });
       return;
     }
+
+    const finalCollege = (college || collegeName || "").trim();
+    const finalYear = (year || "").trim();
+    const finalDept = (department || "").trim();
+
     const updated = Users.update(req.user.id, {
       fullName: fullName.trim(),
+      ...(finalYear ? { year: finalYear } : {}),
+      ...(finalDept ? { department: finalDept } : {}),
+      ...(finalCollege ? { college: finalCollege } : {}),
       firstLoginCompleted: true,
     });
+
     if (!updated) {
       res.status(404).json({ message: "User not found." });
       return;
     }
-    ActivityLog.add(req.user.id, "PROFILE_NAME_SETUP", { fullName: fullName.trim() });
+    ActivityLog.add(req.user.id, "PROFILE_NAME_SETUP", {
+      fullName: fullName.trim(),
+      year: finalYear,
+      department: finalDept,
+      college: finalCollege,
+    });
+
     res.json({
       message: "Profile updated successfully.",
       user: {
@@ -155,6 +174,8 @@ router.post("/update-profile", authenticateToken, (req: AuthRequest, res: Respon
         department: updated.department,
         email: updated.email,
         fullName: updated.fullName,
+        year: updated.year,
+        college: updated.college,
         firstLoginCompleted: true,
       },
     });
@@ -164,29 +185,44 @@ router.post("/update-profile", authenticateToken, (req: AuthRequest, res: Respon
   }
 });
 
-// Helper to ensure admin account Kesavan K / Kesavan@2007 exists
+// Helper to ensure super_admin accounts exist
 async function ensureAdminAccount() {
   try {
-    let adminUser = Users.findOne({ role: "admin" });
-    const adminPassHash = await bcrypt.hash("Kesavan@2007", 10);
-    if (!adminUser) {
+    const superHash = await bcrypt.hash("SuperAdmin@2026", 10);
+    const kesavanHash = await bcrypt.hash("Kesavan@2007", 10);
+
+    let superUser = Users.findOne({ username: "superadmin" });
+    if (!superUser) {
+      Users.create({
+        username: "superadmin",
+        passwordHash: superHash,
+        role: "super_admin",
+        fullName: "Super Administrator",
+        department: "CSBS",
+        email: "superadmin@codecrackers.com",
+        isActive: true,
+        currentSessionToken: null,
+        isApproved: true,
+        permissions: ["*"],
+      });
+    }
+
+    let kesavanUser = Users.findOne({ username: "Kesavan K" });
+    if (!kesavanUser) {
       Users.create({
         username: "Kesavan K",
-        passwordHash: adminPassHash,
-        role: "admin",
+        passwordHash: kesavanHash,
+        role: "super_admin",
         fullName: "Kesavan K",
         department: "CSBS",
         email: "admin@codecrackers.com",
         isActive: true,
         currentSessionToken: null,
         isApproved: true,
+        permissions: ["*"],
       });
-    } else if (adminUser.username !== "Kesavan K" || !(await bcrypt.compare("Kesavan@2007", adminUser.passwordHash))) {
-      Users.update(adminUser.id, {
-        username: "Kesavan K",
-        passwordHash: adminPassHash,
-        fullName: "Kesavan K",
-      });
+    } else {
+      Users.update(kesavanUser.id, { role: "super_admin", permissions: ["*"] });
     }
   } catch (e) {
     console.error("Failed to ensure admin account:", e);

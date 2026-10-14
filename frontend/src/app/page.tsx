@@ -3,9 +3,11 @@
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
+import { usePortal } from "@/lib/portalContext";
 
 export default function RootPage() {
   const { token, user, isLoading: authLoading } = useAuth();
+  const { portalSettings } = usePortal();
   const router = useRouter();
   const [progress, setProgress] = useState(0);
   const [splashDone, setSplashDone] = useState(false);
@@ -44,7 +46,9 @@ export default function RootPage() {
     hasRedirected.current = true;
 
     if (token && user) {
-      if (user.role === "admin") {
+      if (user.role === "super_admin") {
+        router.replace("/super-admin");
+      } else if (user.role === "admin") {
         router.replace("/admin");
       } else {
         router.replace("/dashboard");
@@ -76,8 +80,8 @@ export default function RootPage() {
         {/* Logo */}
         <div className="flex flex-col items-center gap-1 select-none">
           <img
-            src="/college_logo.png"
-            alt="Muthayammal Engineering College Logo"
+            src={portalSettings.collegeLogo || "/college_logo.png"}
+            alt={portalSettings.collegeName || "College Logo"}
             className="w-28 h-28 md:w-36 md:h-36 object-contain drop-shadow-2xl bg-white p-2 rounded-2xl"
             style={{ filter: "drop-shadow(0 0 40px rgba(255,255,255,0.25))" }}
           />
@@ -85,19 +89,11 @@ export default function RootPage() {
 
         {/* Brand name */}
         <div className="flex flex-col items-center gap-1 text-center">
-          <div className="flex items-baseline gap-0">
-            <span className="text-5xl md:text-7xl font-extrabold uppercase tracking-tighter text-white leading-none">
-              Code
-            </span>
-            <span className="text-5xl md:text-7xl font-extrabold uppercase tracking-tighter text-white leading-none">
-              &#8203;
-            </span>
-            <span className="text-5xl md:text-7xl font-extrabold uppercase tracking-tighter text-white leading-none">
-              Crackers
-            </span>
-          </div>
-          <span className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.4em] text-white/40 mt-1">
-            Technical Competition
+          <h1 className="text-5xl md:text-7xl font-extrabold uppercase tracking-tighter text-white leading-none">
+            {portalSettings.eventName || "Code Crackers"}
+          </h1>
+          <span className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.4em] text-white/40 mt-2">
+            {portalSettings.eventSubtitle || "Technical Competition"}
           </span>
         </div>
 

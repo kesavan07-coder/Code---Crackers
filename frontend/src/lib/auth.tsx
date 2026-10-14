@@ -16,20 +16,30 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 export interface User {
   id: string;
   username: string;
-  role: "admin" | "participant";
+  role: "super_admin" | "admin" | "participant";
   department?: string;
   email?: string;
   fullName?: string;
+  year?: string;
+  college?: string;
   firstLoginCompleted?: boolean;
   needsNameSetup?: boolean;
+}
+
+interface ProfileUpdatePayload {
+  fullName: string;
+  year?: string;
+  department?: string;
+  collegeName?: string;
+  college?: string;
 }
 
 interface AuthContextValue {
   user: User | null;
   token: string | null;
   isLoading: boolean;
-  login: (username: string, password: string, skipRedirect?: boolean) => Promise<{ success: boolean; error?: string; needsNameSetup?: boolean }>;
-  updateProfile: (fullName: string) => Promise<{ success: boolean; error?: string }>;
+  login: (username: string, password: string, skipRedirect?: boolean) => Promise<{ success: boolean; error?: string; needsNameSetup?: boolean; user?: User }>;
+  updateProfile: (data: string | ProfileUpdatePayload) => Promise<{ success: boolean; error?: string }>;
   logout: () => Promise<void>;
 }
 
@@ -92,7 +102,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const login = useCallback(
-    async (username: string, password: string, skipRedirect = false): Promise<{ success: boolean; error?: string; needsNameSetup?: boolean }> => {
+    async (username: string, password: string, skipRedirect = false): Promise<{ success: boolean; error?: string; needsNameSetup?: boolean; user?: User }> => {
       try {
         const res = await fetch(`${API_BASE}/api/auth/login`, {
           method: "POST",
@@ -111,23 +121,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           return { success: false, error: "Your session was invalidated from another device." };
         }
 
+        const loggedInUser: User = data.user;
         localStorage.setItem("cc_token", data.token);
-        localStorage.setItem("cc_user", JSON.stringify(data.user));
+        localStorage.setItem("cc_user", JSON.stringify(loggedInUser));
         setToken(data.token);
-        setUser(data.user);
+        setUser(loggedInUser);
 
         const needsNameSetup = data.needsNameSetup || false;
 
         // Role-based redirect unless caller asked to skip
         if (!skipRedirect && !needsNameSetup) {
-          if (data.user.role === "admin") {
+          if (loggedInUser.role === "super_admin") {
+            router.push("/super-admin");
+          } else if (loggedInUser.role === "admin") {
             router.push("/admin");
           } else {
             router.push("/dashboard");
           }
         }
 
-        return { success: true, needsNameSetup };
+        return { success: true, needsNameSetup, user: loggedInUser };
       } catch {
         return { success: false, error: "Network error. Please check your connection." };
       }
@@ -136,8 +149,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 
   const updateProfile = useCallback(
-    async (fullName: string): Promise<{ success: boolean; error?: string }> => {
+    async (payload: string | ProfileUpdatePayload) => {
       if (!token) return { success: false, error: "Not logged in." };
+      const body = typeof payload === "string" ? { fullName: payload } : payload;
       try {
         const res = await fetch(`${API_BASE}/api/auth/update-profile`, {
           method: "POST",
@@ -145,7 +159,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ fullName }),
+          body: JSON.stringify(body),
         });
         const data = await res.json();
         if (!res.ok) {

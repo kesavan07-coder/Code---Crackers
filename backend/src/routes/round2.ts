@@ -34,12 +34,18 @@ router.post("/run", authenticateToken, async (req: AuthRequest, res: Response): 
 router.get("/questions", authenticateToken, (req: AuthRequest, res: Response): void => {
   try {
     const comp = Competition.get();
-    if (comp.currentRound < 2 || comp.competitionState === "idle") {
-      res.status(403).json({ message: "Round 2 is not currently active." });
+    const targetRoundId = req.query.roundId ? String(req.query.roundId) : ((comp as any).currentRoundId || "built_in_2");
+
+    if (comp.competitionState === "idle" && comp.roundStatus !== "open") {
+      res.status(403).json({ message: "Round is not currently active." });
       return;
     }
 
-    const questions = QuestionsCoding.findAll().map((q) => ({
+    const rawQuestions = QuestionsCoding.findAll().filter(
+      (q) => q.roundId === targetRoundId || (!q.roundId && (targetRoundId === "built_in_2" || targetRoundId === "2"))
+    );
+
+    const questions = rawQuestions.map((q) => ({
       id: q.id,
       title: q.title,
       story: q.story,
@@ -52,11 +58,13 @@ router.get("/questions", authenticateToken, (req: AuthRequest, res: Response): v
       memoryLimit: q.memoryLimit,
     }));
 
-    const submission = CodeSubmissions.findOne({ userId: req.user!.id, roundId: 2 });
+    const submission = CodeSubmissions.findOne({ userId: req.user!.id, roundId: targetRoundId }) || CodeSubmissions.findOne({ userId: req.user!.id, roundId: 2 });
 
     res.json({
       questions,
       endsAt: comp.endsAt,
+      countdownStartedAt: (comp as any).countdownStartedAt?.[2] || null,
+      roundStartedAt: comp.roundStartedAt?.[2] || null,
       submission: submission
         ? {
             status: submission.status,

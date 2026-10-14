@@ -8,13 +8,15 @@ export interface UserRecord {
   id: string;
   username: string;
   passwordHash: string;
-  role: "admin" | "participant";
+  role: "super_admin" | "admin" | "participant";
+  permissions?: string[];
   department?: string;
   email?: string;
   isActive: boolean;
   currentSessionToken: string | null;
   createdAt: string;
   fullName?: string;
+  year?: string;
   college?: string;
   isApproved: boolean;
   isLocked: boolean;
@@ -25,6 +27,88 @@ export interface UserRecord {
   scoreOverrides?: Record<number, number>;
   displayPassword?: string;  // plain-text stored at creation for printing credentials
   firstLoginCompleted?: boolean; // tracks if participant completed first-time profile name setup
+}
+
+export interface DynamicRound {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  type: "mcq" | "coding" | "bug_hunter" | "rapid_fire" | "manual" | "custom";
+  order: number;
+  timeLimit: number;           // minutes
+  countdownDuration: number;   // seconds (default 10)
+  maxScore: number;
+  passingScore: number;
+  enabled: boolean;
+  leaderboardEnabled: boolean;
+  antiCheatEnabled: boolean;
+  fullscreenRequired: boolean;
+  tabDetectionEnabled: boolean;
+  copyProtectionEnabled: boolean;
+  autoSubmitOnTimeout: boolean;
+  autoSubmitOnViolation: boolean;
+  allowResubmission: boolean;
+}
+
+export interface RoundTemplate {
+  id: string;
+  name: string;
+  type: string;
+  description: string;
+  icon: string;
+  timeLimit: number;
+  maxScore: number;
+  passingScore: number;
+  questionSchema: Record<string, any>;
+  sampleQuestions?: any[];
+  isBuiltIn?: boolean;
+  createdAt?: string;
+}
+
+export interface PortalSettings {
+  // General Branding & Institution Details
+  eventName: string;
+  eventSubtitle: string;
+  collegeName: string;
+  collegeLogo?: string;
+  departmentName: string;
+  departmentLogo?: string;
+  symposiumName: string;
+  academicYear?: string;
+  eventDate: string;
+  venue: string;
+  coordinatorName: string;
+  hodName: string;
+  principalName?: string;
+  contactNumber?: string;
+  emailAddress?: string;
+  website?: string;
+  address?: string;
+  contactDetails: string;
+  browserTitle: string;
+  themeColor: string;
+  maintenanceMode?: boolean;
+  savedTemplates?: RoundTemplate[];
+  // Custom Participant-Facing Notification Messages
+  messages: {
+    waitingForEvaluation: string;
+    roundStarted: string;
+    roundCompleted: string;
+    qualified: string;
+    eliminated: string;
+    countdownMessage: string;
+    submissionSuccessful: string;
+    sessionExpired: string;
+    fullscreenWarning: string;
+    tabSwitchWarning: string;
+  };
+  // Leaderboard display prefs
+  leaderboardShowScore: boolean;
+  leaderboardShowTimeTaken: boolean;
+  leaderboardShowCollege: boolean;
+  leaderboardShowDepartment: boolean;
+  leaderboardRankingMethod: "score_then_time" | "score_only";
 }
 
 export interface CompetitionSettingsRecord {
@@ -47,11 +131,18 @@ export interface CompetitionSettingsRecord {
   announcement: string | null;
   broadcastMessage: string | null;
   resultsPublished: boolean;
-  roundDurations?: Record<number, number>; // Duration in minutes per round
+  roundDurations?: Record<number, number>;
+  roundStartedAt?: Record<number, string | null>;
+  // New Phase 6 fields
+  countdownStartedAt?: Record<number, string | null>;   // when admin starts countdown per round
+  publishedLeaderboards?: Record<string, boolean>;       // "1","2","3","overall" → true/false
+  portalSettings?: PortalSettings;
+  dynamicRounds?: DynamicRound[];
 }
 
 export interface QuestionMCQRecord {
   id: string;
+  roundId?: string; // "built_in_1" or custom round id
   questionText: string;
   options: string[];
   correctAnswer: number; // 0-3 index
@@ -62,7 +153,7 @@ export interface QuestionMCQRecord {
 export interface SubmissionRecord {
   id: string;
   userId: string;
-  roundId: number; // 1, 2, or 3
+  roundId: number | string; // 1, 2, 3 or custom round id
   // Holds current state of answers: { "questionId": { answer: number, markedForReview: boolean } }
   answerData: Record<string, { answer: number | null; markedForReview: boolean }>;
   submittedAt: string | null;
@@ -79,6 +170,7 @@ export interface TestCase {
 
 export interface QuestionCodingRecord {
   id: string;
+  roundId?: string;
   title: string;
   story: string;           // Narrative/problem description (markdown supported)
   examples: Array<{ input: string; output: string; explanation?: string }>;
@@ -101,7 +193,7 @@ export interface CodeAnswerData {
 export interface CodeSubmissionRecord {
   id: string;
   userId: string;
-  roundId: 2;
+  roundId: number | string;
   // keyed by questionId → code answer data
   answerData: Record<string, CodeAnswerData>;
   submittedAt: string | null;
@@ -113,6 +205,7 @@ export interface CodeSubmissionRecord {
 // ── Round 3: Bug Hunter ─────────────────────────────────────────────────
 export interface QuestionDebugRecord {
   id: string;
+  roundId?: string;
   title: string;
   description: string;        // What the code is supposed to do
   buggyCode: string;          // The code with intentional bugs
@@ -135,8 +228,20 @@ export interface DebugAnswerData {
 export interface DebugSubmissionRecord {
   id: string;
   userId: string;
-  roundId: 3;
+  roundId: number | string;
   answerData: Record<string, DebugAnswerData>;
+  submittedAt: string | null;
+  status: "in_progress" | "submitted";
+  updatedAt: string;
+  tabSwitchCount: number;
+}
+
+export interface DynamicSubmissionRecord {
+  id: string;
+  userId: string;
+  roundId: string | number;
+  answerData: Record<string, any>;
+  score: number;
   submittedAt: string | null;
   status: "in_progress" | "submitted";
   updatedAt: string;
@@ -152,6 +257,7 @@ interface Schema {
   submissions: SubmissionRecord[];
   codeSubmissions: CodeSubmissionRecord[];
   debugSubmissions: DebugSubmissionRecord[];
+  dynamicSubmissions: DynamicSubmissionRecord[];
   activityLog: Array<{
     id: string;
     userId: string;
@@ -190,6 +296,40 @@ db.defaults({
     broadcastMessage: null,
     resultsPublished: false,
     roundDurations: { 1: 30, 2: 45, 3: 20 },
+    countdownStartedAt: { 1: null, 2: null, 3: null },
+    publishedLeaderboards: { "1": false, "2": false, "3": false, "overall": false },
+    portalSettings: {
+      eventName: "Code Crackers",
+      eventSubtitle: "Technical Quiz Competition",
+      collegeName: "Muthayammal Engineering College (Autonomous)",
+      departmentName: "Department of Computer Science & Business Systems",
+      symposiumName: "NEXUS'26",
+      eventDate: "",
+      venue: "",
+      coordinatorName: "",
+      hodName: "",
+      contactDetails: "",
+      browserTitle: "Code Crackers – NEXUS'26",
+      themeColor: "#000000",
+      messages: {
+        waitingForEvaluation: "Your submission has been received. Please wait while organizers evaluate all participants. The leaderboard will be available after it is published by the admin.",
+        roundStarted: "Round has started! Good luck!",
+        roundCompleted: "You have completed this round. Waiting for results.",
+        qualified: "Congratulations! You have qualified for the next round.",
+        eliminated: "Thank you for participating. Better luck next time!",
+        countdownMessage: "Get Ready! The round is about to begin.",
+        submissionSuccessful: "Your answers have been submitted successfully.",
+        sessionExpired: "Your session has expired. Please log in again.",
+        fullscreenWarning: "Please remain in fullscreen mode during the competition.",
+        tabSwitchWarning: "Tab switching detected! Please stay on the competition page.",
+      },
+      leaderboardShowScore: true,
+      leaderboardShowTimeTaken: true,
+      leaderboardShowCollege: true,
+      leaderboardShowDepartment: true,
+      leaderboardRankingMethod: "score_then_time",
+    },
+    dynamicRounds: [],
   },
   questionsMCQ: [],
   questionsCoding: [],
@@ -197,8 +337,43 @@ db.defaults({
   submissions: [],
   codeSubmissions: [],
   debugSubmissions: [],
+  dynamicSubmissions: [],
   activityLog: [],
 }).write();
+
+export const DynamicSubmissions = {
+  find(query: Partial<DynamicSubmissionRecord>): DynamicSubmissionRecord[] {
+    return (db.get("dynamicSubmissions").value() ? db.get("dynamicSubmissions").filter(query).value() : []) as DynamicSubmissionRecord[];
+  },
+
+  findOne(query: Partial<DynamicSubmissionRecord>): DynamicSubmissionRecord | undefined {
+    return (db.get("dynamicSubmissions").value() ? db.get("dynamicSubmissions").find(query).value() : undefined) as DynamicSubmissionRecord | undefined;
+  },
+
+  create(data: Omit<DynamicSubmissionRecord, "id" | "updatedAt" | "tabSwitchCount"> & Partial<DynamicSubmissionRecord>): DynamicSubmissionRecord {
+    const record: DynamicSubmissionRecord = {
+      id: uuidv4(),
+      userId: data.userId,
+      roundId: data.roundId,
+      answerData: data.answerData || {},
+      score: data.score ?? 0,
+      submittedAt: data.submittedAt || null,
+      status: data.status || "in_progress",
+      updatedAt: new Date().toISOString(),
+      tabSwitchCount: data.tabSwitchCount ?? 0,
+    };
+    if (!db.get("dynamicSubmissions").value()) {
+      db.set("dynamicSubmissions", []).write();
+    }
+    db.get("dynamicSubmissions").push(record).write();
+    return record;
+  },
+
+  update(id: string, patch: Partial<DynamicSubmissionRecord>): DynamicSubmissionRecord | undefined {
+    db.get("dynamicSubmissions").find({ id }).assign({ ...patch, updatedAt: new Date().toISOString() }).write();
+    return db.get("dynamicSubmissions").find({ id }).value() as DynamicSubmissionRecord | undefined;
+  },
+};
 
 
 // ── Helper functions (Mongoose-like API) ────────────────────────────

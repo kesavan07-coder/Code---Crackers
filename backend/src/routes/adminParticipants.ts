@@ -527,21 +527,22 @@ router.get("/reports/data", authenticateToken, requireAdmin, (req: AuthRequest, 
     const allUsers = Users.findAll().filter((u) => u.role === "participant");
     const allQuestions = QuestionsMCQ.findAll();
 
+    const compObj = Competition.get();
     const logs = db.get("activityLog").value() || [];
-    let r1Start: string | null = null;
-    let r2Start: string | null = null;
-    let r3Start: string | null = null;
+    let r1Start: string | null = compObj.roundStartedAt?.[1] || null;
+    let r2Start: string | null = compObj.roundStartedAt?.[2] || null;
+    let r3Start: string | null = compObj.roundStartedAt?.[3] || null;
 
-    // Find the latest start time for each round
+    // Fallback to activity log if Competition settings missing timestamp
     logs.forEach((log: any) => {
-      if (log.action === "COMPETITION_START") {
+      if (log.action === "COMPETITION_START" && !r1Start) {
         r1Start = log.timestamp;
       }
-      if (log.action === "ROUND_OPEN") {
+      if (log.action === "ROUND_OPEN" || log.action === "ROUND_START") {
         const r = Number(log.metadata?.round);
-        if (r === 1) r1Start = log.timestamp;
-        if (r === 2) r2Start = log.timestamp;
-        if (r === 3) r3Start = log.timestamp;
+        if (r === 1 && !r1Start) r1Start = log.timestamp;
+        if (r === 2 && !r2Start) r2Start = log.timestamp;
+        if (r === 3 && !r3Start) r3Start = log.timestamp;
       }
     });
 
@@ -552,7 +553,8 @@ router.get("/reports/data", authenticateToken, requireAdmin, (req: AuthRequest, 
       const diffMs = Math.max(0, end - start);
       const diffMins = Math.floor(diffMs / 60000);
       const diffSecs = Math.floor((diffMs % 60000) / 1000);
-      return `${diffMins}m ${diffSecs}s`;
+      if (diffMins === 0) return `${diffSecs} secs`;
+      return `${diffMins} mins ${diffSecs} secs`;
     };
 
     const results = allUsers.map((user) => {
@@ -596,6 +598,7 @@ router.get("/reports/data", authenticateToken, requireAdmin, (req: AuthRequest, 
         return new Date(isoStr).toLocaleTimeString("en-US", {
           hour: "2-digit",
           minute: "2-digit",
+          second: "2-digit",
           hour12: true,
         });
       };
@@ -604,8 +607,10 @@ router.get("/reports/data", authenticateToken, requireAdmin, (req: AuthRequest, 
         id: user.id,
         username: user.username,
         fullName: user.fullName || "N/A",
+        year: user.year || "N/A",
         department: user.department || "CSBS",
         college: user.college || "N/A",
+        createdAt: user.createdAt || "",
         qualificationStatus: user.qualificationStatus || "waiting",
         round1: {
           score: r1Score,

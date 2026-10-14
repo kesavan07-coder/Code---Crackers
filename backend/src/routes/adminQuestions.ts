@@ -7,7 +7,12 @@ const router = Router();
 // ── GET /api/admin/questions/mcq ─────────────────────────────────────
 router.get("/mcq", authenticateToken, requireAdmin, (req: AuthRequest, res: Response): void => {
   try {
-    const list = QuestionsMCQ.findAll();
+    const { roundId } = req.query;
+    let list = QuestionsMCQ.findAll();
+    if (roundId) {
+      const rId = String(roundId);
+      list = list.filter((q) => q.roundId === rId || (!q.roundId && (rId === "built_in_1" || rId === "1")));
+    }
     res.json(list);
   } catch (error) {
     res.status(500).json({ message: "Server error listing questions." });
@@ -17,7 +22,7 @@ router.get("/mcq", authenticateToken, requireAdmin, (req: AuthRequest, res: Resp
 // ── POST /api/admin/questions/mcq ────────────────────────────────────
 router.post("/mcq", authenticateToken, requireAdmin, (req: AuthRequest, res: Response): void => {
   try {
-    const { questionText, options, correctAnswer, difficulty, order } = req.body;
+    const { questionText, options, correctAnswer, difficulty, order, roundId } = req.body;
 
     if (!questionText || !options || options.length !== 4 || correctAnswer === undefined) {
       res.status(400).json({ message: "Invalid question details. Must contain text, 4 options, and correctAnswer index." });
@@ -27,6 +32,7 @@ router.post("/mcq", authenticateToken, requireAdmin, (req: AuthRequest, res: Res
     const nextOrder = order !== undefined ? order : QuestionsMCQ.count() + 1;
 
     const newQuestion = QuestionsMCQ.create({
+      roundId: roundId ? String(roundId) : "built_in_1",
       questionText,
       options,
       correctAnswer: Number(correctAnswer),
@@ -80,7 +86,7 @@ router.delete("/mcq/:id", authenticateToken, requireAdmin, (req: AuthRequest, re
 // ── POST /api/admin/questions/mcq/bulk-import ─────────────────────────
 router.post("/mcq/bulk-import", authenticateToken, requireAdmin, (req: AuthRequest, res: Response): void => {
   try {
-    const { questions } = req.body; // Expect an array of objects matching QuestionMCQRecord (without id)
+    const { questions, roundId } = req.body; // Expect an array of objects matching QuestionMCQRecord (without id)
 
     if (!Array.isArray(questions)) {
       res.status(400).json({ message: "Invalid payload. Questions must be an array." });
@@ -91,6 +97,7 @@ router.post("/mcq/bulk-import", authenticateToken, requireAdmin, (req: AuthReque
     questions.forEach((q) => {
       if (q.questionText && q.options && q.options.length === 4 && q.correctAnswer !== undefined) {
         QuestionsMCQ.create({
+          roundId: q.roundId ? String(q.roundId) : roundId ? String(roundId) : "built_in_1",
           questionText: q.questionText,
           options: q.options,
           correctAnswer: Number(q.correctAnswer),

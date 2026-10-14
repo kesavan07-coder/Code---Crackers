@@ -8,7 +8,8 @@ export interface AuthRequest extends Request {
   user?: {
     id: string;
     username: string;
-    role: "admin" | "participant";
+    role: "super_admin" | "admin" | "participant";
+    permissions?: string[];
     sessionToken: string;
   };
 }
@@ -31,7 +32,8 @@ export const authenticateToken = (
     const decoded = jwt.verify(token, JWT_SECRET) as {
       id: string;
       username: string;
-      role: "admin" | "participant";
+      role: "super_admin" | "admin" | "participant";
+      permissions?: string[];
       sessionToken: string;
     };
 
@@ -62,22 +64,58 @@ export const authenticateToken = (
       return;
     }
 
-    req.user = decoded;
+    req.user = {
+      ...decoded,
+      permissions: user.permissions || [],
+    };
     next();
   } catch {
     res.status(403).json({ message: "Invalid or expired token." });
   }
 };
 
-// ── Admin-only guard ─────────────────────────────────────────────────
+// ── Admin-only guard (allows both super_admin and admin) ─────────────
 export const requireAdmin = (
   req: AuthRequest,
   res: Response,
   next: NextFunction
 ): void => {
-  if (!req.user || req.user.role !== "admin") {
+  if (!req.user || (req.user.role !== "admin" && req.user.role !== "super_admin")) {
     res.status(403).json({ message: "Admin access required." });
     return;
   }
   next();
 };
+
+// ── Super Admin-only guard ──────────────────────────────────────────
+export const requireSuperAdmin = (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+): void => {
+  if (!req.user || req.user.role !== "super_admin") {
+    res.status(403).json({ message: "Super Admin authorization required." });
+    return;
+  }
+  next();
+};
+
+// ── Permission Guard ────────────────────────────────────────────────
+export const requirePermission = (permissionKey: string) => {
+  return (req: AuthRequest, res: Response, next: NextFunction): void => {
+    if (!req.user) {
+      res.status(401).json({ message: "Unauthorized." });
+      return;
+    }
+    if (req.user.role === "super_admin") {
+      next(); // Super admin has all permissions implicitly
+      return;
+    }
+    if (req.user.role === "admin" && req.user.permissions?.includes(permissionKey)) {
+      next();
+      return;
+    }
+    res.status(403).json({ message: `Access denied. Requires '${permissionKey}' permission.` });
+  };
+};
+

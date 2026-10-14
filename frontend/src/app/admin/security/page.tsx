@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePortal } from "@/lib/portalContext";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
@@ -35,6 +36,7 @@ interface ActivityLogItem {
 function AdminNav({ active }: { active: string }) {
   const router = useRouter();
   const { logout } = useAuth();
+  const { portalSettings } = usePortal();
   const navItems = [
     { label: "Dashboard", href: "/admin" },
     { label: "Questions", href: "/admin/questions" },
@@ -47,12 +49,12 @@ function AdminNav({ active }: { active: string }) {
     <header className="w-full h-16 px-6 md:px-12 flex items-center justify-between sticky top-0 z-50 bg-white border-b border-neutral-200">
       <div className="flex items-center gap-4">
         <img
-          src="/college_logo.png"
-          alt="Muthayammal Engineering College Logo"
+          src={portalSettings.collegeLogo || "/college_logo.png"}
+          alt={portalSettings.collegeName || "College Logo"}
           className="w-9 h-9 object-contain rounded-xl border border-neutral-200 p-0.5 bg-white"
         />
         <div>
-          <span className="font-extrabold text-base tracking-wider text-black uppercase block leading-none">Code Crackers</span>
+          <span className="font-extrabold text-base tracking-wider text-black uppercase block leading-none">{portalSettings.eventName || "Code Crackers"}</span>
           <span className="text-xs font-bold tracking-widest uppercase text-neutral-500">ADMIN CONTROL CENTER</span>
         </div>
       </div>
@@ -121,7 +123,7 @@ export default function SecurityPage() {
 
   useEffect(() => {
     if (!token) { router.replace("/login"); return; }
-    if (user && user.role !== "admin") { router.replace("/dashboard"); return; }
+    if (user && user.role !== "admin" && user.role !== "super_admin") { router.replace("/dashboard"); return; }
     fetchSettingsAndLogs();
 
     const interval = setInterval(() => fetchSettingsAndLogs(true), 5000);
@@ -244,6 +246,99 @@ export default function SecurityPage() {
     );
   }
 
+  // Compute violations from logs
+  const violations = logs.filter(l => l.action === "VIOLATION");
+  const violationCounts: Record<string, number> = {};
+  violations.forEach(v => {
+    const uname = v.metadata?.username || v.username;
+    violationCounts[uname] = (violationCounts[uname] || 0) + 1;
+  });
+
+  const getViolationSeverityStyle = (type: string) => {
+    if (["FULLSCREEN_EXIT", "DEVTOOLS_ATTEMPT"].includes(type)) return "bg-red-100 text-red-700 border-red-200";
+    if (["TAB_SWITCH", "COPY_ATTEMPT", "PASTE_ATTEMPT", "CUT_ATTEMPT", "RIGHT_CLICK"].includes(type)) return "bg-amber-100 text-amber-800 border-amber-200";
+    return "bg-zinc-100 text-neutral-600 border-neutral-200";
+  };
+
+  const generateViolationsPDF = async () => {
+    try {
+      const { default: jsPDF } = await import("jspdf");
+      const { default: autoTable } = await import("jspdf-autotable");
+      const doc = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+      const now = new Date();
+
+      // Header
+      doc.setFontSize(13);
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(0, 0, 0);
+      doc.text("Muthayammal Engineering College (Autonomous)", 14, 12);
+
+      doc.setFontSize(9);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(0, 0, 0);
+      doc.text("Rasipuram, Namakkal – 637 408 | Dept. of Computer Science & Business Systems (CSBS)", 14, 17);
+
+      doc.setFontSize(11);
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(0, 0, 0);
+      doc.text("NEXUS'26 Symposium – Code Crackers | Anti-Cheating Violations Audit Report", 14, 24);
+
+      doc.setFontSize(9);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(60, 60, 60);
+      doc.text(`Generated: ${now.toLocaleDateString("en-IN")} at ${now.toLocaleTimeString("en-IN")}  |  Total Violations Detected: ${violations.length}`, 14, 30);
+
+      doc.setDrawColor(0, 0, 0);
+      doc.setLineWidth(0.5);
+      doc.line(14, 33, doc.internal.pageSize.width - 14, 33);
+
+      const tableHead = [["S.No", "Username", "Violation Type", "Round", "Date & Time", "Details"]];
+      const tableBody = [...violations].reverse().map((v, idx) => [
+        idx + 1,
+        v.metadata?.username || v.username,
+        v.metadata?.type || "UNKNOWN",
+        `Round ${v.metadata?.round || "?"}`,
+        new Date(v.timestamp).toLocaleString("en-IN", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true }),
+        v.metadata?.details || "—",
+      ]);
+
+      autoTable(doc, {
+        head: tableHead,
+        body: tableBody,
+        startY: 37,
+        styles: { fontSize: 8.5, cellPadding: 3, textColor: [0, 0, 0], lineColor: [200, 200, 200], lineWidth: 0.3 },
+        headStyles: { fillColor: [0, 0, 0], textColor: [255, 255, 255], fontStyle: "bold", fontSize: 9 },
+        alternateRowStyles: { fillColor: [248, 248, 248] },
+        columnStyles: {
+          0: { cellWidth: 12, halign: "center" },
+          1: { cellWidth: 40, fontStyle: "bold" },
+          2: { cellWidth: 45, fontStyle: "bold" },
+          3: { cellWidth: 20 },
+          4: { cellWidth: 50 },
+          5: { cellWidth: 100 },
+        },
+      });
+
+      const pageCount = (doc as any).internal.getNumberOfPages();
+      for (let i = 1; i <= pageCount; i++) {
+        doc.setPage(i);
+        doc.setFontSize(8);
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(60, 60, 60);
+        doc.text(
+          `MEC CSBS – NEXUS'26 – Code Crackers  |  Anti-Cheat Security Audit  |  Page ${i} of ${pageCount}`,
+          doc.internal.pageSize.width / 2, doc.internal.pageSize.height - 8, { align: "center" }
+        );
+      }
+
+      doc.save(`Anti_Cheat_Violations_Report_${now.toISOString().slice(0, 10)}.pdf`);
+      showToast("Anti-Cheat Violations PDF report downloaded.");
+    } catch (err) {
+      console.error(err);
+      showToast("Failed to generate Anti-Cheat PDF.", "error");
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 text-black">
       {/* Toast Alert */}
@@ -262,7 +357,82 @@ export default function SecurityPage() {
 
       <AdminNav active="/admin/security" />
 
-      <main className="max-w-7xl mx-auto w-full px-6 md:px-12 py-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <main className="max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 py-6 sm:py-10 flex flex-col gap-6 sm:gap-8">
+
+        {/* Anti-Cheat Violations Section */}
+        <div className="bg-white rounded-2xl p-5 sm:p-8 border border-neutral-200 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
+          <div className="flex items-center justify-between mb-2">
+            <h2 className="text-xl font-extrabold text-black">Anti-Cheat Violations</h2>
+            <div className="flex items-center gap-3">
+              {violations.length > 0 && (
+                <button
+                  onClick={generateViolationsPDF}
+                  className="px-4 py-1.5 rounded-xl text-xs font-bold border-2 border-neutral-200 bg-white hover:border-black transition-colors cursor-pointer flex items-center gap-2 text-black"
+                >
+                  📄 Export PDF Report
+                </button>
+              )}
+              <span className={`text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider border-2 ${violations.length > 0 ? "bg-red-50 text-red-600 border-red-200" : "bg-zinc-100 text-neutral-500 border-neutral-200"}`}>
+                {violations.length} Violation{violations.length !== 1 ? "s" : ""} Detected
+              </span>
+            </div>
+          </div>
+          <p className="text-xs font-semibold text-neutral-500 mb-6 uppercase tracking-wider">Live log of anti-cheat events across all rounds</p>
+
+          {violations.length === 0 ? (
+            <div className="border-2 border-dashed border-neutral-200 rounded-2xl py-12 text-center">
+              <span className="text-3xl block mb-3">🛡️</span>
+              <p className="text-sm font-bold text-neutral-400">No violations detected yet.</p>
+              <p className="text-xs text-neutral-300 font-semibold mt-1">Violations will appear here when participants trigger anti-cheat events.</p>
+            </div>
+          ) : (
+            <>
+              {/* Per-participant summary */}
+              {Object.entries(violationCounts).length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {Object.entries(violationCounts).sort((a, b) => b[1] - a[1]).map(([username, count]) => (
+                    <span key={username} className={`text-xs font-bold px-3 py-1.5 rounded-full border-2 ${count >= 3 ? "bg-red-100 text-red-700 border-red-200" : count >= 2 ? "bg-amber-100 text-amber-800 border-amber-200" : "bg-zinc-100 text-neutral-600 border-neutral-200"}`}>
+                      {username}: {count} violation{count !== 1 ? "s" : ""}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <div className="overflow-x-auto rounded-xl border-2 border-neutral-100">
+                <table className="w-full text-xs">
+                  <thead>
+                    <tr className="border-b border-neutral-100 bg-zinc-50">
+                      <th className="text-left font-bold uppercase tracking-widest text-neutral-500 px-4 py-3">Username</th>
+                      <th className="text-left font-bold uppercase tracking-widest text-neutral-500 px-4 py-3">Violation Type</th>
+                      <th className="text-left font-bold uppercase tracking-widest text-neutral-500 px-4 py-3">Round</th>
+                      <th className="text-left font-bold uppercase tracking-widest text-neutral-500 px-4 py-3">Date & Time</th>
+                      <th className="text-left font-bold uppercase tracking-widest text-neutral-500 px-4 py-3">Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[...violations].reverse().map((v) => (
+                      <tr key={v.id} className="border-b border-neutral-50 hover:bg-stone-50 transition-colors">
+                        <td className="px-4 py-3 font-extrabold text-black">{v.metadata?.username || v.username}</td>
+                        <td className="px-4 py-3">
+                          <span className={`text-[10px] font-bold px-2 py-1 rounded-lg border uppercase tracking-wider ${getViolationSeverityStyle(v.metadata?.type || "")}`}>
+                            {v.metadata?.type || "UNKNOWN"}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3 font-bold text-neutral-600">Round {v.metadata?.round || "?"}</td>
+                        <td className="px-4 py-3 text-neutral-500 font-semibold">
+                          {new Date(v.timestamp).toLocaleString("en-IN", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit", hour12: true })}
+                        </td>
+                        <td className="px-4 py-3 text-neutral-400 max-w-xs truncate">{v.metadata?.details || "—"}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         {/* Left Column: Security Policy Settings */}
         <div className="lg:col-span-2 flex flex-col gap-8">
@@ -341,7 +511,7 @@ export default function SecurityPage() {
           </div>
 
           {/* Configuration Settings Card */}
-          <div className="bg-white rounded-2xl p-8 border border-neutral-200 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
+          <div className="bg-white rounded-2xl p-5 sm:p-8 border border-neutral-200 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
             <h2 className="text-xl font-extrabold text-black mb-1">Global Configuration Parameters</h2>
             <p className="text-xs font-semibold text-neutral-500 mb-6 uppercase tracking-wider">Sync intervals and timers</p>
 
@@ -534,6 +704,8 @@ export default function SecurityPage() {
               This action deletes all student submissions for Round 1, 2, and 3. Ensure scores are exported before executing.
             </p>
           </div>
+
+        </div>
 
         </div>
 

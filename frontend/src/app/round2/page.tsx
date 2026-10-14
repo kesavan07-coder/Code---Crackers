@@ -6,6 +6,8 @@ import { useAuth } from "@/lib/auth";
 import { motion, AnimatePresence } from "framer-motion";
 import Editor from "@monaco-editor/react";
 import { useAntiCheat } from "@/hooks/useAntiCheat";
+import CountdownOverlay from "@/components/CountdownOverlay";
+import { usePortal } from "@/lib/portalContext";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
@@ -47,87 +49,43 @@ interface CodeSubmission {
 }
 
 const STARTER_TEMPLATES: Record<string, string> = {
-  javascript: `// JavaScript Template
-// Read standard input line by line
-const fs = require('fs');
-const input = fs.readFileSync(0, 'utf-8').trim();
+  java: `public class Main {
+    public static void main(String[] args) {
 
-function solve(inputString) {
-    // Write your logic here
-    return inputString;
-}
+    }
+}`,
 
-console.log(solve(input));`,
+  c: `#include <stdio.h>
 
-  python: `# Python Template
-import sys
+int main() {
 
-def solve():
-    # Read all lines from standard input
-    input_data = sys.stdin.read().strip()
-    # Write your logic here
-    result = input_data
-    print(result)
+    return 0;
+}`,
 
-if __name__ == '__main__':
-    solve()`,
-
-  cpp: `// C++ Template
-#include <iostream>
-#include <string>
-#include <sstream>
-
+  cpp: `#include <iostream>
 using namespace std;
 
 int main() {
-    string input;
-    // Read stdin
-    string line;
-    while (getline(cin, line)) {
-        input += line + "\\n";
-    }
-    
-    // Write your logic here
-    cout << input;
+
     return 0;
 }`,
 
-  c: `// C Template
-#include <stdio.h>
-#include <string.h>
+  python: `def main():
+    pass
 
-int main() {
-    char input[4096];
-    // Read stdin
-    int bytes_read = fread(input, 1, sizeof(input) - 1, stdin);
-    input[bytes_read] = '\\0';
-    
-    // Write your logic here
-    printf("%s", input);
-    return 0;
-}`,
+if __name__ == "__main__":
+    main()`,
 
-  java: `// Java Template
-import java.io.*;
-import java.util.*;
+  javascript: `function main() {
 
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
-        String line;
-        while ((line = br.readLine()) != null) {
-            sb.append(line).append("\\n");
-        }
-        
-        // Write your logic here
-        System.out.print(sb.toString());
-    }
-}`
+}
+
+main();`,
 };
 
 export default function Round2CodingPage() {
-  const { token, user, isLoading: authLoading } = useAuth();
+  const { token, user, isLoading: authLoading, logout } = useAuth();
+  const { portalSettings, dynamicRounds } = usePortal();
   const router = useRouter();
 
   const [questions, setQuestions] = useState<CodingQuestion[]>([]);
@@ -142,6 +100,9 @@ export default function Round2CodingPage() {
   const [savedCodes, setSavedCodes] = useState<Record<string, SavedCode>>({});
   const [isSubmittingRound, setIsSubmittingRound] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState<"in_progress" | "submitted">("in_progress");
+  const [countdownStartedAt, setCountdownStartedAt] = useState<string | null>(null);
+  const [roundStartedAt, setRoundStartedAt]         = useState<string | null>(null);
+  const [countdownDone, setCountdownDone]           = useState(false);
 
   // Console states
   const [consoleOpen, setConsoleOpen] = useState(false);
@@ -166,6 +127,17 @@ export default function Round2CodingPage() {
     };
   }, []);
 
+  const [showFullscreenExitModal, setShowFullscreenExitModal] = useState(false);
+
+  const logViolation = useCallback((type: string, details?: string) => {
+    if (!token) return;
+    fetch(`${API_BASE}/api/competition/violation`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ type, round: 2, details }),
+    }).catch(() => {});
+  }, [token]);
+
   const handleTabSwitch = useCallback(async () => {
     if (!token) return;
     try {
@@ -183,11 +155,24 @@ export default function Round2CodingPage() {
     } catch {}
   }, [token]);
 
+  const handleFullscreenExit = useCallback(async () => {
+    if (submissionStatus === "submitted" || loading) return;
+    logViolation("FULLSCREEN_EXIT", "Participant exited fullscreen mode during Round 2");
+    setShowFullscreenExitModal(true);
+    try {
+      await handleFinalSubmit(true);
+    } catch {}
+    setTimeout(() => {
+      logout();
+    }, 5000);
+  }, [submissionStatus, loading, logViolation, logout]);
+
   const { enterFullscreen } = useAntiCheat({
     disablePaste: true,
     disableRightClick: true,
     onTabSwitch: handleTabSwitch,
-    onFullscreenExit: () => {},
+    onFullscreenExit: handleFullscreenExit,
+    onViolation: logViolation,
   });
 
   const resumeTest = async () => {
@@ -207,14 +192,22 @@ export default function Round2CodingPage() {
       });
       if (!res.ok) {
         if (res.status === 403) {
-          // Round 2 not open, go back
           router.replace("/dashboard");
         }
         return;
       }
       const data = await res.json();
-      setQuestions(data.questions || []);
+      setQuestions(data.questions);
       setEndsAt(data.endsAt);
+
+      // Server-synced countdown fields
+      setCountdownStartedAt(data.countdownStartedAt || null);
+      setRoundStartedAt(data.roundStartedAt || null);
+
+      const roundStart = data.roundStartedAt ? new Date(data.roundStartedAt).getTime() : 0;
+      if (!data.countdownStartedAt || Date.now() >= roundStart) {
+        setCountdownDone(true);
+      }
 
       if (data.submission) {
         setSubmissionStatus(data.submission.status);
@@ -420,21 +413,31 @@ export default function Round2CodingPage() {
   const activeQuestion = questions[activeIdx];
 
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50 text-black">
+    <div className="min-h-screen bg-[#06040A] text-white flex flex-col font-sans overflow-hidden">
+      {!countdownDone && !loading && (
+        <CountdownOverlay
+          countdownStartedAt={countdownStartedAt}
+          roundStartedAt={roundStartedAt}
+          roundName="Round 2 — Coding"
+          message="Get ready! Your coding round is about to start. Good luck!"
+          onComplete={() => setCountdownDone(true)}
+        />
+      )}
+      
       {/* Top Navigation / Status Header */}
-      <header className="w-full h-16 px-6 flex items-center justify-between sticky top-0 z-50 bg-white border-b border-neutral-200">
+      <header className="w-full h-auto min-h-[56px] px-3 sm:px-6 py-2.5 flex items-center justify-between sticky top-0 z-50 bg-white border-b border-neutral-200 flex-wrap gap-2 text-black">
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3">
             <img
-              src="/college_logo.png"
-              alt="Muthayammal Engineering College"
+              src={portalSettings.collegeLogo || "/college_logo.png"}
+              alt={portalSettings.collegeName || "College Logo"}
               className="w-7 h-7 object-contain rounded border border-neutral-200 p-0.5 bg-white"
             />
             <span className="font-extrabold text-sm tracking-widest text-black uppercase">
-              ROUND 02: STORY CODING
+              {dynamicRounds.find((r) => r.type === "coding" || r.order === 2)?.name || "ROUND 02: STORY CODING"}
             </span>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 overflow-x-auto pb-1 max-w-[150px] sm:max-w-none">
             {questions.map((q, idx) => (
               <button
                 key={q.id}
@@ -490,9 +493,9 @@ export default function Round2CodingPage() {
       </header>
 
       {/* Main split view container */}
-      <main className="flex-1 flex overflow-hidden">
+      <main className="flex-1 flex flex-col md:flex-row overflow-y-auto md:overflow-hidden">
         {/* Left story panel */}
-        <section className="w-1/2 p-6 overflow-y-auto flex flex-col gap-6 bg-stone-50 border-r border-neutral-200">
+        <section className="w-full md:w-1/2 p-4 sm:p-6 overflow-y-auto flex flex-col gap-4 sm:gap-6 bg-stone-50 border-b md:border-b-0 md:border-r border-neutral-200 max-h-[45vh] md:max-h-none">
           {activeQuestion && (
             <>
               <div>
@@ -560,9 +563,9 @@ export default function Round2CodingPage() {
         </section>
 
         {/* Right editor panel */}
-        <section className="w-1/2 flex flex-col relative bg-[#1e1e1e]">
+        <section className="w-full md:w-1/2 flex flex-col relative bg-[#1e1e1e] min-h-[400px] md:min-h-0 flex-1">
           {/* Language selection toolbar */}
-          <div className="h-14 border-b border-[#333333] px-6 flex items-center justify-between bg-[#1e1e1e]">
+          <div className="h-auto min-h-[48px] py-2 border-b border-[#333333] px-3 sm:px-6 flex items-center justify-between bg-[#1e1e1e] flex-wrap gap-2">
             <div className="flex items-center gap-3">
               <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">Language:</span>
               <select
@@ -710,9 +713,40 @@ export default function Round2CodingPage() {
         </section>
       </main>
 
+      {/* ── Fullscreen Exit Violation Modal ── */}
+      <AnimatePresence>
+        {showFullscreenExitModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 z-[99999] bg-black/95 backdrop-blur-md flex items-center justify-center p-6"
+          >
+            <div className="bg-neutral-900 border-2 border-red-500 rounded-3xl p-8 md:p-12 max-w-lg w-full text-center flex flex-col gap-6 items-center shadow-2xl">
+              <div className="w-16 h-16 rounded-2xl bg-red-500/20 text-red-500 border border-red-500/40 flex items-center justify-center text-3xl font-extrabold">
+                ⚠
+              </div>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
+                Full Screen Mode Was Exited
+              </h2>
+              <div className="bg-red-950/40 border border-red-800/60 rounded-2xl p-5 text-left text-xs space-y-2 text-red-200 font-medium leading-relaxed w-full">
+                <p className="font-bold text-white text-sm">
+                  As per the competition rules, your submission has been automatically submitted.
+                </p>
+                <p>
+                  <strong className="text-red-400">Reason:</strong> Full Screen Exit
+                </p>
+                <p className="text-neutral-400 text-[11px] pt-2">
+                  Please contact the event organizers if you believe this occurred in error. Logging out in 5 seconds...
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* ── Fullscreen blocker modal ── */}
       <AnimatePresence>
-        {!isFullscreen && !loading && submissionStatus !== "submitted" && (
+        {!isFullscreen && !loading && submissionStatus !== "submitted" && !showFullscreenExitModal && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
