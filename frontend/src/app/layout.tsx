@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth";
 import { PortalProvider } from "@/lib/portalContext";
 import ClientLayout from "@/components/ClientLayout";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Code Crackers – Technical Quiz",
@@ -22,12 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link href="https://db.onlinewebfonts.com/c/1cd1e7d71e048159076fd90b39846902?family=Open+Sauce+One" rel="stylesheet" />
-        <link href="https://db.onlinewebfonts.com/c/42acf9aa4a6dc2f2886a3f682e337ead?family=Open+Sauce+One+Bold" rel="stylesheet" />
-      </head>
-      <body className="antialiased">
+    <html lang="en" className={inter.variable}>
+      <body className={`antialiased ${inter.className}`}>
         <PortalProvider>
           <AuthProvider>
             <ClientLayout>
