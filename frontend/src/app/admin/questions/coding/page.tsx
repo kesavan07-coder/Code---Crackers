@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, Suspense } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/lib/auth";
 import { motion, AnimatePresence } from "framer-motion";
@@ -87,7 +87,7 @@ function AdminNav({ active }: { active: string }) {
   );
 }
 
-export default function AdminCodingQuestionsPage() {
+function AdminCodingQuestionsContent() {
   const { user, token, isLoading: authLoading } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
@@ -511,5 +511,19 @@ export default function AdminCodingQuestionsPage() {
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+export default function AdminCodingQuestionsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-stone-50">
+          <div className="w-8 h-8 rounded-full border-2 border-black border-t-transparent animate-spin" />
+        </div>
+      }
+    >
+      <AdminCodingQuestionsContent />
+    </Suspense>
   );
 }
