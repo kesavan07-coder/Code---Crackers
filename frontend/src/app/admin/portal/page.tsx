@@ -281,7 +281,7 @@ const TABS = [
 ];
 
 // ── Main Component ─────────────────────────────────────────────────────
-export default function PortalManagementPage() {
+function PortalManagementContent() {
   const { token, isLoading: authLoading, logout } = useAuth();
   const { refreshPortalInfo } = usePortal();
   const router = useRouter();
@@ -1861,5 +1861,19 @@ export default function PortalManagementPage() {
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+export default function PortalManagementPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-stone-50">
+          <div className="w-8 h-8 rounded-full border-2 border-black border-t-transparent animate-spin" />
+        </div>
+      }
+    >
+      <PortalManagementContent />
+    </Suspense>
   );
 }
